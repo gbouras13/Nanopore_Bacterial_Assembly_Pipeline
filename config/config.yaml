@@ -1,0 +1,39 @@
+#####################################################
+## | |__   ___  ___ __ _| |_ ___  _ __ ___ | |__   ##
+## | '_ \ / _ \/ __/ _` | __/ _ \| '_ ` _ \| '_ \  ##
+## | | | |  __/ (_| (_| | || (_) | | | | | | |_) | ##
+## |_| |_|\___|\___\__,_|\__\___/|_| |_| |_|_.__/  ##
+#####################################################
+
+# For more information see: https://github.com/shandley/hecatomb and https://hecatomb.readthedocs.io/en/latest/
+
+---
+
+
+##################
+# Run Parameters #
+##################
+
+# Database installation location, leave blank = use hecatomb install location
+Databases:
+
+Output:
+
+### STICK TO YOUR SYSTEM'S CPU:RAM RATIO FOR THESE
+BigJobMem: 16000     # Memory for MMSeqs in megabytes (e.g 64GB = 64000, recommend >= 64000)
+BigJobCpu: 64        # Threads for MMSeqs (recommend >= 16)
+BigJobTimeMin: 5760  # Max runtime in minutes for MMSeqs (this is only enforced by the Snakemake profile)
+MediumJobMem: 16000  # Memory for Megahit/Flye in megabytes (recommend >= 32000)
+MediumJobCpu: 16     # CPUs for Megahit/Flye in megabytes (recommend >= 16)
+SmallJobMem: 16000   # Memory for BBTools etc. in megabytes (recommend >= 16000)
+SmallJobCpu: 8       # CPUs for BBTools etc. (recommend >= 8)
+                     # default CPUs = 1
+# SPECIFY DEFAULT MEM AND TIME IN YOUR PROFILE - see example profile config.yaml
+#defaultMem: 2000     # Default memory in megabytes (for use with --profile)
+#defaultTime: 1440    # Default time in minutes (for use with --profile)
+defaultJobs: 100     # Default concurrent jobs (for use with --profile)
+
+# Some jobs need more RAM; go over your CPU:RAM ratio if needed
+MoreRamMem: 16000    # Memory for slightly RAM-hungry jobs in megabytes (recommend >= 16000)
+MoreRamCpu: 2        # CPUs for slightly RAM-hungry jobs (recommend >= 2)
+
