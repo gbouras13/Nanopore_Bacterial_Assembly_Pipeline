@@ -2,17 +2,17 @@
 The snakefile that runs the pipeline.
 Manual launch example:
 
-snakemake -c 1 -s runner.smk --use-conda --config Fastqs=Fastas/  --conda-create-envs-only --conda-frontend conda
+snakemake -c 1 -s runner.smk --use-conda --config Fastqs=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/aggregated_fastqs/ Output=out/  --conda-create-envs-only --conda-frontend conda 
 compute node
 snakemake -c 16 -s runner.smk --use-conda --config Fastqs=Fastas/ Output=out/ 
 """
 
+import os
 
 ### DEFAULT CONFIG FILE
-configfile: os.path.join(workflow.basedir,  'config', 'config.yaml')
 
-BigJobMem = config["BigJobMem"]
-BigJobCpu = config["BigJobCpu"]
+BigJobMem = 32000
+BigJobCpu = 16
 
 ### DIRECTORIES
 
@@ -26,26 +26,11 @@ OUTPUT = config['Output']
 include: "rules/samples.smk"
 sampleAssemblies = parseSamples(FASTQS)
 SAMPLES = sampleAssemblies.keys()
+print(SAMPLES)
 
 # Import rules and functions
 include: "rules/targets.smk"
 include: "rules/assemble.smk"
-
-# # if empty remove samples
-
-# include: "rules/empty_files.smk"
-# include: "rules/non_empty_files.smk"
-
-# sampleAssemblies_not_empty = parseSamplesNonEmpty(TMP)
-# SAMPLES_not_empty = sampleAssemblies_not_empty.keys()
-# sampleAssemblies_empty = parseSamplesEmpty(TMP)
-# SAMPLES_empty = sampleAssemblies_empty.keys()
-
-# writeEmptyCsv(SAMPLES_empty, RESULTS)
-
-# include: "rules/cluster.smk"
-# include: "rules/collate.smk"
-# include: "rules/summarise.smk"
 
 rule all:
     input:

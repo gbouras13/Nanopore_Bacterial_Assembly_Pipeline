@@ -13,7 +13,7 @@ def samplesFromDirectory(dir):
     for sample in samples2:
         outDict[sample] = {}
         fastq = os.path.join(dir,f'{sample}.fastq.gz')
-        if os.path.isfile(fasta):
+        if os.path.isfile(fastq):
             outDict[sample]['fastq'] = fastq
         else:
             sys.stderr.write("\n"
