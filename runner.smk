@@ -12,7 +12,7 @@ import os
 ### DEFAULT CONFIG FILE
 
 BigJobMem = 32000
-BigJobCpu = 16
+BigJobCpu = 64
 
 ### DIRECTORIES
 
