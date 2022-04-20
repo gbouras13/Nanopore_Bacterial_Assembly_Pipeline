@@ -4,7 +4,11 @@ Manual launch example:
 
 snakemake -c 1 -s runner.smk --use-conda --config Fastqs=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/aggregated_fastqs/ Output=out/  --conda-create-envs-only --conda-frontend conda 
 compute node
-snakemake -c 16 -s runner.smk --use-conda --config Fastqs=Fastas/ Output=out/ 
+snakemake -c 1 -s runner.smk --use-conda --config Fastqs=/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs  Output=/hpcfs/users/a1667917/Bacteria_Multiplex/Pipeline_Out  --conda-create-envs-only --conda-frontend conda 
+snakemake -c 16 -s runner.smk --use-conda --config csv=sample_list.csv Output=out/ 
+
+snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output 
+
 """
 
 import os
@@ -19,14 +23,15 @@ BigJobCpu = 64
 include: "rules/directories.smk"
 
 # get if needed
-FASTQS = config['Fastqs']
+CSV = config['csv']
 OUTPUT = config['Output']
 
 # Parse the samples and read files
 include: "rules/samples.smk"
-sampleAssemblies = parseSamples(FASTQS)
-SAMPLES = sampleAssemblies.keys()
-print(SAMPLES)
+dictReads = parseSamples(CSV)
+SAMPLES = list(dictReads.keys())
+#print(SAMPLES)
+
 
 # Import rules and functions
 include: "rules/targets.smk"

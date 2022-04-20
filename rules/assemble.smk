@@ -1,8 +1,11 @@
+def get_input_fastqs(wildcards):
+    return dictReads[wildcards.sample]["LR"]
+
 rule assemble:
     input:
-        os.path.join(FASTQS, "{sample}.fastq.gz")
+        get_input_fastqs
     output:
-        os.path.join(OUTPUT,"{sample}"),
+        directory(os.path.join(OUTPUT,"{sample}")),
         os.path.join(OUTPUT,"{sample}", "assembly.fasta")
     threads:
         BigJobCpu

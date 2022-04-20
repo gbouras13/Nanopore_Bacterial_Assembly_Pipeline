@@ -24,13 +24,38 @@ def samplesFromDirectory(dir):
             sys.exit(1)
     return outDict
 
-def parseSamples(readFileDir):
-    """Parse samples from a directory"""
-    if os.path.isdir(readFileDir):
-        sampleDict = samplesFromDirectory(readFileDir)
+def samplesFromCsv(csvFile):
+    """Read samples and files from a TSV"""
+    outDict = {}
+    with open(csvFile,'r') as tsv:
+        for line in tsv:
+            l = line.strip().split(',')
+            if len(l) == 4:
+                outDict[l[0]] = {}
+                if os.path.isfile(l[1]) and os.path.isfile(l[2]) and os.path.isfile(l[3]):
+                    outDict[l[0]]['LR'] = l[1]
+                    outDict[l[0]]['R1'] = l[2]
+                    outDict[l[0]]['R2'] = l[3]
+                else:
+                    sys.stderr.write("\n"
+                                     f"    FATAL: Error parsing {csvFile}. One of \n"
+                                     f"    {l[1]} or \n"
+                                     f"    {l[2]}\n"
+                                     "    does not exist. Check formatting, and that \n" 
+                                     "    file names and file paths are correct.\n"
+                                     "\n")
+                    sys.exit(1)
+    return outDict
+
+def parseSamples(csvfile):
+    # for reading from directory
+    #if os.path.isdir(readFileDir):
+    #   sampleDict = samplesFromDirectory(readFileDir)
+    if os.path.isfile(csvfile):
+        sampleDict = samplesFromCsv(csvfile)
     else:
         sys.stderr.write("\n"
-                         f"    FATAL: {readFileDir} is neither a file nor directory.\n"
+                         f"    FATAL: {csvfile} is neither a file nor directory.\n"
                          "\n")
         sys.exit(1)
     if len(sampleDict.keys()) == 0:
