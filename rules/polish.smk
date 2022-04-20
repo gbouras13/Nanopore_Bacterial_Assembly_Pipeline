@@ -63,6 +63,7 @@ rule bwa_index:
 rule bwa_mem:
     input:
         os.path.join(MEDAKA,"{sample}", "consensus.fasta"),
+        os.path.join(MEDAKA,"{sample}", "consensus.fasta.bwt"),
         os.path.join(FASTP,"{sample}_1.fastq.gz"),
         os.path.join(FASTP,"{sample}_2.fastq.gz")
     output:
@@ -79,7 +80,6 @@ rule bwa_mem:
         bwa mem -t {threads} -a {input[0]} {input[1]} > {output[0]}
         bwa mem -t {threads} -a {input[0]} {input[2]} > {output[1]}
         """
-
 rule polypolish:
     input:
         os.path.join(MEDAKA,"{sample}", "consensus.fasta"),
