@@ -83,8 +83,8 @@ rule bwa_mem:
 rule polypolish:
     input:
         os.path.join(MEDAKA,"{sample}", "consensus.fasta"),
-        os.path.join(FASTP,"{sample}_1.fastq.gz"),
-        os.path.join(FASTP,"{sample}_2.fastq.gz")
+        os.path.join(BWA,"{sample}_1.sam"),
+        os.path.join(BWA,"{sample}_2.sam")
     output:
         os.path.join(POLYPOLISH,"{sample}.fasta")
     threads:
