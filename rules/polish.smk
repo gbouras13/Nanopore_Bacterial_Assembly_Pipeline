@@ -100,7 +100,7 @@ rule polypolish:
 
 rule aggr_polish:
     input:
-        os.path.join(POLYPOLISH,"{sample}.fasta", sample = SAMPLES)
+        expand(os.path.join(POLYPOLISH,"{sample}.fasta"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_polish.txt")
     threads:
