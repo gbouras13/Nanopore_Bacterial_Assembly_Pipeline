@@ -86,11 +86,11 @@ rule polypolish:
         os.path.join(BWA,"{sample}_1.sam"),
         os.path.join(BWA,"{sample}_2.sam")
     output:
-        os.path.join(POLYPOLISH,"{sample}.fasta")
+        os.path.join(POLYPOLISH_OUT,"{sample}.fasta")
     threads:
         BigJobCpu
     params:
-        os.path.join(POLYPOLISH, "polypolish")
+        os.path.join(POLYPOLISH_BIN, "polypolish")
     resources:
         mem_mb=BigJobMem
     shell:

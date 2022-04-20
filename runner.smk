@@ -28,7 +28,7 @@ include: "rules/directories.smk"
 # get if needed
 CSV = config['csv']
 OUTPUT = config['Output']
-POLYPOLISH=config['Polypolish_Dir']
+POLYPOLISH_BIN=config['Polypolish_Dir']
 
 # Parse the samples and read files
 include: "rules/samples.smk"

@@ -18,7 +18,7 @@ ASSEMBLIES = os.path.join(TMP, 'ASSEMBLIES')
 MEDAKA = os.path.join(TMP, 'MEDAKA')
 BWA = os.path.join(TMP, 'BWA')
 FASTP = os.path.join(TMP, 'FASTP')
-POLYPOLISH = os.path.join(OUTPUT, 'POLYPOLISH')
+POLYPOLISH_OUT = os.path.join(OUTPUT, 'POLYPOLISH')
 
 
 
