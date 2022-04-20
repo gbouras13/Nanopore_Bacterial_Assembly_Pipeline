@@ -28,7 +28,7 @@ snakemake -c 1 -s runner.smk --use-conda --profile $PROF_DIR/bact_assembly \
 --config csv=/hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/hpc_metadata.csv Output=/hpcfs/users/a1667917/Bacteria_Multiplex/Pipeline_Out Polypolish_Dir=/hpcfs/users/a1667917/Polypolish
 
 
-# snakemake -c 1 -s runner.smk --use-conda --conda-create-envs-only --conda-frontend conda  \
-# --config csv=/hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/hpc_metadata.csv Output=/hpcfs/users/a1667917/Bacteria_Multiplex/Pipeline_Out Polypolish_Dir=/hpcfs/users/a1667917/Polypolish
+snakemake -c 1 -s runner.smk --use-conda --conda-create-envs-only --conda-frontend conda  \
+--config csv=/hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/hpc_metadata.csv Output=/hpcfs/users/a1667917/Bacteria_Multiplex/Pipeline_Out Polypolish_Dir=/hpcfs/users/a1667917/Polypolish
 
 conda deactivate
