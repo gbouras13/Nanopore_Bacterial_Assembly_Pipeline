@@ -98,4 +98,17 @@ rule polypolish:
         {params[0]} {input[0]} {input[1]} {input[2]} > {output[0]}
         """
 
+rule aggr_polish:
+    input:
+        os.path.join(POLYPOLISH,"{sample}.fasta")
+    output:
+        os.path.join(LOGS, "aggr_polish.txt")
+    threads:
+        1
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        touch {output[0]}
+        """
 

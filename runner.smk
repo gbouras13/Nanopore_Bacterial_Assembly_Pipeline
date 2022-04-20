@@ -6,9 +6,11 @@ snakemake -c 1 -s runner.smk --use-conda --config Fastqs=/Users/a1667917/Documen
 compute node
 snakemake -c 1 -s runner.smk --use-conda --config Fastqs=/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs  Output=/hpcfs/users/a1667917/Bacteria_Multiplex/Pipeline_Out  --conda-create-envs-only --conda-frontend conda 
 
-snakemake -c 16 -s runner.smk --use-conda --config csv=sample_list.csv Output=out/ Polypolish_Dir=
 
-snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output 
+snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/target/release
+
+snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/target/release
+
 
 """
 
@@ -38,6 +40,7 @@ SAMPLES = list(dictReads.keys())
 # Import rules and functions
 include: "rules/targets.smk"
 include: "rules/assemble.smk"
+include: "rules/polish.smk"
 
 rule all:
     input:
