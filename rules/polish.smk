@@ -63,9 +63,9 @@ rule bwa_index:
 rule bwa_mem:
     input:
         os.path.join(MEDAKA,"{sample}", "consensus.fasta"),
-        os.path.join(MEDAKA,"{sample}", "consensus.fasta.bwt"),
         os.path.join(FASTP,"{sample}_1.fastq.gz"),
-        os.path.join(FASTP,"{sample}_2.fastq.gz")
+        os.path.join(FASTP,"{sample}_2.fastq.gz"),
+        os.path.join(MEDAKA,"{sample}", "consensus.fasta.bwt")
     output:
         os.path.join(BWA,"{sample}_1.sam"),
         os.path.join(BWA,"{sample}_2.sam")
