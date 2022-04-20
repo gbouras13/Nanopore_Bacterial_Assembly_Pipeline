@@ -5,8 +5,8 @@ rule assemble:
     input:
         get_input_fastqs
     output:
-        directory(os.path.join(OUTPUT,"{sample}")),
-        os.path.join(OUTPUT,"{sample}", "assembly.fasta")
+        directory(os.path.join(ASSEMBLIES,"{sample}")),
+        os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta")
     threads:
         BigJobCpu
     conda:
@@ -20,7 +20,7 @@ rule assemble:
 
 rule aggr_assemble:
     input:
-        expand(os.path.join(OUTPUT,"{sample}", "assembly.fasta"), sample = SAMPLES)
+        expand(os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_assemble.txt")
     threads:
