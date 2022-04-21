@@ -31,6 +31,10 @@ def summarise_contigs(assembly_info, genome_size, sample, assembly_cleaned_out, 
     max_contig = assembly_df["length"].max()
     print(max_contig)
 
+    # covnert to int
+    max_contig = int(max_contig)
+    genome_size = int(genome_size)
+
     #expected genome size
     #genome_size = 2600000
 
