@@ -45,7 +45,7 @@ SAMPLES = list(dictReads.keys())
 # Import rules and functions
 include: "rules/targets.smk"
 include: "rules/assemble.smk"
-include: "rules/assemble_statistics.smk"
+include: "rules/assembly_statistics.smk"
 include: "rules/polish.smk"
 
 rule all:
