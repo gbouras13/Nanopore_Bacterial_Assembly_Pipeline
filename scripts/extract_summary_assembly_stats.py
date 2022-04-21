@@ -23,17 +23,24 @@ def summarise_contigs(assembly_info, genome_size, sample, assembly_cleaned_out, 
 
     # create the directory if it doesn't exist 
 
+    
+
     assembly_df.to_csv(assembly_cleaned_out, sep=",", index=False, header=False)
+
+    # Convert length to int
+    assembly_df['length'] = assembly_df['length'].astype('int')
 
     # count contigs
     total_contigs = len(assembly_df.index)
     # get max contig size
+    # need to convert to integer first
     max_contig = assembly_df["length"].max()
     print(max_contig)
 
     # covnert to int
     max_contig = int(max_contig)
     genome_size = int(genome_size)
+    
 
     #expected genome size
     #genome_size = 2600000
