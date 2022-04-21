@@ -15,6 +15,7 @@ else:
 LOGS = os.path.join(OUTPUT, 'LOGS')
 TMP = os.path.join(OUTPUT, 'TMP')
 ASSEMBLIES = os.path.join(TMP, 'ASSEMBLIES')
+SUMMARIES = os.path.join(TMP, 'SUMMARIES')
 MEDAKA = os.path.join(TMP, 'MEDAKA')
 BWA = os.path.join(TMP, 'BWA')
 FASTP = os.path.join(TMP, 'FASTP')
