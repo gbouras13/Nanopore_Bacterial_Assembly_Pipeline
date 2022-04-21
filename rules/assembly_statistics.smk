@@ -19,8 +19,8 @@ rule extract_summary_assembly_stats:
 rule aggr_statistics:
     """Aggregate."""
     input:
-        os.path.join(SUMMARIES,"{sample}_clean_assembly_info.csv"),
-        os.path.join(SUMMARIES,"{sample}_summary.csv")
+        expand(os.path.join(SUMMARIES,"{sample}_clean_assembly_info.csv"), sample = SAMPLES),
+        expand(os.path.join(SUMMARIES,"{sample}_summary.csv"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_stats.txt")
     threads:
