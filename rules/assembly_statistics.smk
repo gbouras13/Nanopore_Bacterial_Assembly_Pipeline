@@ -16,7 +16,7 @@ rule extract_summary_assembly_stats:
     script:
         '../scripts/extract_summary_assembly_stats.py'
 
-rule combine_summary_stata:
+rule combine_summary_stats:
     input:
         summaries = expand(os.path.join(SUMMARIES,"{sample}_summary.csv"), sample = SAMPLES)
     output:
