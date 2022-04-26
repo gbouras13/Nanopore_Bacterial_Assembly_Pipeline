@@ -16,6 +16,8 @@ def summarise_contigs(summary_list, output):
 
     for a in l:
         tmp_summary = read_csv(a)
+        # remove first row (from the file)
+        tmp_summary = tmp_summary.iloc[1: , :]
         summaries.append(tmp_summary)
 
     # make into combined dataframe
