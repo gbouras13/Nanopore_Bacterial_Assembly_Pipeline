@@ -19,6 +19,7 @@ MEDAKA = os.path.join(TMP, 'MEDAKA')
 BWA = os.path.join(TMP, 'BWA')
 FASTP = os.path.join(TMP, 'FASTP')
 POLYPOLISH_OUT = os.path.join(OUTPUT, 'POLYPOLISH')
+SUMMARY_OUT = os.path.join(OUTPUT, 'SUMMARY')
 
 # needs to be created before fastqc is run
 SUMMARIES = os.path.join(TMP, 'SUMMARIES')

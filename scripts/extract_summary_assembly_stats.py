@@ -21,10 +21,6 @@ def summarise_contigs(assembly_info, genome_size, sample, assembly_cleaned_out, 
     cols = cols[-1:] + cols[:-1]
     assembly_df = assembly_df[cols]
 
-    # create the directory if it doesn't exist 
-
-    
-
     assembly_df.to_csv(assembly_cleaned_out, sep=",", index=False, header=False)
 
     # Convert length to int
