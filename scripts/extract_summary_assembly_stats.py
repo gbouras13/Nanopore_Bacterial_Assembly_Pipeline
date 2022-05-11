@@ -36,7 +36,7 @@ def summarise_contigs(assembly_info, sample, assembly_cleaned_out, summary_out )
     # covnert to int
     max_contig = int(max_contig)
 
-    max_contig_circular = assembly_df[assembly_df["length"] == max_contig]['circ']
+    max_contig_circular = assembly_df[assembly_df["length"] == max_contig.iloc[0]['circ']
     
 
 

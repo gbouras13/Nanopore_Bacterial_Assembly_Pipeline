@@ -9,11 +9,14 @@ snakemake -c 1 -s runner.smk --use-conda --config Fastqs=/hpcfs/users/a1667917/B
 
 snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/target/release
 
-snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv \
+snakemake -c 1 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv \
  Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/target/release 
 
  snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv \
  Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/target/release  --conda-create-envs-only --conda-frontend conda 
+
+snakemake -c 1 -s runner.smk --use-conda  --conda-frontend conda  \
+--config csv=/hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/hpc_metadata.csv Output=/hpcfs/users/a1667917/Bacteria_Multiplex/Pipeline_Out Polypolish_Dir=/hpcfs/users/a1667917/Polypolish 
 
 
 """
