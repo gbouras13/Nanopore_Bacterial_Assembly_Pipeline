@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-def summarise_contigs(assembly_info, genome_size, sample, assembly_cleaned_out, summary_out ):
+def summarise_contigs(assembly_info, sample, assembly_cleaned_out, summary_out ):
     # read gff        
 
     colnames=['seq_name', 'length', 'cov', 'circ', 'repeat', 'mult', 'alt_group', 'graph_path'] 
@@ -35,16 +35,15 @@ def summarise_contigs(assembly_info, genome_size, sample, assembly_cleaned_out, 
 
     # covnert to int
     max_contig = int(max_contig)
-    genome_size = int(genome_size)
+
+    max_contig_circular = assembly_df[assembly_df["length"] == max_contig]['circ']
     
 
-    #expected genome size
-    #genome_size = 2600000
 
     # determine whether complete assembly based on size of largest contig 
     complete_assembly = True
 
-    if max_contig < genome_size:
+    if max_contig_circular == 'N':
         complete_assembly = False
 
     # determine plasmid count
@@ -61,7 +60,7 @@ def summarise_contigs(assembly_info, genome_size, sample, assembly_cleaned_out, 
 
         
 
-summarise_contigs(snakemake.input[0], snakemake.params[0], snakemake.wildcards.sample,  snakemake.output[0], snakemake.output[1])
+summarise_contigs(snakemake.input[0],  snakemake.wildcards.sample,  snakemake.output[0], snakemake.output[1])
 
 
 

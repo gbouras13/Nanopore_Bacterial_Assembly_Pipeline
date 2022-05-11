@@ -5,8 +5,6 @@ rule extract_summary_assembly_stats:
     output:
         os.path.join(SUMMARIES,"{sample}_clean_assembly_info.csv"),
         os.path.join(SUMMARIES,"{sample}_summary.csv")
-    params:
-        GENOME_SIZE
     conda:
         os.path.join('..', 'envs','scripts.yaml')
     threads:
