@@ -4,6 +4,9 @@ channels:
     - bioconda
     - defaults
 dependencies:
+    - _libgcc_mutex=0.1=conda_forge
+    - _openmp_mutex=4.5=1_gnu
+    - _tflow_select=2.3.0=mkl
     - absl-py=1.0.0=pyhd8ed1ab_0
     - aiohttp=3.8.1=py38h0a891b7_1
     - aiosignal=1.2.0=pyhd8ed1ab_0
