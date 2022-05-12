@@ -41,7 +41,7 @@ def samplesFromCsv(csvFile):
                                      f"    FATAL: Error parsing {csvFile}. One of \n"
                                      f"    {l[1]} or \n"
                                      f"    {l[2]} or \n"
-                                     f"    {l[3]}\n"
+                                     f"    {l[3]} \n"
                                      "    does not exist. Check formatting, and that \n" 
                                      "    file names and file paths are correct.\n"
                                      "\n")
