@@ -28,7 +28,7 @@ C240,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode27.fastq.
 C241,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode28.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C241_S22_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C241_S22_R2_001.fastq.gz
 C245,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode29.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C245_S45_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C245_S45_R2_001.fastq.gz
 C285,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode31.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C285_S24_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C285_S24_R2_001.fastq.gz
-C294,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode32.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C294_S25_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C294_S25_R2_001.fastq.gz
+C294,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode32_50.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C294_S25_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C294_S25_R2_001.fastq.gz
 C311,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode33.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C311_S28_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C311_S28_R2_001.fastq.gz
 C325,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode34.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C325_S34_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C325_S34_R2_001.fastq.gz
 C56,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode35.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C56_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C56_R2_001.fastq.gz
@@ -46,7 +46,6 @@ C233,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode46.fastq.
 C255,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode47.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/GIG_29_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/GIG_29_2.fastq.gz
 C273,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode48.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/BET_59_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/BET_59_2.fastq.gz
 C276,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode49.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C276_S23_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C276_S23_R2_001.fastq.gz
-C294,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode50.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C294_S25_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C294_S25_R2_001.fastq.gz
 C295,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode51.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C295_S26_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C295_S26_R2_001.fastq.gz
 C309,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode52.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C309_S27_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C309_S27_R2_001.fastq.gz
 C312,/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs/barcode53.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C312_S29_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C312_S29_R2_001.fastq.gz
