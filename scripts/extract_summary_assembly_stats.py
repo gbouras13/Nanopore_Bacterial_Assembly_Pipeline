@@ -31,7 +31,7 @@ def summarise_contigs(assembly_info, sample, assembly_cleaned_out, summary_out )
     # get max contig size
     # need to convert to integer first
     max_contig = assembly_df["length"].max()
-    print(max_contig)
+    #print(max_contig)
 
     # covnert to int
     max_contig = int(max_contig)

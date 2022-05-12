@@ -4,7 +4,7 @@ import pandas as pd
 
 # function to read the csv
 def read_csv(csv):
-    colnames=['Sample', 'total_contigs', 'max_contig_size', 'complete_assembly', 'plasmid_count'] 
+    colnames=['Sample', 'total_contigs', 'max_contig_size', 'complete_assembly', 'plasmid_count', 'coverage_biggest_contig'] 
     df = pd.read_csv(csv, delimiter= ',', index_col=False, header=None, names=colnames)
     return df
 
