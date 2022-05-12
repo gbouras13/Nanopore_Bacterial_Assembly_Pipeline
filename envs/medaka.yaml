@@ -4,8 +4,6 @@ channels:
     - bioconda
     - defaults
 dependencies:
-    - medaka 
-    - chardet==4
     - absl-py=1.0.0=pyhd8ed1ab_0
     - aiohttp=3.8.1=py38h0a891b7_1
     - aiosignal=1.2.0=pyhd8ed1ab_0
