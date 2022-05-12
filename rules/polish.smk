@@ -23,6 +23,7 @@ rule medaka:
         mem_mb=BigJobMem
     shell:
         """
+        export HOME=/hpcfs/users/a1667917
         medaka_consensus -i {input[1]} -d {input[0]} -o {output[0]} -m r941_min_sup_g507  -t {threads}
         """
 
