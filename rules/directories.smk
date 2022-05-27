@@ -13,6 +13,7 @@ else:
 
 ### OUTPUT DIRs
 LOGS = os.path.join(OUTPUT, 'LOGS')
+DELETE = os.path.join(OUTPUT, 'DELETE_LOGS')
 TMP = os.path.join(OUTPUT, 'TMP')
 ASSEMBLIES = os.path.join(TMP, 'ASSEMBLIES')
 MEDAKA = os.path.join(TMP, 'MEDAKA')
