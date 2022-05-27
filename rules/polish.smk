@@ -118,6 +118,7 @@ rule remove_large_files:
         rm -rf {input[1]}
         rm -rf {input[2]}
         rm -rf {input[3]}
+        touch {output[0]}
         """
 
 rule aggr_polish:
