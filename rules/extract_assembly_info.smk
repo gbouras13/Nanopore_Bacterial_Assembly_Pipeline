@@ -17,7 +17,7 @@ rule extract_assembly_infor:
 rule aggr_assembly_info:
     """Aggregate."""
     input:
-        expand(os.path.join(ASSEMBLY_INFO,"{sample}_assembly_info.txt"))
+        expand(os.path.join(ASSEMBLY_INFO,"{sample}_assembly_info.txt"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_assembly_info.txt")
     threads:
