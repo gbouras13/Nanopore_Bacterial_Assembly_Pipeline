@@ -36,7 +36,7 @@ include: "rules/directories.smk"
 CSV = config['csv']
 OUTPUT = config['Output']
 POLYPOLISH_BIN=config['Polypolish_Dir']
-
+MIN_CHROM_LENGTH=config['min_chrom_length']
 
 # Parse the samples and read files
 include: "rules/samples.smk"
