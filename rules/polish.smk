@@ -99,32 +99,9 @@ rule polypolish:
         {params[0]} {input[0]} {input[1]} {input[2]} > {output[0]}
         """
 
-rule remove_large_files:
-    input:
-        os.path.join(BWA,"{sample}_1.sam"),
-        os.path.join(BWA,"{sample}_2.sam"),
-        os.path.join(FASTP,"{sample}_1.fastq.gz"),
-        os.path.join(FASTP,"{sample}_2.fastq.gz"),
-        os.path.join(POLYPOLISH_OUT,"{sample}.fasta")
-    output:
-        os.path.join(DELETE, "{sample}_rm.flag")
-    threads:
-        1
-    resources:
-        mem_mb=BigJobMem
-    shell:
-        """
-        rm -rf {input[0]}
-        rm -rf {input[1]}
-        rm -rf {input[2]}
-        rm -rf {input[3]}
-        touch {output[0]}
-        """
-
 rule aggr_polish:
     input:
-        expand(os.path.join(POLYPOLISH_OUT,"{sample}.fasta"), sample = SAMPLES ),
-        expand(os.path.join(DELETE, "{sample}_rm.flag"), sample = SAMPLES )
+        expand(os.path.join(POLYPOLISH_OUT,"{sample}.fasta"), sample = SAMPLES )
     output:
         os.path.join(LOGS, "aggr_polish.txt")
     threads:
