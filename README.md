@@ -9,3 +9,6 @@ conda list -e > req.txt
 ```
 
 * Then included them in the medaka.yml
+
+
+# TO DO - write assembly_info.txt to summary folder
