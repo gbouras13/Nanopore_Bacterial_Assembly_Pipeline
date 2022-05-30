@@ -7,6 +7,7 @@ rule extract_chromosome_plasmids:
         os.path.join(PLASMIDS,"{sample}.fasta")
     params:
         MIN_CHROM_LENGTH
+    conda:
         os.path.join('..', 'envs','scripts.yaml')
     threads:
         1
