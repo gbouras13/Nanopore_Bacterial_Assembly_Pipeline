@@ -50,6 +50,7 @@ include: "rules/targets.smk"
 include: "rules/assemble.smk"
 include: "rules/assembly_statistics.smk"
 include: "rules/polish.smk"
+include: "rules/extract_fastas.smk"
 
 rule all:
     input:
