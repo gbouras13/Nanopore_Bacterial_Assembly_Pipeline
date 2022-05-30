@@ -21,8 +21,8 @@ BWA = os.path.join(TMP, 'BWA')
 FASTP = os.path.join(TMP, 'FASTP')
 POLYPOLISH_OUT = os.path.join(OUTPUT, 'POLYPOLISH')
 SUMMARY_OUT = os.path.join(OUTPUT, 'SUMMARY')
-CHROMOSOME = os.path.join(TMOUTPUTP, 'CHROMOSOME')
-PLASMIDS = os.path.join(TMOUTPUTP, 'PLASMIDS')
+CHROMOSOME = os.path.join(OUTPUT, 'CHROMOSOME')
+PLASMIDS = os.path.join(OUTPUT, 'PLASMIDS')
 
 # needs to be created before fastqc is run
 SUMMARIES = os.path.join(TMP, 'SUMMARIES')
