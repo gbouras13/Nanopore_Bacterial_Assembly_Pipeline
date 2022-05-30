@@ -51,7 +51,7 @@ include: "rules/assemble.smk"
 include: "rules/assembly_statistics.smk"
 include: "rules/polish.smk"
 include: "rules/extract_fastas.smk"
-include: "extract_assembly_info.smk"
+include: "rules/extract_assembly_info.smk"
 
 rule all:
     input:
