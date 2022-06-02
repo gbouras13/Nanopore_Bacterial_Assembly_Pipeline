@@ -15,6 +15,7 @@ else:
 LOGS = os.path.join(OUTPUT, 'LOGS')
 DELETE = os.path.join(OUTPUT, 'DELETE_LOGS')
 TMP = os.path.join(OUTPUT, 'TMP')
+COVERAGE_TMP = os.path.join(TMP, 'COVERAGE')
 ASSEMBLIES = os.path.join(TMP, 'ASSEMBLIES')
 MEDAKA = os.path.join(TMP, 'MEDAKA')
 BWA = os.path.join(TMP, 'BWA')
