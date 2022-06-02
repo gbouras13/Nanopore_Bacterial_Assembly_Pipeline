@@ -4,7 +4,7 @@ channels:
     - bioconda
     - defaults
 dependencies:
-    - medaka 
+    - medaka==1.6.0
     - chardet==4
 
 
