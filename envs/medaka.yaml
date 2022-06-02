@@ -5,6 +5,5 @@ channels:
     - defaults
 dependencies:
     - medaka==1.6.0
-    - chardet==4
 
 
