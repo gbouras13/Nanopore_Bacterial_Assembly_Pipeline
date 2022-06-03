@@ -18,7 +18,7 @@ rule medaka:
     threads:
         BigJobCpu
     conda:
-        os.path.join('..', 'envs','medaka.yaml')
+        os.path.join('..', 'envs','medaka_full.yaml')
     resources:
         mem_mb=BigJobMem
     shell:
