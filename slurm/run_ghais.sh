@@ -9,7 +9,6 @@
 #SBATCH --output="bact_assembly_snk.out"
 
 # Resources allocation request parameters
-#SBATCH -p batch
 #SBATCH -N 1                                                    # number of tasks (sequential job starts 1 task) (check this if your job unexpectedly uses 2 nodes)
 #SBATCH -c 1                                                    # number of cores (sequential job calls a multi-thread program that uses 8 cores)
 #SBATCH --time=2-23:00:00                                         # time allocation, which has the format (D-HH:MM), here set to 1 hou                                           # generic resource required (here requires 1 GPUs)
