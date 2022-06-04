@@ -5,4 +5,4 @@ channels:
     - defaults
 dependencies:
      - medaka=1.6 
-     - chardet==4
+     - chardet
