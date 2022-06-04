@@ -16,7 +16,7 @@
 #SBATCH --mem=1GB                                              # specify memory required per node
 
 
-SNK_DIR="/hpcfs/users/a1667917/Ghais/S_Aureus_Polished/Nanopore_Bacterial_Assembly_Pipeline"
+SNK_DIR="/hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline"
 PROF_DIR="/hpcfs/users/a1667917/snakemake_slurm_profile"
 
 cd $SNK_DIR
