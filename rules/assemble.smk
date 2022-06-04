@@ -16,7 +16,7 @@ rule assemble:
         mem_mb=BigJobMem
     shell:
         """
-        flye --nano-raw {input[0]} -t {threads}  --out-dir {output[0]}
+        flye --nano-hq {input[0]} -t {threads}  --out-dir {output[0]}
         """
 
 rule aggr_assemble:
