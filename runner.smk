@@ -53,6 +53,7 @@ include: "rules/polish.smk"
 include: "rules/extract_fastas.smk"
 include: "rules/extract_assembly_info.smk"
 include: "rules/extract_plasmid_coverage.smk"
+include: "rules/annotate_chromosome.smk"
 
 rule all:
     input:
