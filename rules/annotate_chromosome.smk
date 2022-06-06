@@ -1,7 +1,7 @@
 rule prokka:
     """Run prokka."""
     input:
-        os.path.join(CHROMOSOME,"{sample}.fasta"), sample = SAMPLES
+        os.path.join(CHROMOSOME,"{sample}.fasta"), sample = SAMPLES)
     output:
         os.path.join(PROKKA,"{sample}","{sample}.gff" ),
         os.path.join(PROKKA,"{sample}","{sample}.ffn" )
