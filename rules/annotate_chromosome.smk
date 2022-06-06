@@ -1,7 +1,7 @@
 rule prokka:
     """Run prokka."""
     input:
-        os.path.join(CHROMOSOME,"{sample}.fasta"), sample = SAMPLES)
+        os.path.join(CHROMOSOME,"{sample}.fasta")
     output:
         os.path.join(PROKKA,"{sample}","{sample}.gff"),
         os.path.join(PROKKA,"{sample}","{sample}.ffn")
@@ -20,9 +20,9 @@ rule prokka:
 
 rule move_gff:
     input:
-        os.path.join(PROKKA,"{sample}","{sample}.gff" )
+        os.path.join(PROKKA,"{sample}","{sample}.gff")
     output:
-        os.path.join(CHROMOSOME_GFFS,"{sample}.gff" )
+        os.path.join(CHROMOSOME_GFFS,"{sample}.gff")
     threads:
         1
     resources:
@@ -36,7 +36,7 @@ rule roary:
     input:
         expand(os.path.join(CHROMOSOME_GFFS,"{sample}.gff" ), sample = SAMPLES)
     output:
-        os.path.join(ROARY,"gene_presence_absence.csv" )
+        os.path.join(ROARY,"gene_presence_absence.csv")
     conda:
         os.path.join('..', 'envs','roary.yaml')
     params:
