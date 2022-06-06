@@ -3,8 +3,8 @@ rule prokka:
     input:
         os.path.join(CHROMOSOME,"{sample}.fasta"), sample = SAMPLES)
     output:
-        os.path.join(PROKKA,"{sample}","{sample}.gff" ),
-        os.path.join(PROKKA,"{sample}","{sample}.ffn" )
+        os.path.join(PROKKA,"{sample}","{sample}.gff"),
+        os.path.join(PROKKA,"{sample}","{sample}.ffn")
     conda:
         os.path.join('..', 'envs','prokka.yaml')
     params:
