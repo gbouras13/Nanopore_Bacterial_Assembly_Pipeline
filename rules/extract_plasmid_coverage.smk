@@ -13,7 +13,7 @@ rule extract_plasmid_copy_number:
     script:
         '../scripts/extract_plasmid_coverage.py'
 
-rule aggr_assembly_info:
+rule aggr_plasmid_coverage_info:
     """Aggregate."""
     input:
         expand(os.path.join(PLASMID_COVERAGE,"{sample}_plasmid_copy_number.csv"), sample = SAMPLES)
