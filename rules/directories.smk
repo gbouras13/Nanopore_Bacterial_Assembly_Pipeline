@@ -25,7 +25,7 @@ SUMMARY_OUT = os.path.join(OUTPUT, 'SUMMARY')
 CHROMOSOME = os.path.join(OUTPUT, 'CHROMOSOME')
 PLASMIDS = os.path.join(OUTPUT, 'PLASMIDS')
 ASSEMBLY_INFO = os.path.join(OUTPUT, 'ASSEMBLY_INFO')
-PLASMID_COVERAGE = os.path.join(PLASMID_COVERAGE, 'ASSEMBLY_INFO')
+PLASMID_COVERAGE = os.path.join(OUTPUT, 'ASSEMBLY_INFO')
 
 # needs to be created before fastqc is run
 SUMMARIES = os.path.join(TMP, 'SUMMARIES')
