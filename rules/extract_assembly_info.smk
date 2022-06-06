@@ -13,7 +13,6 @@ rule extract_assembly_infor:
         cp {input[0]} {output[0]}
         """
 
-
 rule aggr_assembly_info:
     """Aggregate."""
     input:
