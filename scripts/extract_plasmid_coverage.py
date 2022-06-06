@@ -33,7 +33,7 @@ def calc_coverage(assembly_info, sample,  summary_out ):
     # get coverage of largest assembly 
     max_contig_cov = assembly_df[assembly_df["length"] == max_contig].iloc[0]['cov']
 
-    assembly_df["copy_number"] = (assembly_df["length"] / max_contig_cov).round(2)
+    assembly_df["copy_number"] = (assembly_df["cov"] / max_contig_cov).round(2)
 
     assembly_df = assembly_df.drop(assembly_df[assembly_df["copy_number"] == 1].index)
 
