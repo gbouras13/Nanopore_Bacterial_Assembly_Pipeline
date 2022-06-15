@@ -15,7 +15,7 @@ rule prokka:
         mem_mb=BigJobMem
     shell:
         """
-        prokka --outdir {params[0]}  --prefix {wildcards.sample} {input[0]} --force
+        prokka --cpus {threads} --genus Staphylococcus --usegenus --outdir {params[0]} --prefix {wildcards.sample} {input[0]} --force
         """
 
 rule move_gff:
