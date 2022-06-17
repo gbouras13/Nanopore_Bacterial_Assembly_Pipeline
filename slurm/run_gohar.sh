@@ -29,7 +29,7 @@ conda activate snakemake_clean_env
 mkdir -p /hpcfs/users/a1667917/Gohar/
 
 snakemake -c 1 -s runner.smk --use-conda --profile $PROF_DIR/bact_assembly --conda-frontend conda \
---config csv=gohar_metadata.csv Output=/hpcfs/users/a1667917/Gohar/S_Aureus_Assembly_Output Polypolish_Dir=/hpcfs/users/a1667917/Polypolish 
+--config csv=gohar_metadata.csv Output=/hpcfs/users/a1667917/Gohar/S_Aureus_Assembly_Output Polypolish_Dir=/hpcfs/users/a1667917/Polypolish min_chrom_length=2400000
 
 # snakemake -c 1 -s runner.smk --use-conda --conda-create-envs-only --conda-frontend conda  \
 # --config csv=ghais_hpc_metadata.csv Output=/hpcfs/users/a1667917/Ghais/S_Aureus_Polished/Assembly_Output Polypolish_Dir=/hpcfs/users/a1667917/Polypolish 
