@@ -5,8 +5,8 @@
 #SBATCH --mail-type=BEGIN
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
-#SBATCH --err="bact_assembly_snk.err"
-#SBATCH --output="bact_assembly_snk.out"
+#SBATCH --err="gohar_07_07_bact_assembly_snk.err"
+#SBATCH --output="gohar_07_07_bact_assembly_snk.out"
 
 # Resources allocation request parameters
 #SBATCH -p batch
