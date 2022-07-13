@@ -2,30 +2,7 @@ def get_input_r1(wildcards):
     return dictReads[wildcards.sample]["R1"]
 def get_input_r2(wildcards):
     return dictReads[wildcards.sample]["R2"]
-# def get_input_fastqs(wildcards):
-#     return dictReads[wildcards.sample]["LR"]
 
-
-
-
-# rule medaka:
-#     input:
-#         os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta"),
-#         get_input_fastqs
-#     output:
-#         directory(os.path.join(MEDAKA,"{sample}")),
-#         os.path.join(MEDAKA,"{sample}", "consensus.fasta")
-#     threads:
-#         BigJobCpu
-#     conda:
-#         os.path.join('..', 'envs','medaka.yaml')
-#     resources:
-#         mem_mb=BigJobMem
-#     shell:
-#         """
-#         export HOME=/hpcfs/users/a1667917
-#         medaka_consensus -i {input[1]} -d {input[0]} -o {output[0]} -m r941_min_sup_g507  -t {threads}
-#         """
 
 rule fastp:
     input:
@@ -47,10 +24,8 @@ rule fastp:
 
 rule bwa_index:
     input:
-        #os.path.join(MEDAKA,"{sample}", "consensus.fasta"),
         os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta")
     output:
-        #os.path.join(MEDAKA,"{sample}", "consensus.fasta.bwt")
         os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta.bwt")
     threads:
         BigJobCpu
@@ -65,12 +40,10 @@ rule bwa_index:
 
 rule bwa_mem:
     input:
-        #os.path.join(MEDAKA,"{sample}", "consensus.fasta"),
         os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta"),
         os.path.join(FASTP,"{sample}_1.fastq.gz"),
         os.path.join(FASTP,"{sample}_2.fastq.gz"),
         os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta.bwt")
-        #os.path.join(MEDAKA,"{sample}", "consensus.fasta.bwt")
     output:
         os.path.join(BWA,"{sample}_1.sam"),
         os.path.join(BWA,"{sample}_2.sam")

@@ -9,15 +9,8 @@ snakemake -c 1 -s runner.smk --use-conda --config Fastqs=/hpcfs/users/a1667917/B
 
 snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/target/release
 
-snakemake -c 1 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv \
- Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/target/release 
-
- snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv \
- Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/target/release  --conda-create-envs-only --conda-frontend conda 
-
-snakemake -c 1 -s runner.smk --use-conda  --conda-frontend conda  \
---config csv=/hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/hpc_metadata.csv Output=/hpcfs/users/a1667917/Bacteria_Multiplex/Pipeline_Out Polypolish_Dir=/hpcfs/users/a1667917/Polypolish 
-
+ snakemake -c 16 -s runner.smk --use-conda  --conda-frontend conda  \
+--config csv=c_accolens_metadata_local.csv Output=/Users/a1667917/Documents/Will/sequencing/C781_Pipeline_Assembly  Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/Polypolish/target/release  Medaka=False
 
 """
 
@@ -25,8 +18,8 @@ import os
 
 ### DEFAULT CONFIG FILE
 
-BigJobMem = 32000
-BigJobCpu = 64
+configfile: os.path.join(  'config', 'config.yaml')
+
 
 ### DIRECTORIES
 
@@ -36,7 +29,10 @@ include: "rules/directories.smk"
 CSV = config['csv']
 OUTPUT = config['Output']
 POLYPOLISH_BIN=config['Polypolish_Dir']
-MIN_CHROM_LENGTH=config['min_chrom_length']
+MEDAKA_FLAG = config['Medaka']
+MIN_CHROM_LENGTH = config['min_chrom_length']
+BigJobMem = config["BigJobMem"]
+BigJobCpu = config["BigJobCpu"]
 
 # Parse the samples and read files
 include: "rules/samples.smk"
@@ -49,7 +45,10 @@ SAMPLES = list(dictReads.keys())
 include: "rules/targets.smk"
 include: "rules/assemble.smk"
 include: "rules/assembly_statistics.smk"
-include: "rules/polish.smk"
+if MEDAKA_FLAG == True:
+    include: "rules/polish.smk"
+elif MEDAKA_FLAG == False:
+    include: "rules/polish_no_medaka.smk"
 include: "rules/extract_fastas.smk"
 include: "rules/extract_assembly_info.smk"
 include: "rules/extract_plasmid_coverage.smk"
