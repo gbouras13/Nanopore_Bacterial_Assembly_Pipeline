@@ -6,6 +6,7 @@ min_chrom_length: 2300000
 Medaka: True
 min_length: 1500
 min_quality: 9
+Staph: True
 
 
 

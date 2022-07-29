@@ -1,6 +1,12 @@
 """
-All target output files for Hecatomb are declared here
+All target output files are declared here
 """
+
+# for the prokka annotations
+prok_file = os.path.join(LOGS, "aggr_prokka.txt")
+
+if STAPH == true:
+    prok_file = os.path.join(LOGS, "aggr_prokka_staph.txt")
 
 # Preprocessing files
 TargetFiles = [
@@ -10,5 +16,5 @@ TargetFiles = [
     os.path.join(LOGS, "aggr_chr_plas.txt"),
     os.path.join(LOGS, "aggr_assembly_info.txt"),
     os.path.join(LOGS, "aggr_plas_copy.txt"),
-    os.path.join(LOGS, "aggr_prokka.txt")
+    prok_file
 ]

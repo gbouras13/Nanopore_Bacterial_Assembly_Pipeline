@@ -35,6 +35,7 @@ MIN_LENGTH = config['min_length']
 MIN_QUALITY = config['min_quality']
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
+STAPH = config["Staph"]
 
 # Parse the samples and read files
 include: "rules/samples.smk"

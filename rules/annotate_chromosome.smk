@@ -1,4 +1,24 @@
-rule prokka:
+rule prokka_staph:
+    """Run prokka."""
+    input:
+        os.path.join(CHROMOSOME,"{sample}.fasta")
+    output:
+        os.path.join(PROKKA,"{sample}","{sample}_staph.gff"),
+        os.path.join(PROKKA,"{sample}","{sample}_staph.ffn")
+    conda:
+        os.path.join('..', 'envs','prokka.yaml')
+    params:
+        os.path.join(PROKKA, "{sample}_staph")
+    threads:
+        BigJobCpu
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        prokka --cpus {threads} --genus Staphylococcus --usegenus --outdir {params[0]} --prefix {wildcards.sample} {input[0]} --force
+        """
+
+rule prokka_general:
     """Run prokka."""
     input:
         os.path.join(CHROMOSOME,"{sample}.fasta")
@@ -15,7 +35,7 @@ rule prokka:
         mem_mb=BigJobMem
     shell:
         """
-        prokka --cpus {threads} --genus Staphylococcus --usegenus --outdir {params[0]} --prefix {wildcards.sample} {input[0]} --force
+        prokka --cpus {threads} --outdir {params[0]} --prefix {wildcards.sample} {input[0]} --force
         """
 
 rule move_gff:
@@ -32,23 +52,20 @@ rule move_gff:
         cp {input[0]} {output[0]} 
         """
 
-# rule roary:  
-#     input:
-#         expand(os.path.join(CHROMOSOME_GFFS,"{sample}.gff" ), sample = SAMPLES)
-#     output:
-#         os.path.join(ROARY,"gene_presence_absence.csv")
-#     conda:
-#         os.path.join('..', 'envs','roary.yaml')
-#     params:
-#         ROARY
-#     threads:
-#         BigJobCpu
-#     resources:
-#         mem_mb=BigJobMem
-#     shell:
-#         """
-#         roary -e -n --mafft -p {threads} –f {params[0]} {input[0]}
-#         """
+rule move_gff_staph:
+    input:
+        os.path.join(PROKKA,"{sample}","{sample}_staph.gff")
+    output:
+        os.path.join(CHROMOSOME_GFFS,"{sample}_staph.gff")
+    threads:
+        1
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        cp {input[0]} {output[0]} 
+        """
+
 
 rule aggr_prokka:
     """Aggregate."""
@@ -56,6 +73,21 @@ rule aggr_prokka:
         expand(os.path.join(CHROMOSOME_GFFS,"{sample}.gff" ), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_prokka.txt")
+    threads:
+        1
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        touch {output[0]}
+        """
+
+rule aggr_prokka_staph:
+    """Aggregate."""
+    input:
+        expand(os.path.join(CHROMOSOME_GFFS,"{sample}_staph.gff" ), sample = SAMPLES)
+    output:
+        os.path.join(LOGS, "aggr_prokka_staph.txt")
     threads:
         1
     resources:
