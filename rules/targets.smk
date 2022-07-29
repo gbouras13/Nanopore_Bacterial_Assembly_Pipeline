@@ -5,7 +5,7 @@ All target output files are declared here
 # for the prokka annotations
 prok_file = os.path.join(LOGS, "aggr_prokka.txt")
 
-if STAPH == true:
+if STAPH == True:
     prok_file = os.path.join(LOGS, "aggr_prokka_staph.txt")
 
 # Preprocessing files
