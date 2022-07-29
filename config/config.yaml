@@ -2,11 +2,12 @@
 # Run Parameters #
 ##################
 
-# Database installation location, leave blank = use hecatomb install location
-
 min_chrom_length: 2300000
 Medaka: True
+min_length: 1500
+min_quality: 9
 
-### STICK TO YOUR SYSTEM'S CPU:RAM RATIO FOR THESE
-BigJobMem: 32000     # Memory for MMSeqs in megabytes (e.g 64GB = 64000, recommend >= 64000)
-BigJobCpu: 64        # Threads for MMSeqs (recommend >= 16)
+
+
+BigJobMem: 32000     
+BigJobCpu: 64       

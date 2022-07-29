@@ -1,9 +1,6 @@
-def get_input_fastqs(wildcards):
-    return dictReads[wildcards.sample]["LR"]
-
 rule assemble:
     input:
-        get_input_fastqs
+        os.path.join(TMP,"{sample}_filt_trim.fastq.gz")
     output:
         directory(os.path.join(ASSEMBLIES,"{sample}")),
         os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta"),
@@ -16,7 +13,7 @@ rule assemble:
         mem_mb=BigJobMem
     shell:
         """
-        flye --nano-raw {input[0]} -t {threads}  --out-dir {output[0]}
+        flye --nano-hq {input[0]} -t {threads}  --out-dir {output[0]}
         """
 
 rule aggr_assemble:

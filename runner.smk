@@ -31,6 +31,8 @@ OUTPUT = config['Output']
 POLYPOLISH_BIN=config['Polypolish_Dir']
 MEDAKA_FLAG = config['Medaka']
 MIN_CHROM_LENGTH = config['min_chrom_length']
+MIN_LENGTH = config['1500']
+MIN_QUALITY = config['min_quality']
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
 
@@ -43,6 +45,7 @@ SAMPLES = list(dictReads.keys())
 
 # Import rules and functions
 include: "rules/targets.smk"
+include: "rules/qc.smk"
 include: "rules/assemble.smk"
 include: "rules/assembly_statistics.smk"
 if MEDAKA_FLAG == True:
