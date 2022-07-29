@@ -13,7 +13,7 @@ rule filtlong:
     resources:
         mem_mb=BigJobMem
     params:
-        MIN_LENGTH 
+        MIN_LENGTH, 
         MIN_QUALITY
     shell:
         """
