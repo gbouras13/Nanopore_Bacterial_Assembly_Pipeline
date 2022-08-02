@@ -8,14 +8,15 @@ rule prokka_staph:
     conda:
         os.path.join('..', 'envs','prokka.yaml')
     params:
-        os.path.join(PROKKA, "{sample}_staph")
+        os.path.join(PROKKA, "{sample}"),
+        "{sample}_staph"
     threads:
         BigJobCpu
     resources:
         mem_mb=BigJobMem
     shell:
         """
-        prokka --cpus {threads} --genus Staphylococcus --usegenus --outdir {params[0]} --prefix {wildcards.sample} {input[0]} --force
+        prokka --cpus {threads} --genus Staphylococcus --usegenus --outdir {params[0]} --prefix {params[1} {input[0]} --force
         """
 
 rule prokka_general:
