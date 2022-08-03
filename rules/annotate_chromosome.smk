@@ -16,7 +16,7 @@ rule prokka_staph:
         mem_mb=BigJobMem
     shell:
         """
-        prokka --cpus {threads} --genus Staphylococcus --usegenus --outdir {params[0]} --prefix {params[1} {input[0]} --force
+        prokka --cpus {threads} --genus Staphylococcus --usegenus --outdir {params[0]} --prefix {params[1}} {input[0]} --force
         """
 
 rule prokka_general:
