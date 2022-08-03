@@ -3,8 +3,8 @@ rule prokka_staph:
     input:
         os.path.join(CHROMOSOME,"{sample}.fasta")
     output:
-        os.path.join(PROKKA,"{sample}","{sample}_staph.gff"),
-        os.path.join(PROKKA,"{sample}","{sample}_staph.ffn")
+        os.path.join(PROKKA,"{sample}_staph","{sample}.gff"),
+        os.path.join(PROKKA,"{sample}_staph","{sample}.ffn")
     conda:
         os.path.join('..', 'envs','prokka.yaml')
     params:
@@ -54,7 +54,7 @@ rule move_gff:
 
 rule move_gff_staph:
     input:
-        os.path.join(PROKKA,"{sample}","{sample}_staph.gff")
+        os.path.join(PROKKA,"{sample}_staph","{sample}.gff")
     output:
         os.path.join(CHROMOSOME_GFFS,"{sample}_staph.gff")
     threads:
