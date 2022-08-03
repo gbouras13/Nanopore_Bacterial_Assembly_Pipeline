@@ -3,20 +3,19 @@ rule prokka_staph:
     input:
         os.path.join(CHROMOSOME,"{sample}.fasta")
     output:
-        os.path.join(PROKKA,"{sample}","{sample}_staph.gff"),
-        os.path.join(PROKKA,"{sample}","{sample}_staph.ffn")
+        os.path.join(PROKKA,"{sample}_staph","{sample}.gff"),
+        os.path.join(PROKKA,"{sample}_staph","{sample}.ffn")
     conda:
         os.path.join('..', 'envs','prokka.yaml')
     params:
-        os.path.join(PROKKA, "{sample}"),
-        "{sample}_staph"
+        os.path.join(PROKKA, "{sample}_staph")
     threads:
         BigJobCpu
     resources:
         mem_mb=BigJobMem
     shell:
         """
-        prokka --cpus {threads} --genus Staphylococcus --usegenus --outdir {params[0]} --prefix {params[1}} {input[0]} --force
+        prokka --cpus {threads} --genus Staphylococcus --usegenus --outdir {params[0]} --prefix {wildcards.sample} {input[0]} --force
         """
 
 rule prokka_general:
@@ -55,7 +54,7 @@ rule move_gff:
 
 rule move_gff_staph:
     input:
-        os.path.join(PROKKA,"{sample}","{sample}_staph.gff")
+        os.path.join(PROKKA,"{sample}_staph","{sample}.gff")
     output:
         os.path.join(CHROMOSOME_GFFS,"{sample}_staph.gff")
     threads:
