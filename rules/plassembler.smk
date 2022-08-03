@@ -12,7 +12,7 @@ rule plassembler:
         get_input_r1,
         get_input_r2
     output:
-        os.path.join(PLASSEMBLER,"{sample}")
+        os.path.join(PLASSEMBLER,"{sample}"),
         os.path.join(PLASSEMBLER,"{sample}", "plassembler_plasmids.fasta")
     conda:
         os.path.join('..', 'envs','plassembler.yaml')
