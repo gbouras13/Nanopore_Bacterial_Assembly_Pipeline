@@ -9,7 +9,7 @@ def get_input_lr(wildcards):
 rule plassembler:
     input:
         get_input_lr,
-        get_input_r1
+        get_input_r1,
         get_input_r2
     output:
         os.path.join(PLASSEMBLER,"{sample}")
