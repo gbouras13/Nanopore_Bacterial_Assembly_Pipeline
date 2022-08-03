@@ -16,5 +16,6 @@ TargetFiles = [
     os.path.join(LOGS, "aggr_chr_plas.txt"),
     os.path.join(LOGS, "aggr_assembly_info.txt"),
     os.path.join(LOGS, "aggr_plas_copy.txt"),
+    os.path.join(LOGS, "aggr_plasembler.txt"),
     prok_file
 ]
