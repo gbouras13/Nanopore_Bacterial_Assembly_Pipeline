@@ -25,10 +25,24 @@ rule plassembler:
         plassembler.py -l {input[0]} -o {output[0]} -s1 {input[1]} -s2 {input[1]} -m 1000 -t {threads} -c 2500000 -f
         """
 
+rule plassembler_move_fastas:
+    input:
+        os.path.join(PLASSEMBLER,"{sample}", "plassembler_plasmids.fasta")
+    output:
+        os.path.join(PLASSEMBLER_FASTAS, "{sample}.fasta")
+    threads:
+        1
+    resources:
+        mem_mb=4000
+    shell:
+        """
+        cp {input[0]} {output[0]}
+        """
+
 rule aggr_plassembler:
     """Aggregate."""
     input:
-        expand(os.path.join(PLASSEMBLER,"{sample}", "plassembler_plasmids.fasta"), sample = SAMPLES)
+        expand(os.path.join(PLASSEMBLER_FASTAS, "{sample}.fasta"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_plasembler.txt")
     threads:
