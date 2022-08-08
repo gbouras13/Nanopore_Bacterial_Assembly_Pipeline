@@ -38,11 +38,26 @@ rule plassembler_move_fastas:
         """
         cp {input[0]} {output[0]}
         """
+        
+rule plassembler_move_summaries:
+    input:
+        os.path.join(PLASSEMBLER,"{sample}", "copy_number_summary.tsv")
+    output:
+        os.path.join(PLASSEMBLER_SUMMARIES, "{sample}.tsv")
+    threads:
+        1
+    resources:
+        mem_mb=4000
+    shell:
+        """
+        cp {input[0]} {output[0]}
+        """
 
 rule aggr_plassembler:
     """Aggregate."""
     input:
-        expand(os.path.join(PLASSEMBLER_FASTAS, "{sample}.fasta"), sample = SAMPLES)
+        expand(os.path.join(PLASSEMBLER_FASTAS, "{sample}.fasta"), sample = SAMPLES),
+        expand(os.path.join(PLASSEMBLER_SUMMARIES, "{sample}.tsv"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_plasembler.txt")
     threads:
