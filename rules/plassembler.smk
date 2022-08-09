@@ -14,7 +14,7 @@ rule plassembler:
     output:
         directory(os.path.join(PLASSEMBLER,"{sample}")),
         os.path.join(PLASSEMBLER,"{sample}", "plassembler_plasmids.fasta"),
-        os.path.join(PLASSEMBLER,"{sample}", "copy_number_summary.tsv")
+        os.path.join(PLASSEMBLER,"{sample}", "plassembler_copy_number_summary.tsv")
     conda:
         os.path.join('..', 'envs','plassembler.yaml')
     threads:
@@ -42,7 +42,7 @@ rule plassembler_move_fastas:
         
 rule plassembler_move_summaries:
     input:
-        os.path.join(PLASSEMBLER,"{sample}", "copy_number_summary.tsv")
+        os.path.join(PLASSEMBLER,"{sample}", "plassembler_copy_number_summary.tsv")
     output:
         os.path.join(PLASSEMBLER_SUMMARIES, "{sample}.tsv")
     threads:
