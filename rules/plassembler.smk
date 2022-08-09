@@ -13,7 +13,8 @@ rule plassembler:
         get_input_r2
     output:
         directory(os.path.join(PLASSEMBLER,"{sample}")),
-        os.path.join(PLASSEMBLER,"{sample}", "plassembler_plasmids.fasta")
+        os.path.join(PLASSEMBLER,"{sample}", "plassembler_plasmids.fasta"),
+        os.path.join(PLASSEMBLER,"{sample}", "copy_number_summary.tsv")
     conda:
         os.path.join('..', 'envs','plassembler.yaml')
     threads:
