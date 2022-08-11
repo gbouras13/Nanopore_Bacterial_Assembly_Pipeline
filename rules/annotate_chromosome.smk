@@ -25,7 +25,7 @@ rule prokka_general:
         os.path.join(CHROMOSOME,"{sample}.fasta")
     output:
         os.path.join(PROKKA,"{sample}","{sample}.gff"),
-        os.path.join(PROKKA,"{sample}","{sample}.ffn")
+        os.path.join(PROKKA,"{sample}","{sample}.ffn"),
         os.path.join(PROKKA,"{sample}","{sample}.gbk")
     conda:
         os.path.join('..', 'envs','prokka.yaml')
