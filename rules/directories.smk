@@ -30,7 +30,7 @@ PLASMIDS = os.path.join(OUTPUT, 'PLASMIDS')
 ASSEMBLY_INFO = os.path.join(OUTPUT, 'ASSEMBLY_INFO')
 PLASMID_COVERAGE = os.path.join(OUTPUT, 'ASSEMBLY_INFO')
 PROKKA = os.path.join(TMP, 'PROKKA')
-PHSIPY = os.path.join(OUTPUT, 'PHSIPY')
+PHISPY = os.path.join(OUTPUT, 'PHISPY')
 CHROMOSOME_GFFS = os.path.join(OUTPUT, 'CHROMOSOME_GFFS')
 ROARY = os.path.join(OUTPUT, 'CHROMOSOME_GFFS')
 
