@@ -4,9 +4,11 @@ All target output files are declared here
 
 # for the prokka annotations
 prok_file = os.path.join(LOGS, "aggr_prokka.txt")
+phis_file = os.path.join(LOGS, "aggr_phispy.txt")
 
 if STAPH == True:
     prok_file = os.path.join(LOGS, "aggr_prokka_staph.txt")
+    phis_file = os.path.join(LOGS, "aggr_phispy_staph.txt")
 
 # Preprocessing files
 TargetFiles = [
@@ -17,5 +19,6 @@ TargetFiles = [
     os.path.join(LOGS, "aggr_assembly_info.txt"),
     os.path.join(LOGS, "aggr_plas_copy.txt"),
     os.path.join(LOGS, "aggr_plasembler.txt"),
-    prok_file
+    os.path.join(LOGS, "aggr_phispy.txt")
+    phis_file
 ]

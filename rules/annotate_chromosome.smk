@@ -4,7 +4,8 @@ rule prokka_staph:
         os.path.join(CHROMOSOME,"{sample}.fasta")
     output:
         os.path.join(PROKKA,"{sample}_staph","{sample}.gff"),
-        os.path.join(PROKKA,"{sample}_staph","{sample}.ffn")
+        os.path.join(PROKKA,"{sample}_staph","{sample}.ffn"),
+        os.path.join(PROKKA,"{sample}_staph","{sample}.gbk")
     conda:
         os.path.join('..', 'envs','prokka.yaml')
     params:
@@ -25,6 +26,7 @@ rule prokka_general:
     output:
         os.path.join(PROKKA,"{sample}","{sample}.gff"),
         os.path.join(PROKKA,"{sample}","{sample}.ffn")
+        os.path.join(PROKKA,"{sample}","{sample}.gbk")
     conda:
         os.path.join('..', 'envs','prokka.yaml')
     params:
@@ -70,7 +72,8 @@ rule move_gff_staph:
 rule aggr_prokka:
     """Aggregate."""
     input:
-        expand(os.path.join(CHROMOSOME_GFFS,"{sample}.gff" ), sample = SAMPLES)
+        expand(os.path.join(CHROMOSOME_GFFS,"{sample}.gff" ), sample = SAMPLES),
+        expand(os.path.join(PROKKA,"{sample}","{sample}.gbk"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_prokka.txt")
     threads:
@@ -85,7 +88,8 @@ rule aggr_prokka:
 rule aggr_prokka_staph:
     """Aggregate."""
     input:
-        expand(os.path.join(CHROMOSOME_GFFS,"{sample}_staph.gff" ), sample = SAMPLES)
+        expand(os.path.join(CHROMOSOME_GFFS,"{sample}_staph.gff" ), sample = SAMPLES),
+        expand(os.path.join(PROKKA,"{sample}_staph","{sample}.gbk"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_prokka_staph.txt")
     threads:

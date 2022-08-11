@@ -58,6 +58,7 @@ include: "rules/extract_assembly_info.smk"
 include: "rules/extract_plasmid_coverage.smk"
 include: "rules/annotate_chromosome.smk"
 include: "rules/plassembler.smk"
+include: "rules/phispy.smk"
 
 rule all:
     input:
