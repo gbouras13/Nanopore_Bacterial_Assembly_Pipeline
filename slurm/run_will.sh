@@ -29,10 +29,11 @@ conda activate snakemake_clean_env
 mkdir -p /hpcfs/users/a1667917/Will
 
 snakemake -c 1 -s runner.smk --use-conda --profile $PROF_DIR/bact_assembly --conda-frontend conda \
---config csv=will_martha.csv Staph=False Output=/hpcfs/users/a1667917/Will/C_Accolens_Martha_Hybrid_Assembly_Output Polypolish_Dir=/hpcfs/users/a1667917/Polypolish min_chrom_length=2000000
+--config csv=old_metadata/will_martha.csv Staph=False Output=/hpcfs/users/a1667917/Will/C_Accolens_Martha_Hybrid_Assembly_Output Polypolish_Dir=/hpcfs/users/a1667917/Polypolish min_chrom_length=2000000
 
 # snakemake -c 1 -s runner.smk --use-conda --conda-create-envs-only --conda-frontend conda  \
 # --config csv=ghais_hpc_metadata.csv Output=/hpcfs/users/a1667917/Ghais/S_Aureus_Polished/Assembly_Output Polypolish_Dir=/hpcfs/users/a1667917/Polypolish 
+
 
 
 conda deactivate
