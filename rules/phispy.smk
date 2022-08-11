@@ -39,7 +39,7 @@ rule phispy:
 rule aggr_phispy:
     """Aggregate."""
     input:
-        os.path.join(PHISPY,"{sample}", "prophage_coordinates.tsv")
+        expand(os.path.join(PHISPY,"{sample}", "prophage_coordinates.tsv"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_phispy.txt")
     threads:
@@ -54,7 +54,7 @@ rule aggr_phispy:
 rule aggr_phispy_staph:
     """Aggregate."""
     input:
-        os.path.join(PHISPY,"{sample}_staph", "prophage_coordinates.tsv")
+        expand(os.path.join(PHISPY,"{sample}_staph", "prophage_coordinates.tsv"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_phispy_staph.txt")
     threads:
