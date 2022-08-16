@@ -25,10 +25,10 @@ def samplesFromDirectory(dir):
     return outDict
 
 def samplesFromCsv(csvFile):
-    """Read samples and files from a TSV"""
+    """Read samples and files from a CSV"""
     outDict = {}
-    with open(csvFile,'r') as tsv:
-        for line in tsv:
+    with open(csvFile,'r') as csv:
+        for line in csv:
             l = line.strip().split(',')
             if len(l) == 4:
                 outDict[l[0]] = {}

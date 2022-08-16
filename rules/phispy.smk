@@ -16,7 +16,7 @@ rule phispy:
         mem_mb=BigJobMem
     shell:
         """
-        phispy {input[0]} --output_choice 512 -o {params[0]}
+        phispy {input[0]} --output_choice 512 -o {params[0]} --phage_genes 0
         """
 
 rule aggr_phispy:
