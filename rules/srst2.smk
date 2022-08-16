@@ -3,10 +3,9 @@
 rule srst2:
     """Run srst2."""
     input:
-        os.path.join(FASTP,"{sample}_1.fastq.gz"),
-        os.path.join(FASTP,"{sample}_2.fastq.gz")
+        os.path.join(FASTP,"{sample}_1.fastq.gz")
     output:
-        os.path.join(SRST2,"{sample}-_mlst__Staphylococcus_aureus__results.txt") 
+        os.path.join(SRST2,"{sample}__mlst__Staphylococcus_aureus__results.txt") 
     params:
         os.path.join(SRST2,"{sample}"),
         os.path.join( MLST_DB, 'Staphylococcus_aureus.fasta'),
@@ -19,7 +18,7 @@ rule srst2:
         mem_mb=BigJobMem
     shell:
         """
-        srst2 --input_pe {input[0]} {input[1]}  --output {params[0]} --log --mlst_db {params[1]} --mlst_definitions {params[2]} --threads {threads} --mlst_delimiter _  
+        srst2 --input_se {input[0]} --output {params[0]} --log --mlst_db {params[1]} --mlst_definitions {params[2]} --threads {threads} --mlst_delimiter _  
         """
 
 rule aggr_srst2:
