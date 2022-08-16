@@ -5,6 +5,26 @@ rule phispy:
     input:
         os.path.join(PROKKA,"{sample}","{sample}.gbk")
     output:
+        os.path.join(PHISPY,"{sample}", "prophage_coordinates.tsv"),
+        os.path.join(PHISPY,"{sample}", "prophage_coordinates.tsv")
+    conda:
+        os.path.join('..', 'envs','phispy.yaml')
+    params:
+        os.path.join(PHISPY,"{sample}")
+    threads:
+        BigJobCpu
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        phispy {input[0]} --output_choice 512 -o {params[0]} --phage_genes 0
+        """
+
+rule collate_phsipy_output:
+    """move phispy output."""
+    input:
+        os.path.join(PHISPY,"{sample}", "prophage_coordinates.tsv")
+    output:
         os.path.join(PHISPY,"{sample}", "prophage_coordinates.tsv")
     conda:
         os.path.join('..', 'envs','phispy.yaml')

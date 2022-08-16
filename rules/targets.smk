@@ -20,5 +20,6 @@ TargetFiles = [
     os.path.join(LOGS, "aggr_plasembler.txt"),
     prok_file,
     phis_file,
-    os.path.join(LOGS, "aggr_mlst.txt")
+    os.path.join(LOGS, "aggr_mlst.txt"),
+    os.path.join(LOGS, "aggr_mlst_combine.txt")
 ]

@@ -61,6 +61,7 @@ include: "rules/annotate_chromosome.smk"
 include: "rules/plassembler.smk"
 include: "rules/phispy.smk"
 include: "rules/mlst.smk"
+include: "rules/combine_mlst.smk"
 
 
 rule all:
