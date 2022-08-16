@@ -14,7 +14,7 @@ rule mlst:
         mem_mb=SmallJobMem
     shell:
         """
-        mlst --scheme saureus --csv {input[0]} > {output[0]}
+        mlst --scheme saureus --nopath  --csv {input[0]} > {output[0]}
         """
 
 rule aggr_mlst:
