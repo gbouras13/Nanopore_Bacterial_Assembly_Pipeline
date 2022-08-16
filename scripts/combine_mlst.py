@@ -12,14 +12,13 @@ def read_mlst_csv(csv):
     df['glpF'] = df['glpF'].str.replace("glpF", "").str.strip("()").str.replace("?", "").str.replace("~", "")
     df['gmk'] = df['gmk'].str.replace("gmk", "").str.strip("()").str.replace("?", "").str.replace("~", "")
     df['pta'] = df['pta'].str.replace("pta", "").str.strip("()").str.replace("?", "").str.replace("~", "")
-    df['tpy'] = df['tpy'].str.replace("tpy", "").str.strip("()").str.replace("?", "").str.replace("~", "")
+    df['tpy'] = df['tpy'].str.replace("tpi", "").str.strip("()").str.replace("?", "").str.replace("~", "") # why it is tpi, who knows
     df['yqiL'] = df['yqiL'].str.replace("yqiL", "").str.strip("()").str.replace("?", "").str.replace("~", "")
     # drop organism and ST
     df = df.drop(['organism', 'ST'], axis=1)
     return df
 
 
-#/hpcfs/users/a1667917/Staph_Final_Assemblies/Complete_Assembly_Output/CHROMOSOME/SAV_17.fasta,saureus,-,arcC(~12),aroE(4),glpF(1),gmk(599?),pta(12),tpi(1),yqiL(3)
 
 
 def summarise_contigs(summary_list, output, saureus):
