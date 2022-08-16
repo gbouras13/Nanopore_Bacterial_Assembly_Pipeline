@@ -7,13 +7,13 @@ def read_mlst_csv(csv):
     colnames=['Sample', 'organism', 'ST', 'arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpy', 'yqiL'] 
     df = pd.read_csv(csv, delimiter= ',', index_col=False, header=None, names=colnames)
     # strip the other text off and remove > and ~
-    df['arcC'] = df['arcC'].replace("arcC", "").strip("()").replace("?", "").replace("~", "")
-    df['aroE'] = df['aroE'].replace("aroE", "").strip("()").replace("?", "").replace("~", "")
-    df['glpF'] = df['glpF'].replace("glpF", "").strip("()").replace("?", "").replace("~", "")
-    df['gmk'] = df['gmk'].replace("gmk", "").strip("()").replace("?", "").replace("~", "")
-    df['pta'] = df['pta'].replace("pta", "").strip("()").replace("?", "").replace("~", "")
-    df['tpy'] = df['tpy'].replace("tpy", "").strip("()").replace("?", "").replace("~", "")
-    df['yqiL'] = df['yqiL'].replace("yqiL", "").strip("()").replace("?", "").replace("~", "")
+    df['arcC'] = df['arcC'].replace("arcC", "").str.strip("()").replace("?", "").replace("~", "")
+    df['aroE'] = df['aroE'].replace("aroE", "").str.strip("()").replace("?", "").replace("~", "")
+    df['glpF'] = df['glpF'].replace("glpF", "").str.strip("()").replace("?", "").replace("~", "")
+    df['gmk'] = df['gmk'].replace("gmk", "").str.strip("()").replace("?", "").replace("~", "")
+    df['pta'] = df['pta'].replace("pta", "").str.strip("()").replace("?", "").replace("~", "")
+    df['tpy'] = df['tpy'].replace("tpy", "").str.strip("()").replace("?", "").replace("~", "")
+    df['yqiL'] = df['yqiL'].replace("yqiL", "").str.strip("()").replace("?", "").replace("~", "")
     # drop organism and ST
     df = df.drop(['organism', 'ST'])
     return df
