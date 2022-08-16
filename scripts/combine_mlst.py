@@ -7,13 +7,13 @@ def read_mlst_csv(csv):
     colnames=['Sample', 'organism', 'ST', 'arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpy', 'yqiL'] 
     df = pd.read_csv(csv, delimiter= ',', index_col=False, header=None, names=colnames)
     # strip the other text off and remove > and ~
-    df['arcC'] = df['arcC'].replace("arcC", "").str.strip("()").replace("?", "").replace("~", "")
-    df['aroE'] = df['aroE'].replace("aroE", "").str.strip("()").replace("?", "").replace("~", "")
-    df['glpF'] = df['glpF'].replace("glpF", "").str.strip("()").replace("?", "").replace("~", "")
-    df['gmk'] = df['gmk'].replace("gmk", "").str.strip("()").replace("?", "").replace("~", "")
-    df['pta'] = df['pta'].replace("pta", "").str.strip("()").replace("?", "").replace("~", "")
-    df['tpy'] = df['tpy'].replace("tpy", "").str.strip("()").replace("?", "").replace("~", "")
-    df['yqiL'] = df['yqiL'].replace("yqiL", "").str.strip("()").replace("?", "").replace("~", "")
+    df['arcC'] = df['arcC'].str.replace("arcC", "").str.strip("()").str.replace("?", "").str.replace("~", "")
+    df['aroE'] = df['aroE'].str.replace("aroE", "").str.strip("()").str.replace("?", "").str.replace("~", "")
+    df['glpF'] = df['glpF'].str.replace("glpF", "").str.strip("()").str.replace("?", "").str.replace("~", "")
+    df['gmk'] = df['gmk'].str.replace("gmk", "").str.strip("()").str.replace("?", "").str.replace("~", "")
+    df['pta'] = df['pta'].str.replace("pta", "").str.strip("()").str.replace("?", "").str.replace("~", "")
+    df['tpy'] = df['tpy'].str.replace("tpy", "").str.strip("()").str.replace("?", "").str.replace("~", "")
+    df['yqiL'] = df['yqiL'].str.replace("yqiL", "").str.strip("()").str.replace("?", "").str.replace("~", "")
     # drop organism and ST
     df = df.drop(['organism', 'ST'], axis=1)
     return df
@@ -38,8 +38,8 @@ def summarise_contigs(summary_list, output, saureus):
     colnames=['ST', 'arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpy', 'yqiL', 'clonal_complex'] 
     saureus_df = pd.read_csv(saureus, delimiter= '\t', index_col=False, header=None, names=colnames)
     print(total_summary_df)
-    # convert the locus to integer for merge
-    total_summary_df[['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpy', 'yqiL']] = total_summary_df[['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpy', 'yqiL']].astype(int)
+    # convert the locus to string for merge 
+    saureus_df[['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpy', 'yqiL']] = saureus_df[['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpy', 'yqiL']].astype(str)
     # convert the total_summary_df 
     total_summary_df['ST']=pd.merge(total_summary_df, saureus_df, how="left", on=['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpy', 'yqiL']).ST
     total_summary_df['clonal_complex']=pd.merge(total_summary_df, saureus_df, how="left", on=['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpy', 'yqiL']).clonal_complex
