@@ -19,7 +19,7 @@ rule srst2:
         mem_mb=BigJobMem
     shell:
         """
-        srst2 --input_pe {input[0]} {input[1]}  --output {params[0]} --log --mlst_db {params[1]} --mlst_definitions {params[2]} --mlst_delimiter _
+        srst2 --input_pe {input[0]} {input[1]}  --output {params[0]} --log --mlst_db {params[1]} --mlst_definitions {params[2]} --threads {threads} --mlst_delimiter _  
         """
 
 rule aggr_srst2:
