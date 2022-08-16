@@ -8,7 +8,6 @@ phis_file = os.path.join(LOGS, "aggr_phispy.txt")
 
 if STAPH == True:
     prok_file = os.path.join(LOGS, "aggr_prokka_staph.txt")
-    phis_file = os.path.join(LOGS, "aggr_phispy_staph.txt")
 
 # Preprocessing files
 TargetFiles = [
