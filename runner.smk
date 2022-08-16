@@ -37,6 +37,8 @@ BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
 SmallJobMem = config["SmallJobMem"]
 STAPH = config["Staph"]
+# file holding mlst type scheme
+MLST_DB = "mlst"
 
 # Parse the samples and read files
 include: "rules/samples.smk"
