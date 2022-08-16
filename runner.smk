@@ -2,16 +2,6 @@
 The snakefile that runs the pipeline.
 Manual launch example:
 
-snakemake -c 1 -s runner.smk --use-conda --config Fastqs=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/aggregated_fastqs/ Output=out/  --conda-create-envs-only --conda-frontend conda 
-compute node
-snakemake -c 1 -s runner.smk --use-conda --config Fastqs=/hpcfs/users/a1667917/Bacteria_Multiplex/aggregated_fastqs  Output=/hpcfs/users/a1667917/Bacteria_Multiplex/Pipeline_Out  --conda-create-envs-only --conda-frontend conda 
-
-
-snakemake -c 16 -s runner.smk --use-conda --config csv=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/metadata_ghais.csv Output=/Users/a1667917/Documents/S_Nanopore_Bacteria_Seq/Ghais_Output Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/target/release
-
- snakemake -c 16 -s runner.smk --use-conda  --conda-frontend conda  \
---config csv=c_accolens_metadata_local.csv Output=/Users/a1667917/Documents/Will/sequencing/C781_Pipeline_Assembly  Polypolish_Dir=/Users/a1667917/Misc_Programs/Polypolish/Polypolish/target/release  Medaka=False
-
 """
 
 import os
@@ -58,13 +48,12 @@ elif MEDAKA_FLAG == False:
     include: "rules/polish_no_medaka.smk"
 include: "rules/extract_fastas.smk"
 include: "rules/extract_assembly_info.smk"
-include: "rules/extract_plasmid_coverage.smk"
-include: "rules/annotate_chromosome.smk"
 include: "rules/plassembler.smk"
-include: "rules/phispy.smk"
-include: "rules/mlst.smk"
-include: "rules/combine_mlst.smk"
-include: "rules/srst2.smk"
+# run if STAPH is true
+if STAPH == True:
+    include: "rules/mlst.smk"
+    include: "rules/combine_mlst.smk"
+    include: "rules/srst2.smk"
 
 rule all:
     input:
