@@ -8,7 +8,7 @@ rule combine_mlst:
     conda:
         os.path.join('..', 'envs','scripts.yaml')
     params:
-        saureus = os.path.join(  MLST_DB, 'saureus.txt')
+        saureus = os.path.join(MLST_DB, 'saureus.txt')
     threads:
         1
     resources:

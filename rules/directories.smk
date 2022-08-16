@@ -34,6 +34,7 @@ PHISPY = os.path.join(OUTPUT, 'PHISPY')
 CHROMOSOME_GFFS = os.path.join(OUTPUT, 'CHROMOSOME_GFFS')
 MLST = os.path.join(OUTPUT, 'MLST')
 ROARY = os.path.join(OUTPUT, 'CHROMOSOME_GFFS')
+SRST2 = os.path.join(OUTPUT, 'SRST2')
 
 # needs to be created before fastqc is run
 SUMMARIES = os.path.join(TMP, 'SUMMARIES')

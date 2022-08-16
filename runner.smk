@@ -64,7 +64,7 @@ include: "rules/plassembler.smk"
 include: "rules/phispy.smk"
 include: "rules/mlst.smk"
 include: "rules/combine_mlst.smk"
-
+include: "rules/srst2.smk"
 
 rule all:
     input:
