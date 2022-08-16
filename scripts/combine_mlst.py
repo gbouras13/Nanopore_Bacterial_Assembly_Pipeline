@@ -15,7 +15,7 @@ def read_mlst_csv(csv):
     df['tpy'] = df['tpy'].replace("tpy", "").str.strip("()").replace("?", "").replace("~", "")
     df['yqiL'] = df['yqiL'].replace("yqiL", "").str.strip("()").replace("?", "").replace("~", "")
     # drop organism and ST
-    df = df.drop(['organism', 'ST'])
+    df = df.drop(['organism', 'ST'], axis=1)
     return df
 
 
