@@ -35,6 +35,7 @@ MIN_LENGTH = config['min_length']
 MIN_QUALITY = config['min_quality']
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
+SmallJobMem = config["SmallJobMem"]
 STAPH = config["Staph"]
 
 # Parse the samples and read files
@@ -59,6 +60,8 @@ include: "rules/extract_plasmid_coverage.smk"
 include: "rules/annotate_chromosome.smk"
 include: "rules/plassembler.smk"
 include: "rules/phispy.smk"
+include: "rules/mlst.smk"
+
 
 rule all:
     input:

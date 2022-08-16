@@ -32,6 +32,7 @@ PLASMID_COVERAGE = os.path.join(OUTPUT, 'ASSEMBLY_INFO')
 PROKKA = os.path.join(TMP, 'PROKKA')
 PHISPY = os.path.join(OUTPUT, 'PHISPY')
 CHROMOSOME_GFFS = os.path.join(OUTPUT, 'CHROMOSOME_GFFS')
+MLST = os.path.join(OUTPUT, 'MLST')
 ROARY = os.path.join(OUTPUT, 'CHROMOSOME_GFFS')
 
 # needs to be created before fastqc is run
