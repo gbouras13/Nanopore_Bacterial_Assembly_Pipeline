@@ -24,7 +24,7 @@ rule srst2:
 rule aggr_srst2:
     """Aggregate."""
     input:
-        expand(os.path.join(SRST2,"{sample}-_mlst__Staphylococcus_aureus__results.txt") , sample = SAMPLES)
+        expand(os.path.join(SRST2,"{sample}__mlst__Staphylococcus_aureus__results.txt") , sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_srst2.txt")
     threads:
