@@ -2,7 +2,7 @@
 All target output files are declared here
 """
 
-if STAPH = True:
+if STAPH == True:
     mlst_files = [ os.path.join(LOGS, "aggr_mlst.txt"),
         os.path.join(LOGS, "aggr_mlst_combine.txt"),
         os.path.join(LOGS, "aggr_srst2.txt")]
