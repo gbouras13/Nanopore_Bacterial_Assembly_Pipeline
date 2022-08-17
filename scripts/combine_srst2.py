@@ -6,9 +6,15 @@ import pandas as pd
 def read_srst2_tsv(tsv):
     colnames=['Sample', 'ST', 'arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL', 'mismatches', 'uncertainty', 'depth', 'maxMAF'] 
     df = pd.read_csv(tsv, delimiter= '\t', index_col=False, header=0, names=colnames)
-    # strip the * off the alleles with mismatches
-    # https://stackoverflow.com/questions/68076116/python-replace-multiple-values-from-all-columns-in-dataframe-pandas
-    df = df.replace({'*':'', "?": ""}, regex=True)
+    # strip the * and ? off the alleles with mismatches
+    df['ST'] = df['ST'].str.replace("*", "").str.replace("?", "").str.replace("~", "")
+    df['arcC'] = df['arcC'].str.replace("*", "").str.replace("?", "").str.replace("~", "")
+    df['aroE'] = df['aroE'].str.replace("aroE", "").str.replace("?", "").str.replace("~", "")
+    df['glpF'] = df['glpF'].str.replace("glpF", "").str.replace("?", "").str.replace("~", "")
+    df['gmk'] = df['gmk'].str.replace("gmk", "").str.replace("?", "").str.replace("~", "")
+    df['pta'] = df['pta'].str.replace("pta", "").str.replace("?", "").str.replace("~", "")
+    df['tpi'] = df['tpi'].str.replace("tpi", "").str.replace("?", "").str.replace("~", "") 
+    df['yqiL'] = df['yqiL'].str.replace("yqiL", "").str.replace("?", "").str.replace("~", "")
     return df
 
 
