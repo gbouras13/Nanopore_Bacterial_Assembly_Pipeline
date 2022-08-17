@@ -7,6 +7,7 @@ def read_srst2_tsv(tsv):
     colnames=['Sample', 'ST', 'arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL', 'mismatches', 'uncertainty', 'depth', 'maxMAF'] 
     df = pd.read_csv(tsv, delimiter= '\t', index_col=False, header=0, names=colnames)
     # strip the * and ? off the alleles with mismatches
+    df[['ST','arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']] = df[['ST','arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']].astype(str)
     df['ST'] = df['ST'].str.replace("*", "").str.replace("?", "").str.replace("~", "")
     df['arcC'] = df['arcC'].str.replace("*", "").str.replace("?", "").str.replace("~", "")
     df['aroE'] = df['aroE'].str.replace("aroE", "").str.replace("?", "").str.replace("~", "")
