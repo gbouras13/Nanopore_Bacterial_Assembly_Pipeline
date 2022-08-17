@@ -32,7 +32,7 @@ def summarise_contigs(summary_list, output, saureus):
     # convert the locus to string for merge 
     saureus_df[['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']] = saureus_df[['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']].astype(str)
     # convert the total_summary_df 
-    total_summary_df['ST']=pd.merge(total_summary_df, saureus_df, how="left", on=['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']).ST
+    #total_summary_df['ST']=pd.merge(total_summary_df, saureus_df, how="left", on=['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']).ST
     total_summary_df['clonal_complex']=pd.merge(total_summary_df, saureus_df, how="left", on=['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']).clonal_complex
     total_summary_df = total_summary_df.fillna('Novel')
     total_summary_df.to_csv(output, sep=",", index=False)
