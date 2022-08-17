@@ -5,9 +5,10 @@ import pandas as pd
 # function to read the csv
 def read_srst2_tsv(tsv):
     colnames=['Sample', 'ST', 'arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL', 'mismatches', 'uncertainty', 'depth', 'maxMAF'] 
-    df = pd.read_csv(tsv, delimiter= '\t', index_col=False, header=None, names=colnames)
+    df = pd.read_csv(tsv, delimiter= '\t', index_col=False, header=True, names=colnames)
     # strip the * off the alleles with mismatches
-    df[['ST', 'arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']] = df[['ST', 'arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']].replace("*", "")
+    # https://stackoverflow.com/questions/68076116/python-replace-multiple-values-from-all-columns-in-dataframe-pandas
+    df = df.replace({'*':'', "?": ""}, regex=True)
     return df
 
 
