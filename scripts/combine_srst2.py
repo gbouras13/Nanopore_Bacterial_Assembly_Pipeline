@@ -8,14 +8,14 @@ def read_srst2_tsv(tsv):
     df = pd.read_csv(tsv, delimiter= '\t', index_col=False, header=0, names=colnames)
     # strip the * and ? off the alleles with mismatches
     df[['ST','arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']] = df[['ST','arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']].astype(str)
-    df['ST'] = df['ST'].str.replace("*", "").str.replace("?", "").str.replace("~", "")
-    df['arcC'] = df['arcC'].str.replace("*", "").str.replace("?", "").str.replace("~", "")
-    df['aroE'] = df['aroE'].str.replace("aroE", "").str.replace("?", "").str.replace("~", "")
-    df['glpF'] = df['glpF'].str.replace("glpF", "").str.replace("?", "").str.replace("~", "")
-    df['gmk'] = df['gmk'].str.replace("gmk", "").str.replace("?", "").str.replace("~", "")
-    df['pta'] = df['pta'].str.replace("pta", "").str.replace("?", "").str.replace("~", "")
-    df['tpi'] = df['tpi'].str.replace("tpi", "").str.replace("?", "").str.replace("~", "") 
-    df['yqiL'] = df['yqiL'].str.replace("yqiL", "").str.replace("?", "").str.replace("~", "")
+    df['ST'] = df['ST'].str.replace("*", "", regex=False).str.replace("?", "", regex=False).str.replace("~", "", regex=False)
+    df['arcC'] = df['arcC'].str.replace("*", "", regex=False).str.replace("?", "", regex=False).str.replace("~", "", regex=False)
+    df['aroE'] = df['aroE'].str.replace("aroE", "", regex=False).str.replace("?", "", regex=False).str.replace("~", "", regex=False)
+    df['glpF'] = df['glpF'].str.replace("glpF", "", regex=False).str.replace("?", "", regex=False).str.replace("~", "", regex=False)
+    df['gmk'] = df['gmk'].str.replace("gmk", "", regex=False).str.replace("?", "", regex=False).str.replace("~", "", regex=False)
+    df['pta'] = df['pta'].str.replace("pta", "", regex=False).str.replace("?", "", regex=False).str.replace("~", "", regex=False)
+    df['tpi'] = df['tpi'].str.replace("tpi", "", regex=False).str.replace("?", "", regex=False).str.replace("~", "", regex=False) 
+    df['yqiL'] = df['yqiL'].str.replace("yqiL", "", regex=False).str.replace("?", "", regex=False).str.replace("~", "", regex=False)
     return df
 
 
