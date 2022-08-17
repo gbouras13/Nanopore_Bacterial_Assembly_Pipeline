@@ -21,10 +21,29 @@ rule srst2:
         srst2 --input_se {input[0]} --output {params[0]} --log --mlst_db {params[1]} --mlst_definitions {params[2]} --threads {threads} --mlst_delimiter _  
         """
 
+
+rule combine_srst2:
+    input:
+        srst2s = expand(os.path.join(SRST2,"{sample}__mlst__Staphylococcus_aureus__results.txt"), sample = SAMPLES)
+    output:
+        out = os.path.join(SRST2,"total_srst2.csv")
+    conda:
+        os.path.join('..', 'envs','scripts.yaml')
+    params:
+        saureus = os.path.join(MLST_DB, 'saureus.txt')
+    threads:
+        1
+    resources:
+        mem_mb=SmallJobMem
+    script:
+        '../scripts/combine_srst2.py'
+
+
 rule aggr_srst2:
     """Aggregate."""
     input:
-        expand(os.path.join(SRST2,"{sample}__mlst__Staphylococcus_aureus__results.txt") , sample = SAMPLES)
+        expand(os.path.join(SRST2,"{sample}__mlst__Staphylococcus_aureus__results.txt") , sample = SAMPLES),
+        os.path.join(SRST2,"total_srst2.csv")
     output:
         os.path.join(LOGS, "aggr_srst2.txt")
     threads:
