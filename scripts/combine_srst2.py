@@ -36,7 +36,7 @@ def summarise_contigs(summary_list, output, saureus):
     # merge s aureus into the summary df
     colnames=['ST', 'arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL', 'clonal_complex'] 
     saureus_df = pd.read_csv(saureus, delimiter= '\t', index_col=False, header=None, names=colnames)
-    print(total_summary_df)
+    #print(total_summary_df)
     # convert the locus to string for merge 
     saureus_df[['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']] = saureus_df[['arcC', 'aroE', 'glpF', 'gmk', 'pta', 'tpi', 'yqiL']].astype(str)
     # convert the total_summary_df 
