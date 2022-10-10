@@ -12,7 +12,8 @@ rule combine_mlst:
     threads:
         1
     resources:
-        mem_mb=SmallJobMem
+        mem_mb=SmallJobMem,
+        time=2
     script:
         '../scripts/combine_mlst.py'
 
@@ -26,7 +27,8 @@ rule aggr_mlst_combine:
     threads:
         1
     resources:
-        mem_mb=SmallJobMem
+        mem_mb=SmallJobMem,
+        time=2
     shell:
         """
         touch {output[0]}

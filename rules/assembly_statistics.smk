@@ -10,7 +10,8 @@ rule extract_summary_assembly_stats:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=SmallJobMem,
+        time=5
     script:
         '../scripts/extract_summary_assembly_stats.py'
 
@@ -24,7 +25,8 @@ rule combine_summary_stats:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=SmallJobMem,
+        time=5
     script:
         '../scripts/combine_summary_assembly_stats.py'
 
@@ -40,7 +42,8 @@ rule aggr_statistics:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=SmallJobMem,
+        time=2
     shell:
         """
         touch {output[0]}

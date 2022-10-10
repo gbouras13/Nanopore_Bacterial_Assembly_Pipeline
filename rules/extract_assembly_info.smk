@@ -7,7 +7,8 @@ rule extract_assembly_infor:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=SmallJobMem,
+        time=5
     shell:
         """
         cp {input[0]} {output[0]}
@@ -22,7 +23,8 @@ rule aggr_assembly_info:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=SmallJobMem,
+        time=2
     shell:
         """
         touch {output[0]}

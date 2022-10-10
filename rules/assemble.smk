@@ -10,7 +10,8 @@ rule assemble:
     conda:
         os.path.join('..', 'envs','assemble.yaml')
     resources:
-        mem_mb=BigJobMem
+        mem_mb=BigJobMem,
+        time=120
     shell:
         """
         flye --nano-hq {input[0]} -t {threads}  --out-dir {output[0]}
@@ -25,7 +26,8 @@ rule aggr_assemble:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=SmallJobMem,
+        time=2
     shell:
         """
         touch {output[0]}

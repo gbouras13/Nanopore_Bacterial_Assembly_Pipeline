@@ -20,7 +20,8 @@ rule plassembler:
     threads:
         BigJobCpu
     resources:
-        mem_mb=BigJobMem
+        mem_mb=BigJobMem,
+        time=300
     shell:
         """
         plassembler.py -l {input[0]} -o {output[0]} -s1 {input[1]} -s2 {input[1]} -m 1000 -t {threads} -c 2500000 -f
@@ -34,7 +35,8 @@ rule plassembler_move_fastas:
     threads:
         1
     resources:
-        mem_mb=4000
+        mem_mb=SmallJobMem,
+        time=2
     shell:
         """
         cp {input[0]} {output[0]}
@@ -48,7 +50,8 @@ rule plassembler_move_summaries:
     threads:
         1
     resources:
-        mem_mb=4000
+        mem_mb=SmallJobMem,
+        time=2
     shell:
         """
         cp {input[0]} {output[0]}
@@ -64,7 +67,8 @@ rule aggr_plassembler:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=SmallJobMem,
+        time=2
     shell:
         """
         touch {output[0]}

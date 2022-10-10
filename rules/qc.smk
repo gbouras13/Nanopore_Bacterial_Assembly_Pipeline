@@ -11,7 +11,8 @@ rule filtlong:
     conda:
         os.path.join('..', 'envs','qc.yaml')
     resources:
-        mem_mb=BigJobMem
+        mem_mb=BigJobMem,
+        time=120
     params:
         MIN_LENGTH, 
         MIN_QUALITY
@@ -44,7 +45,8 @@ rule aggr_qc:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=SmallJobMem,
+        time=2
     shell:
         """
         touch {output[0]}

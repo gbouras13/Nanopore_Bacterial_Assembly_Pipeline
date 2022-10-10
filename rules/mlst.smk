@@ -11,7 +11,8 @@ rule mlst:
     threads:
         1
     resources:
-        mem_mb=SmallJobMem
+        mem_mb=SmallJobMem,
+        time=10
     shell:
         """
         mlst --scheme saureus --nopath  --csv {input[0]} > {output[0]}
@@ -26,7 +27,8 @@ rule aggr_mlst:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=SmallJobMem,
+        time=2
     shell:
         """
         touch {output[0]}
