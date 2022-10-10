@@ -13,7 +13,8 @@ rule extract_chromosome_plasmids:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=5
+        time=5,
+        th=1
     script:
         '../scripts/extract_chromosome_plasmid.py'
 
@@ -29,7 +30,8 @@ rule aggr_chromosome_plasmid:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=2
+        time=2,
+        th=1
     shell:
         """
         touch {output[0]}

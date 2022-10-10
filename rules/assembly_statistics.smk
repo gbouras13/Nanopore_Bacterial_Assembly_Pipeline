@@ -11,7 +11,8 @@ rule extract_summary_assembly_stats:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=5
+        time=5,
+        th=1
     script:
         '../scripts/extract_summary_assembly_stats.py'
 
@@ -26,7 +27,8 @@ rule combine_summary_stats:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=5
+        time=5,
+        th=1
     script:
         '../scripts/combine_summary_assembly_stats.py'
 
@@ -43,7 +45,8 @@ rule aggr_statistics:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=2
+        time=2,
+        th=1
     shell:
         """
         touch {output[0]}

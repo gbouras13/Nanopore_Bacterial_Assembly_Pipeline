@@ -13,7 +13,8 @@ rule combine_mlst:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=2
+        time=5,
+        th=1
     script:
         '../scripts/combine_mlst.py'
 
@@ -28,7 +29,8 @@ rule aggr_mlst_combine:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=2
+        time=2,
+        th=1
     shell:
         """
         touch {output[0]}

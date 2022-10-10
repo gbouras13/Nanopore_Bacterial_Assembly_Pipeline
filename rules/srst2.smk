@@ -16,7 +16,8 @@ rule srst2:
         BigJobCpu
     resources:
         mem_mb=BigJobMem,
-        time=300
+        time=300,
+        th=BigJobCpu
     shell:
         """
         srst2 --input_se {input[0]} --output {params[0]} --log --mlst_db {params[1]} --mlst_definitions {params[2]} --threads {threads} --mlst_delimiter _  
@@ -36,7 +37,8 @@ rule combine_srst2:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=10
+        time=10,
+        th=1
     script:
         '../scripts/combine_srst2.py'
 
@@ -52,7 +54,8 @@ rule aggr_srst2:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=2
+        time=2,
+        th=1
     shell:
         """
         touch {output[0]}

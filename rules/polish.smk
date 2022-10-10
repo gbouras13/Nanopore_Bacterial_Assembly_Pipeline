@@ -21,7 +21,8 @@ rule medaka:
         os.path.join('..', 'envs','medaka.yaml')
     resources:
         mem_mb=BigJobMem,
-        time=300
+        time=300,
+        th=BigJobCpu
     shell:
         """
         export HOME=/hpcfs/users/a1667917
@@ -41,7 +42,8 @@ rule fastp:
         os.path.join('..', 'envs','short_read_polish.yaml')
     resources:
         mem_mb=BigJobMem,
-        time=120
+        time=120,
+        th=BigJobCpu
     shell:
         """
         fastp --in1 {input[0]} --in2 {input[1]} --out1 {output[0]} --out2 {output[1]} 
@@ -57,7 +59,8 @@ rule bwa_index:
     conda:
         os.path.join('..', 'envs','short_read_polish.yaml')
     resources:
-        mem_mb=BigJobMem
+        mem_mb=BigJobMem,
+        th=BigJobCpu
     shell:
         """
         bwa index {input}
@@ -78,7 +81,8 @@ rule bwa_mem:
         os.path.join('..', 'envs','short_read_polish.yaml')
     resources:
         mem_mb=BigJobMem,
-        time=300
+        time=300,
+        th=BigJobCpu
     shell:
         """
         bwa mem -t {threads} -a {input[0]} {input[1]} > {output[0]}
@@ -97,7 +101,8 @@ rule polypolish:
         os.path.join('..', 'envs','polypolish.yaml')
     resources:
         mem_mb=BigJobMem,
-        time=120
+        time=120,
+        th=BigJobCpu
     shell:
         """
         polypolish {input[0]} {input[1]} {input[2]} > {output[0]}
@@ -112,7 +117,8 @@ rule aggr_polish:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=2
+        time=2,
+        th=1
     shell:
         """
         touch {output[0]}

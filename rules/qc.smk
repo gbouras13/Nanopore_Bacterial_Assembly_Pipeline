@@ -12,7 +12,8 @@ rule filtlong:
         os.path.join('..', 'envs','qc.yaml')
     resources:
         mem_mb=BigJobMem,
-        time=120
+        time=120,
+        th=1
     params:
         MIN_LENGTH, 
         MIN_QUALITY
@@ -31,7 +32,8 @@ rule porechop:
     conda:
         os.path.join('..', 'envs','qc.yaml')
     resources:
-        mem_mb=BigJobMem
+        mem_mb=BigJobMem,
+        th=BigJobCpu
     shell:
         """
         porechop -i {input[0]}  -o {output[0]} -t {threads}
@@ -46,7 +48,8 @@ rule aggr_qc:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=2
+        time=2,
+        th=1
     shell:
         """
         touch {output[0]}

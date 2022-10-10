@@ -12,7 +12,8 @@ rule mlst:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=10
+        time=10,
+        th=1
     shell:
         """
         mlst --scheme saureus --nopath  --csv {input[0]} > {output[0]}
@@ -28,7 +29,8 @@ rule aggr_mlst:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=2
+        time=2,
+        th=1
     shell:
         """
         touch {output[0]}

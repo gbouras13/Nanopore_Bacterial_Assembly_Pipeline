@@ -11,7 +11,8 @@ rule assemble:
         os.path.join('..', 'envs','assemble.yaml')
     resources:
         mem_mb=BigJobMem,
-        time=300
+        time=300,
+        th=BigJobCpu
     shell:
         """
         flye --nano-hq {input[0]} -t {threads}  --out-dir {output[0]}
@@ -27,7 +28,8 @@ rule aggr_assemble:
         1
     resources:
         mem_mb=SmallJobMem,
-        time=2
+        time=2,
+        th=1
     shell:
         """
         touch {output[0]}
