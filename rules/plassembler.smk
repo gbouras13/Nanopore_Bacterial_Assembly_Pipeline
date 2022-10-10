@@ -21,7 +21,7 @@ rule plassembler:
         BigJobCpu
     resources:
         mem_mb=BigJobMem,
-        time=300
+        time=600
     shell:
         """
         plassembler.py -l {input[0]} -o {output[0]} -s1 {input[1]} -s2 {input[1]} -m 1000 -t {threads} -c 2500000 -f
