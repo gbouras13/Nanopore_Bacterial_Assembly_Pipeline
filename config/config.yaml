@@ -11,5 +11,5 @@ Staph: True
 
 
 BigJobMem: 32000     
-BigJobCpu: 64       
+BigJobCpu: 16       
 SmallJobMem: 4000
