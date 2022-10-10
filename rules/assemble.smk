@@ -13,7 +13,7 @@ rule assemble:
         th=BigJobCpu
     shell:
         """
-        flye --nano-hq {input[0]} -t {resources.th}  --out-dir {output[0]}
+        flye --nano-hq {input[0]} -t {resources.th} --asm-coverage 50 --out-dir {output[0]}
         """
 
 rule aggr_assemble:
