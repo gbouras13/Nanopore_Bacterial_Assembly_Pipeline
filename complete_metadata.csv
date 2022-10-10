@@ -114,7 +114,7 @@ SAN_16,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/S
 SAV_17,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/SAV_17.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SAV_17_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SAV_17_2.fastq.gz
 SCO_60,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/SCO_60.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SCO_60_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SCO_60_2.fastq.gz
 SET_47,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/SET_47.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SET_47_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SET_47_2.fastq.gz
-SIM_18,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/SIM_18.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SIM_18_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SIM_18_2.fastq.gz
+SIM_18,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/06_10_22_6_samples_sup_fastqs/SIM_18.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SIM_18_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SIM_18_2.fastq.gz
 SMIJ_26,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/SMIJ_26.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SMIJ_26_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SMIJ_26_2.fastq.gz
 SMIS_49,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/SMIS_49.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SMIS_49_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/SMIS_49_2.fastq.gz
 STI_19,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/STI_19.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/STI_19_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/STI_19_2.fastq.gz
@@ -177,7 +177,7 @@ C342,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/C34
 C349,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/C349.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C349_S19_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C349_S19_R2_001.fastq.gz
 C351,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/C351.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C351_S20_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C351_S20_R2_001.fastq.gz
 C355,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/C355.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C355_S22_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C355_S22_R2_001.fastq.gz
-C363,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/C363.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C363_S24_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C363_S24_R2_001.fastq.gz
+C363,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/06_10_22_6_samples_sup_fastqs/C363.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C363_S24_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C363_S24_R2_001.fastq.gz
 C908,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/C908.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/73_S92_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/73_S92_R2_001.fastq.gz
 C209,/hpcfs/users/a1667917/Staph_Final_Assemblies/Aggregated_Fastq_By_Sample/C209.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C209_S16_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C209_S16_R2_001.fastq.gz
 C333,/hpcfs/users/a1667917/Nano_Basecalling/Rudnick_Basecalling/basecalling_output_sup/aggregated_rudnick/C333.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/RUD_15_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/RUD_15_2.fastq.gz
