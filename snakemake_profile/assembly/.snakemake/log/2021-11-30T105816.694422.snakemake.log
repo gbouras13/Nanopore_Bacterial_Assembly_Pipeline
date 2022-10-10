@@ -1,4 +1,0 @@
-Config file /hpcfs/users/a1667917/myconda/envs/hecatomb/snakemake/workflow/../config/config.yaml is extended by additional config specified via the command line.
-Building DAG of jobs...
-Nothing to be done (all requested files are present and up to date).
-Complete log: /home/a1667917/.config/snakemake/slurm/.snakemake/log/2021-11-30T105816.694422.snakemake.log
