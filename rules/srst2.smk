@@ -12,15 +12,13 @@ rule srst2:
         os.path.join( MLST_DB, 'profiles_csv')
     conda:
         os.path.join('..', 'envs','srst2.yaml')
-    threads:
-        BigJobCpu
     resources:
         mem_mb=BigJobMem,
         time=300,
         th=BigJobCpu
     shell:
         """
-        srst2 --input_se {input[0]} --output {params[0]} --log --mlst_db {params[1]} --mlst_definitions {params[2]} --threads {threads} --mlst_delimiter _  
+        srst2 --input_se {input[0]} --output {params[0]} --log --mlst_db {params[1]} --mlst_definitions {params[2]} --threads {resources.th} --mlst_delimiter _  
         """
 
 
@@ -33,8 +31,6 @@ rule combine_srst2:
         os.path.join('..', 'envs','scripts.yaml')
     params:
         saureus = os.path.join(MLST_DB, 'saureus.txt')
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=10,
@@ -50,8 +46,6 @@ rule aggr_srst2:
         os.path.join(SRST2,"total_srst2.csv")
     output:
         os.path.join(LOGS, "aggr_srst2.txt")
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=2,

@@ -4,8 +4,6 @@ rule extract_assembly_infor:
         os.path.join(ASSEMBLIES,"{sample}", "assembly_info.txt")
     output:
         os.path.join(ASSEMBLY_INFO,"{sample}_assembly_info.txt")
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=5,
@@ -21,8 +19,6 @@ rule aggr_assembly_info:
         expand(os.path.join(ASSEMBLY_INFO,"{sample}_assembly_info.txt"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_assembly_info.txt")
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=2,

@@ -5,8 +5,6 @@ rule assemble:
         directory(os.path.join(ASSEMBLIES,"{sample}")),
         os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta"),
         os.path.join(ASSEMBLIES,"{sample}", "assembly_info.txt")
-    threads:
-        BigJobCpu
     conda:
         os.path.join('..', 'envs','assemble.yaml')
     resources:
@@ -15,7 +13,7 @@ rule assemble:
         th=BigJobCpu
     shell:
         """
-        flye --nano-hq {input[0]} -t {threads}  --out-dir {output[0]}
+        flye --nano-hq {input[0]} -t {resources.th}  --out-dir {output[0]}
         """
 
 rule aggr_assemble:
@@ -24,8 +22,6 @@ rule aggr_assemble:
         expand(os.path.join(ASSEMBLIES,"{sample}", "assembly_info.txt"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_assemble.txt")
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=2,

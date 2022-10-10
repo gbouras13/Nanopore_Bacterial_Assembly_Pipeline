@@ -9,8 +9,6 @@ rule combine_mlst:
         os.path.join('..', 'envs','scripts.yaml')
     params:
         saureus = os.path.join(MLST_DB, 'saureus.txt')
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=5,
@@ -25,8 +23,6 @@ rule aggr_mlst_combine:
         os.path.join(MLST,"total_mlst.csv")
     output:
         os.path.join(LOGS, "aggr_mlst_combine.txt")
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=2,

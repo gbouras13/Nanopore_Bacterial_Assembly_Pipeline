@@ -9,8 +9,6 @@ rule extract_chromosome_plasmids:
         MIN_CHROM_LENGTH
     conda:
         os.path.join('..', 'envs','scripts.yaml')
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=5,
@@ -26,8 +24,6 @@ rule aggr_chromosome_plasmid:
         expand(os.path.join(CHROMOSOME,"{sample}.fasta"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_chr_plas.txt")
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=2,

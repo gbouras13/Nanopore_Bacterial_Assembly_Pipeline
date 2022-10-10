@@ -7,8 +7,6 @@ rule extract_summary_assembly_stats:
         os.path.join(SUMMARIES,"{sample}_summary.csv")
     conda:
         os.path.join('..', 'envs','scripts.yaml')
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=5,
@@ -23,8 +21,6 @@ rule combine_summary_stats:
         out = os.path.join(SUMMARY_OUT,"total_assembly_summary.csv")
     conda:
         os.path.join('..', 'envs','scripts.yaml')
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=5,
@@ -41,8 +37,6 @@ rule aggr_statistics:
         os.path.join(SUMMARY_OUT,"total_assembly_summary.csv")
     output:
         os.path.join(LOGS, "aggr_stats.txt")
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=2,

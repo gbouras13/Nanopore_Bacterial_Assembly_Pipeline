@@ -6,8 +6,6 @@ rule filtlong:
         get_input_fastqs
     output:
         os.path.join(TMP,"{sample}_filt.fastq.gz")
-    threads:
-        1
     conda:
         os.path.join('..', 'envs','qc.yaml')
     resources:
@@ -27,8 +25,6 @@ rule porechop:
         os.path.join(TMP,"{sample}_filt.fastq.gz")
     output:
         os.path.join(TMP,"{sample}_filt_trim.fastq.gz")
-    threads:
-        BigJobCpu
     conda:
         os.path.join('..', 'envs','qc.yaml')
     resources:
@@ -36,7 +32,7 @@ rule porechop:
         th=BigJobCpu
     shell:
         """
-        porechop -i {input[0]}  -o {output[0]} -t {threads}
+        porechop -i {input[0]}  -o {output[0]} -t {resources.th}
         """
 
 rule aggr_qc:
@@ -44,8 +40,6 @@ rule aggr_qc:
         expand(os.path.join(TMP,"{sample}_filt_trim.fastq.gz"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_qc.txt")
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=2,

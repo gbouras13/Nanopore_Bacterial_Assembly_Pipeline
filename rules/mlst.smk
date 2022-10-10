@@ -8,8 +8,6 @@ rule mlst:
         os.path.join(MLST,"{sample}.csv")
     conda:
         os.path.join('..', 'envs','mlst.yaml')
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=10,
@@ -25,8 +23,6 @@ rule aggr_mlst:
         expand(os.path.join(MLST,"{sample}.csv"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_mlst.txt")
-    threads:
-        1
     resources:
         mem_mb=SmallJobMem,
         time=2,
