@@ -11,9 +11,11 @@ rule assemble:
         mem_mb=BigJobMem,
         time=300,
         th=BigJobCpu
+    params:
+        MIN_CHROM_LENGTH
     shell:
         """
-        flye --nano-hq {input[0]} -t {resources.th} --asm-coverage 50 --out-dir {output[0]}
+        flye --nano-hq {input[0]} -t {resources.th} --asm-coverage 50 --genome-size {params[0]} --out-dir {output[0]}
         """
 
 rule aggr_assemble:
