@@ -148,7 +148,7 @@ rule bwa_index_round_2:
 
 rule bwa_mem_round_2:
     input:
-        os.path.join(DNAAPLER, "{sample}". "{sample}_reoriented.fasta"),
+        os.path.join(DNAAPLER, "{sample}", "{sample}_reoriented.fasta"),
         os.path.join(FASTP,"{sample}_1.fastq.gz"),
         os.path.join(FASTP,"{sample}_2.fastq.gz"),
         os.path.join(DNAAPLER, "{sample}", "{sample}_reoriented.fasta.bwt")
