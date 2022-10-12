@@ -7,10 +7,9 @@ def get_input_fastqs(wildcards):
 
 
 
-
 rule medaka:
     input:
-        os.path.join(CHROMOSOME,"{sample}.fasta")
+        os.path.join(CHROMOSOME,"{sample}.fasta"),
         get_input_fastqs
     output:
         directory(os.path.join(MEDAKA,"{sample}")),
