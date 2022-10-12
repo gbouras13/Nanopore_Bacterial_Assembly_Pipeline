@@ -3,7 +3,7 @@
 rule mlst:
     """Run mlst."""
     input:
-        os.path.join(CHROMOSOME,"{sample}.fasta")
+        os.path.join(CHROMOSOME_POST_POLISHING,"{sample}.fasta")
     output:
         os.path.join(MLST,"{sample}.csv")
     conda:
