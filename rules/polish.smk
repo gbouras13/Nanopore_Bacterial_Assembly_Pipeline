@@ -111,7 +111,7 @@ rule polypolish:
 
 rule dnaapler:
     input:
-        os.path.join(POLYPOLISH_OUT_RD_1,"{sample}.fasta")
+        os.path.join(POLYPOLISH_OUT_RD_1, "{sample}.fasta")
     output:
         os.path.join(DNAAPLER, "{sample}", "{sample}_reoriented.fasta")
     threads:
@@ -126,7 +126,7 @@ rule dnaapler:
         th=8
     shell:
         """
-        dnaapler.py -c {input[0]} -o {params[1]} -p {wildcards.sample} -t {resources.th} 
+        dnaapler.py -c {input[0]} -o {params[0]} -p {wildcards.sample} -t {resources.th} 
         """
 
 rule bwa_index_round_2:
