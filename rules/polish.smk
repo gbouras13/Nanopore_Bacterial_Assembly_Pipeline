@@ -153,8 +153,8 @@ rule bwa_mem_round_2:
         os.path.join(FASTP,"{sample}_2.fastq.gz"),
         os.path.join(DNAAPLER, "{sample}", "{sample}_reoriented.fasta.bwt")
     output:
-        os.path.join(BWA,"{sample}_round2_1.sam"),
-        os.path.join(BWA,"{sample}_round2_2.sam")
+        os.path.join(BWA_ROUND2,"{sample}_1.sam"),
+        os.path.join(BWA_ROUND2,"{sample}_2.sam")
     threads:
         BigJobCpu
     conda:
@@ -173,8 +173,8 @@ rule bwa_mem_round_2:
 rule polypolish_round_2:
     input:
         os.path.join(DNAAPLER, "{sample}", "{sample}_reoriented.fasta"),
-        os.path.join(BWA,"{sample}_round2_1.sam"),
-        os.path.join(BWA,"{sample}_round2_2.sam")
+        os.path.join(BWA_ROUND2,"{sample}_1.sam"),
+        os.path.join(BWA_ROUND2,"{sample}_2.sam")
     output:
         os.path.join(POLYPOLISH_OUT_RD_2,"{sample}.fasta")
     threads:
