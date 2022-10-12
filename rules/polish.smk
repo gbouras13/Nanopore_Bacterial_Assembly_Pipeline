@@ -97,13 +97,13 @@ rule polypolish:
     output:
         os.path.join(POLYPOLISH_OUT_RD_1,"{sample}.fasta")
     threads:
-        BigJobCpu
+        8
     conda:
         os.path.join('..', 'envs','polypolish.yaml')
     resources:
-        mem_mb=BigJobMem,
-        time=120,
-        th=BigJobCpu
+        mem_mb=SmallJobMem,
+        time=60,
+        th=8
     shell:
         """
         polypolish {input[0]} {input[1]} {input[2]} > {output[0]}

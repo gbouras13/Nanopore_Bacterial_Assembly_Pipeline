@@ -5,3 +5,4 @@ channels:
     - gbouras13
 dependencies:
      - dnaapler 
+     - python >=3
