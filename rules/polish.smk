@@ -175,7 +175,7 @@ rule polypolish_round_2:
         os.path.join(BWA_ROUND2,"{sample}_1.sam"),
         os.path.join(BWA_ROUND2,"{sample}_2.sam")
     output:
-        os.path.join(POLYPOLISH_OUT_RD_2,"{sample}.fasta")
+        os.path.join(CHROMOSOME_POST_POLISHING,"{sample}.fasta")
     threads:
         BigJobCpu
     conda:
@@ -191,7 +191,7 @@ rule polypolish_round_2:
 
 rule aggr_polish:
     input:
-        expand(os.path.join(POLYPOLISH_OUT_RD_2,"{sample}.fasta"), sample = SAMPLES )
+        expand(os.path.join(CHROMOSOME_POST_POLISHING,"{sample}.fasta"), sample = SAMPLES )
     output:
         os.path.join(LOGS, "aggr_polish.txt")
     threads:

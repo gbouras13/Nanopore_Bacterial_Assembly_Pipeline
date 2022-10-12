@@ -3,7 +3,7 @@ rule extract_chromosome_plasmids:
     input:
         os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta")
     output:
-        os.path.join(CHROMOSOME,"{sample}.fasta"),
+        os.path.join(CHROMOSOME_PRE_POLISH,"{sample}.fasta"),
         os.path.join(PLASMIDS,"{sample}.fasta")
     params:
         MIN_CHROM_LENGTH
@@ -21,7 +21,7 @@ rule aggr_chromosome_plasmid:
     """Aggregate."""
     input:
         expand(os.path.join(PLASMIDS,"{sample}.fasta"), sample = SAMPLES),
-        expand(os.path.join(CHROMOSOME,"{sample}.fasta"), sample = SAMPLES)
+        expand(os.path.join(CHROMOSOME_PRE_POLISH,"{sample}.fasta"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_chr_plas.txt")
     resources:
