@@ -42,11 +42,12 @@ include: "rules/targets.smk"
 include: "rules/qc.smk"
 include: "rules/assemble.smk"
 include: "rules/assembly_statistics.smk"
+include: "rules/extract_fastas.smk"
+# extract fastas then polish the assemblies
 if MEDAKA_FLAG == True:
     include: "rules/polish.smk"
 elif MEDAKA_FLAG == False:
     include: "rules/polish_no_medaka.smk"
-include: "rules/extract_fastas.smk"
 include: "rules/extract_assembly_info.smk"
 include: "rules/plassembler.smk"
 # run if STAPH is true
