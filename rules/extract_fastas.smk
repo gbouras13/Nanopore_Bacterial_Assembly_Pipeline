@@ -1,7 +1,7 @@
 
 rule extract_chromosome_plasmids:
     input:
-        os.path.join(POLYPOLISH_OUT,"{sample}.fasta")
+        os.path.join(POLYPOLISH_OUT_RD_2,"{sample}.fasta")
     output:
         os.path.join(CHROMOSOME,"{sample}.fasta"),
         os.path.join(PLASMIDS,"{sample}.fasta")
