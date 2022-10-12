@@ -126,7 +126,7 @@ rule dnaapler:
         th=8
     shell:
         """
-        dnaapler.py -c {input[0]} -o {params[0]} -p {wildcards.sample} -t {resources.th} 
+        dnaapler.py -c {input[0]} -o {params[0]} -p {wildcards.sample} -t {resources.th} -f
         """
 
 rule bwa_index_round_2:
