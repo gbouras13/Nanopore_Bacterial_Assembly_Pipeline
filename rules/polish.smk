@@ -193,14 +193,15 @@ rule polypolish_round_2:
 
 rule polca:
     input:
-        os.path.join(POLYPOLISH_OUT_RD_2,"{sample}.fasta"),
-        os.path.join(FASTP,"{sample}_1.fastq.gz"),
-        os.path.join(FASTP,"{sample}_2.fastq.gz"),
+        os.path.join(POLYPOLISH_OUT_RD_2,"{sample}.fasta")
     output:
         os.path.join(POLYPOLISH_OUT_RD_2,"{sample}.fasta.PolcaCorrected.fa"),
         os.path.join(CHROMOSOME_POST_POLISHING,"{sample}.fasta")
     threads:
         BigJobCpu
+    params:
+        os.path.join(FASTP,"{sample}_1.fastq.gz"),
+        os.path.join(FASTP,"{sample}_2.fastq.gz")
     conda:
         os.path.join('..', 'envs','polca.yaml')
     resources:
@@ -209,7 +210,7 @@ rule polca:
         th=BigJobCpu
     shell:
         """
-        polca.sh -a {input[0]}  -r {input[1]} {input[2]} -t {resources.th}
+        polca.sh -a {input[0]}  -r "{params[0]} {params[1]}" -t {resources.th}
         cp {output[0]} {output[1]}
         """
 
