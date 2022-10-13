@@ -197,7 +197,7 @@ rule polca:
         os.path.join(FASTP,"{sample}_1.fastq.gz"),
         os.path.join(FASTP,"{sample}_2.fastq.gz"),
     output:
-        os.path.join(POLYPOLISH_OUT_RD_2,"{sample}.fasta.PolcaCorrected.fa")
+        os.path.join(POLYPOLISH_OUT_RD_2,"{sample}.fasta.PolcaCorrected.fa"),
         os.path.join(CHROMOSOME_POST_POLISHING,"{sample}.fasta")
     threads:
         BigJobCpu
