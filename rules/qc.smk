@@ -21,20 +21,20 @@ rule filtlong:
 
 rule rasusa:
     input:
-        get_input_fastqs
+        os.path.join(TMP,"{sample}_filt.fastq.gz")
     output:
         os.path.join(TMP,"{sample}_filt_ras.fastq.gz")
     conda:
         os.path.join('..', 'envs','rasusa.yaml')
     resources:
         mem_mb=SmallJobMem,
-        time=60,
+        time=30,
         th=1
     params:
         MIN_CHROM_LENGTH
     shell:
         """
-        rasusa -i {input[0]} --coverage 100 --genome-size {params[0]} | gzip > {output[0]}
+        rasusa -i {input[0]} --coverage 100 --genome-size {params[0]} -o {output[0]}
         """
 
 rule porechop:
