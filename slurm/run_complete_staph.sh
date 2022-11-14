@@ -5,8 +5,8 @@
 #SBATCH --mail-type=BEGIN
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
-#SBATCH --err="complete_staph.err"
-#SBATCH --output="complete_staph.out"
+#SBATCH --err="complete_staph_14_11_22.err"
+#SBATCH --output="complete_staph_14_11_22.out"
 
 # Resources allocation request parameters
 #SBATCH -p batch
@@ -30,7 +30,7 @@ conda activate snakemake_clean_env
 # --config csv=complete_metadata.csv Output=/hpcfs/users/a1667917/Staph_Final_Assemblies/Complete_Assembly_Output Polypolish_Dir=/hpcfs/users/a1667917/Polypolish min_chrom_length=2400000
 
 snakemake -c 1 -s runner.smk --use-conda  --conda-frontend conda --profile $PROF_DIR/assembly  \
---config csv=complete_metadata.csv Output=/hpcfs/users/a1667917/Staph_Final_Assemblies/Complete_Assembly_Output Polypolish_Dir=/hpcfs/users/a1667917/Polypolish min_chrom_length=2400000
+--config csv=complete_metadata.csv Output=/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22 min_chrom_length=2500000
 
 
 conda deactivate
