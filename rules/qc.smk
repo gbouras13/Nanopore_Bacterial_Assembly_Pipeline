@@ -1,23 +1,41 @@
 def get_input_fastqs(wildcards):
     return dictReads[wildcards.sample]["LR"]
 
-rule filtlong:
+# rule filtlong:
+#     input:
+#         get_input_fastqs
+#     output:
+#         os.path.join(TMP,"{sample}_filt.fastq.gz")
+#     conda:
+#         os.path.join('..', 'envs','qc.yaml')
+#     resources:
+#         mem_mb=BigJobMem,
+#         time=120,
+#         th=1
+#     params:
+#         MIN_LENGTH, 
+#         MIN_QUALITY
+#     shell:
+#         """
+#         filtlong --min_length {params[0]} --min_mean_q {params[1]}  {input[0]} | gzip > {output[0]}
+#         """
+
+rule rasusa:
     input:
         get_input_fastqs
     output:
         os.path.join(TMP,"{sample}_filt.fastq.gz")
     conda:
-        os.path.join('..', 'envs','qc.yaml')
+        os.path.join('..', 'envs','rasusa.yaml')
     resources:
-        mem_mb=BigJobMem,
-        time=120,
+        mem_mb=SmallJobMem,
+        time=60,
         th=1
     params:
-        MIN_LENGTH, 
-        MIN_QUALITY
+        MIN_CHROM_LENGTH
     shell:
         """
-        filtlong --min_length {params[0]} --min_mean_q {params[1]}  {input[0]} | gzip > {output[0]}
+        rasusa -i {input[0]} --coverage 60 --genome-size {params[0]} | gzip > {output[0]}
         """
 
 rule porechop:
@@ -29,7 +47,8 @@ rule porechop:
         os.path.join('..', 'envs','qc.yaml')
     resources:
         mem_mb=BigJobMem,
-        th=BigJobCpu
+        th=BigJobCpu,
+        time=120
     shell:
         """
         porechop -i {input[0]}  -o {output[0]} -t {resources.th}
