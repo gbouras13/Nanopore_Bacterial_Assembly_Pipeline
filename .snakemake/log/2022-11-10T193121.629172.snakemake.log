@@ -1,4 +1,0 @@
-Config file config/config.yaml is extended by additional config specified via the command line.
-KeyError in line 21 of /Users/a1667917/Documents/Nanopore_Bacterial_Assembly_Pipeline/runner.smk:
-'Polypolish_Dir'
-  File "/Users/a1667917/Documents/Nanopore_Bacterial_Assembly_Pipeline/runner.smk", line 21, in <module>

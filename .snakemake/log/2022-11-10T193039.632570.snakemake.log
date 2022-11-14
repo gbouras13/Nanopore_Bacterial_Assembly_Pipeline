@@ -1,7 +1,0 @@
-Config file config/config.yaml is extended by additional config specified via the command line.
-NotADirectoryError in line 43 of /Users/a1667917/Documents/Nanopore_Bacterial_Assembly_Pipeline/rules/directories.smk:
-[Errno 20] Not a directory: 'all_saureus_metadata_rudnick.csv/TMP'
-  File "/Users/a1667917/Documents/Nanopore_Bacterial_Assembly_Pipeline/runner.smk", line 16, in <module>
-  File "/Users/a1667917/Documents/Nanopore_Bacterial_Assembly_Pipeline/rules/directories.smk", line 43, in <module>
-  File "/Users/a1667917/miniforge3/envs/snakemake/lib/python3.10/os.py", line 215, in makedirs
-  File "/Users/a1667917/miniforge3/envs/snakemake/lib/python3.10/os.py", line 225, in makedirs
