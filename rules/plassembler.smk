@@ -8,7 +8,7 @@ def get_input_lr(wildcards):
 
 rule plassembler:
     input:
-        get_input_lr,
+        os.path.join(TMP,"{sample}_filt_trim.fastq.gz"),
         get_input_r1,
         get_input_r2
     output:
