@@ -1,0 +1,6 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+SystemExit in line 48 of /Users/a1667917/Documents/Nanopore_Bacterial_Assembly_Pipeline/rules/samples.smk:
+1
+  File "/Users/a1667917/Documents/Nanopore_Bacterial_Assembly_Pipeline/runner.smk", line 35, in <module>
+  File "/Users/a1667917/Documents/Nanopore_Bacterial_Assembly_Pipeline/rules/samples.smk", line 56, in parseSamples
+  File "/Users/a1667917/Documents/Nanopore_Bacterial_Assembly_Pipeline/rules/samples.smk", line 48, in samplesFromCsv

@@ -2,8 +2,11 @@
 Pipeline to assemble many bacterial assemblies from Nanopore data
 
 * Designed for hybrid ONT/Illumina assemblies   
-* Assembly using Flye followed by polishing with Medaka and Polypolish
-* Plasmids are then assembled using plassembler https://github.com/gbouras13/plassembler
-* For s aureus strains, these are sequence typed with mlst (tseeman) and srst2 using the chromosome and short reads respectively
-* Adding the rotation script from https://github.com/rrwick/Perfect-bacterial-genome-tutorial
+* Plasmids are assembled using plassembler https://github.com/gbouras13/plassembler
+* s aureus strains are sequence typed with mlst and srst2 using the chromosome and short reads respectively
+* Otherwise the pipeline mostly follows https://github.com/rrwick/Perfect-bacterial-genome-tutorial with some small changes
+* The main pipeline for generating a polished chromosome goes:
+
+qc (filtlong, rasusa, porechop) -> flye -> medaka -> polypolish -> rotate chromosome to begin with dnaA using dnaapler -> polypolish round 2 -> polca
+
 
