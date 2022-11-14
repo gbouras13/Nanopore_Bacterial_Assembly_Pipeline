@@ -34,7 +34,7 @@ rule rasusa:
         MIN_CHROM_LENGTH
     shell:
         """
-        rasusa -i {input[0]} --coverage 60 --genome-size {params[0]} | gzip > {output[0]}
+        rasusa -i {input[0]} --coverage 100 --genome-size {params[0]} | gzip > {output[0]}
         """
 
 rule porechop:
