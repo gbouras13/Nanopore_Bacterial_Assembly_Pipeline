@@ -1,6 +1,6 @@
 rule assemble:
     input:
-        os.path.join(TMP,"{sample}_filt_trim.fastq.gz")
+        os.path.join(QC,"{sample}_filt_trim.fastq.gz")
     output:
         directory(os.path.join(ASSEMBLIES,"{sample}")),
         os.path.join(ASSEMBLIES,"{sample}", "assembly.fasta"),

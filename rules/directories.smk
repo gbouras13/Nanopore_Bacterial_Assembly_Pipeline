@@ -15,6 +15,7 @@ else:
 LOGS = os.path.join(OUTPUT, 'LOGS')
 DELETE = os.path.join(OUTPUT, 'DELETE_LOGS')
 TMP = os.path.join(OUTPUT, 'TMP')
+QC = os.path.join(TMP, 'QC')
 PLASSEMBLER = os.path.join(OUTPUT, 'PLASSEMBLER')
 PLASSEMBLER_FASTAS = os.path.join(OUTPUT, 'PLASSEMBLER_FASTAS')
 PLASSEMBLER_SUMMARIES = os.path.join(OUTPUT, 'PLASSEMBLER_SUMMARIES')

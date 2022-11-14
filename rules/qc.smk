@@ -1,29 +1,29 @@
 def get_input_fastqs(wildcards):
     return dictReads[wildcards.sample]["LR"]
 
-rule filtlong:
-    input:
-        get_input_fastqs
-    output:
-        os.path.join(TMP,"{sample}_filt.fastq.gz")
-    conda:
-        os.path.join('..', 'envs','qc.yaml')
-    resources:
-        mem_mb=BigJobMem,
-        time=30,
-        th=1
-    params:
-        MIN_QUALITY
-    shell:
-        """
-        filtlong --min_mean_q {params[1]}  {input[0]} | gzip > {output[0]}
-        """
+# rule filtlong:
+#     input:
+#         get_input_fastqs
+#     output:
+#         os.path.join(TMP,"{sample}_filt.fastq.gz")
+#     conda:
+#         os.path.join('..', 'envs','qc.yaml')
+#     resources:
+#         mem_mb=BigJobMem,
+#         time=30,
+#         th=1
+#     params:
+#         MIN_QUALITY
+#     shell:
+#         """
+#         filtlong --min_mean_q {params[0]}  {input[0]} | gzip > {output[0]}
+#         """
 
 rule rasusa:
     input:
-        os.path.join(TMP,"{sample}_filt.fastq.gz")
+        get_input_fastqs
     output:
-        os.path.join(TMP,"{sample}_filt_ras.fastq.gz")
+        os.path.join(QC,"{sample}_filt_ras.fastq.gz")
     conda:
         os.path.join('..', 'envs','rasusa.yaml')
     resources:
@@ -39,9 +39,9 @@ rule rasusa:
 
 rule porechop:
     input:
-        os.path.join(TMP,"{sample}_filt_ras.fastq.gz")
+        os.path.join(QC,"{sample}_filt_ras.fastq.gz")
     output:
-        os.path.join(TMP,"{sample}_filt_trim.fastq.gz")
+        os.path.join(QC,"{sample}_filt_trim.fastq.gz")
     conda:
         os.path.join('..', 'envs','qc.yaml')
     resources:
@@ -55,7 +55,7 @@ rule porechop:
 
 rule aggr_qc:
     input:
-        expand(os.path.join(TMP,"{sample}_filt_trim.fastq.gz"), sample = SAMPLES)
+        expand(os.path.join(QC,"{sample}_filt_trim.fastq.gz"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_qc.txt")
     resources:
