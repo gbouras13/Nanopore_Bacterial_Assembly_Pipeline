@@ -18,7 +18,6 @@ include: "rules/directories.smk"
 # get if needed
 CSV = config['csv']
 OUTPUT = config['Output']
-POLYPOLISH_BIN=config['Polypolish_Dir']
 MEDAKA_FLAG = config['Medaka']
 MIN_CHROM_LENGTH = config['min_chrom_length']
 MIN_LENGTH = config['min_length']
