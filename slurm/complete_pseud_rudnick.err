@@ -1,0 +1,147 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job                               count    min threads    max threads
+------------------------------  -------  -------------  -------------
+aggr_assemble                         1              1              1
+aggr_assembly_info                    1              1              1
+aggr_chromosome_plasmid               1              1              1
+aggr_polish                           1              1              1
+aggr_statistics                       1              1              1
+all                                   1              1              1
+assemble                              1              1              1
+bwa_index                             1             16             16
+bwa_index_round_2                     1             16             16
+bwa_mem                               1             16             16
+bwa_mem_round_2                       1             16             16
+combine_summary_stats                 1              1              1
+dnaapler                              1             16             16
+extract_assembly_infor                1              1              1
+extract_chromosome_plasmids           1              1              1
+extract_summary_assembly_stats        1              1              1
+fastp                                 1             16             16
+filtlong                              1              1              1
+medaka                                1             16             16
+polca                                 1             16             16
+polypolish                            1              8              8
+polypolish_round_2                    1             16             16
+porechop                              1              1              1
+total                                23              1             16
+
+Select jobs to execute...
+
+[Sun Nov 13 00:16:41 2022]
+rule filtlong:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C424.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/C424_filt.fastq.gz
+    jobid: 10
+    wildcards: sample=C424
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14758571, time=120, partition=batch, th=1
+
+
+        filtlong --min_length 2000 --min_mean_q 9  /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C424.fastq.gz | gzip > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/C424_filt.fastq.gz
+        
+Submitted job 10 with external jobid 'Submitted batch job 14758773'.
+
+[Sun Nov 13 00:16:41 2022]
+rule fastp:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C414_S82_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C414_S82_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/FASTP/C424_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/FASTP/C424_2.fastq.gz
+    jobid: 50
+    wildcards: sample=C424
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14758571, time=120, partition=batch, th=16
+
+
+        fastp --in1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C414_S82_R1_001.fastq.gz --in2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C414_S82_R2_001.fastq.gz --out1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/FASTP/C424_1.fastq.gz --out2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/FASTP/C424_2.fastq.gz 
+        
+Submitted job 50 with external jobid 'Submitted batch job 14758774'.
+[Sun Nov 13 00:19:58 2022]
+Finished job 50.
+1 of 23 steps (4%) done
+[Sun Nov 13 00:44:14 2022]
+Finished job 10.
+2 of 23 steps (9%) done
+Select jobs to execute...
+
+[Sun Nov 13 00:44:14 2022]
+rule porechop:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/C424_filt.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/C424_filt_trim.fastq.gz
+    jobid: 9
+    wildcards: sample=C424
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14758571, time=1440, partition=batch, th=16
+
+
+        porechop -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/C424_filt.fastq.gz  -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/C424_filt_trim.fastq.gz -t 16
+        
+Submitted job 9 with external jobid 'Submitted batch job 14758969'.
+[Sun Nov 13 00:48:08 2022]
+Finished job 9.
+3 of 23 steps (13%) done
+Select jobs to execute...
+
+[Sun Nov 13 00:48:08 2022]
+rule assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/C424_filt_trim.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424/assembly_info.txt
+    jobid: 8
+    wildcards: sample=C424
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14758571, time=300, partition=batch, th=16
+
+
+        flye --nano-hq /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/C424_filt_trim.fastq.gz -t 16  --out-dir /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424
+        
+Submitted job 8 with external jobid 'Submitted batch job 14758990'.
+[Sun Nov 13 00:51:42 2022]
+Finished job 8.
+4 of 23 steps (17%) done
+Select jobs to execute...
+
+[Sun Nov 13 00:51:42 2022]
+rule extract_chromosome_plasmids:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424/assembly.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/CHROMOSOME_PRE_POLISH/C424.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/PLASMIDS/C424.fasta
+    jobid: 48
+    wildcards: sample=C424
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14758571, time=5, partition=batch, th=1
+
+Submitted job 48 with external jobid 'Submitted batch job 14759011'.
+
+[Sun Nov 13 00:51:42 2022]
+rule extract_assembly_infor:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/ASSEMBLY_INFO/C424_assembly_info.txt
+    jobid: 99
+    wildcards: sample=C424
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14758571, time=5, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424/assembly_info.txt /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/ASSEMBLY_INFO/C424_assembly_info.txt
+        
+Submitted job 99 with external jobid 'Submitted batch job 14759012'.
+
+[Sun Nov 13 00:51:42 2022]
+rule aggr_assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C417/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C418/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C428/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C436/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C441/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C417/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C418/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C428/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C436/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C441/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/LOGS/aggr_assemble.txt
+    jobid: 1
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14758571, time=2, partition=batch, th=1
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/LOGS/aggr_assemble.txt
+        
+Submitted job 1 with external jobid 'Submitted batch job 14759013'.
+
+[Sun Nov 13 00:51:42 2022]
+rule extract_summary_assembly_stats:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/ASSEMBLIES/C424/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/SUMMARIES/C424_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output_Psuedomonas/TMP/SUMMARIES/C424_summary.csv
+    jobid: 90
+    wildcards: sample=C424
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14758571, time=5, partition=batch, th=1
+
+Submitted job 90 with external jobid 'Submitted batch job 14759014'.
+slurmstepd: error: *** JOB 14758571 ON r24-n4 CANCELLED AT 2022-11-13T00:58:45 ***

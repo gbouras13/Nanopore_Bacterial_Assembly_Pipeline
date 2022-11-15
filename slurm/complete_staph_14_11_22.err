@@ -1,0 +1,334 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job                  count    min threads    max threads
+-----------------  -------  -------------  -------------
+aggr_mlst                1              1              1
+aggr_mlst_combine        1              1              1
+aggr_polish              1              1              1
+all                      1              1              1
+combine_mlst             1              1              1
+mlst                     5              1              1
+polca                    5              1              1
+total                   15              1              1
+
+Select jobs to execute...
+
+[Wed Nov 16 00:24:22 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C195.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C195.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C195.fasta
+    jobid: 862
+    wildcards: sample=C195
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C195.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C195_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C195_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C195.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C195.fasta
+        
+Submitted job 862 with external jobid 'Submitted batch job 14794569'.
+
+[Wed Nov 16 00:24:22 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C143.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C143.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C143.fasta
+    jobid: 642
+    wildcards: sample=C143
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C143.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C143_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C143_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C143.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C143.fasta
+        
+Submitted job 642 with external jobid 'Submitted batch job 14794570'.
+
+[Wed Nov 16 00:24:22 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C286.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C286.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C286.fasta
+    jobid: 1335
+    wildcards: sample=C286
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C286.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C286_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C286_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C286.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C286.fasta
+        
+Submitted job 1335 with external jobid 'Submitted batch job 14794571'.
+
+[Wed Nov 16 00:24:22 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C10.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C10.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C10.fasta
+    jobid: 521
+    wildcards: sample=C10
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C10.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C10_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C10_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C10.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C10.fasta
+        
+Submitted job 521 with external jobid 'Submitted batch job 14794572'.
+
+[Wed Nov 16 00:24:22 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C316.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C316.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C316.fasta
+    jobid: 1489
+    wildcards: sample=C316
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C316.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C316_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C316_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C316.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C316.fasta
+        
+Submitted job 1489 with external jobid 'Submitted batch job 14794573'.
+[Wed Nov 16 00:27:20 2022]
+Error in rule polca:
+    jobid: 521
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C10.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C10.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C10.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C10_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C10_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C10.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C10.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794572
+
+Error executing rule polca on cluster (jobid: 521, external: Submitted batch job 14794572, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.521.sh). For error details see the cluster log and the log files of the involved rule(s).
+Trying to restart job 521.
+Select jobs to execute...
+
+[Wed Nov 16 00:27:20 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C10.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C10.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C10.fasta
+    jobid: 521
+    wildcards: sample=C10
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C10.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C10_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C10_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C10.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C10.fasta
+        
+[Wed Nov 16 00:27:20 2022]
+Error in rule polca:
+    jobid: 1489
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C316.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C316.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C316.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C316_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C316_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C316.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C316.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794573
+
+Error executing rule polca on cluster (jobid: 1489, external: Submitted batch job 14794573, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.1489.sh). For error details see the cluster log and the log files of the involved rule(s).
+Submitted job 521 with external jobid 'Submitted batch job 14794574'.
+Trying to restart job 1489.
+Select jobs to execute...
+
+[Wed Nov 16 00:27:20 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C316.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C316.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C316.fasta
+    jobid: 1489
+    wildcards: sample=C316
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C316.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C316_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C316_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C316.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C316.fasta
+        
+Submitted job 1489 with external jobid 'Submitted batch job 14794575'.
+[Wed Nov 16 00:27:31 2022]
+Error in rule polca:
+    jobid: 862
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C195.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C195.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C195.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C195_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C195_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C195.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C195.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794569
+
+Error executing rule polca on cluster (jobid: 862, external: Submitted batch job 14794569, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.862.sh). For error details see the cluster log and the log files of the involved rule(s).
+Trying to restart job 862.
+Select jobs to execute...
+
+[Wed Nov 16 00:27:31 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C195.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C195.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C195.fasta
+    jobid: 862
+    wildcards: sample=C195
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C195.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C195_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C195_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C195.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C195.fasta
+        
+[Wed Nov 16 00:27:31 2022]
+Error in rule polca:
+    jobid: 642
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C143.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C143.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C143.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C143_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C143_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C143.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C143.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794570
+
+Error executing rule polca on cluster (jobid: 642, external: Submitted batch job 14794570, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.642.sh). For error details see the cluster log and the log files of the involved rule(s).
+Submitted job 862 with external jobid 'Submitted batch job 14794576'.
+Trying to restart job 642.
+Select jobs to execute...
+
+[Wed Nov 16 00:27:31 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C143.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C143.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C143.fasta
+    jobid: 642
+    wildcards: sample=C143
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C143.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C143_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C143_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C143.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C143.fasta
+        
+[Wed Nov 16 00:27:31 2022]
+Error in rule polca:
+    jobid: 1335
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C286.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C286.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C286.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C286_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C286_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C286.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C286.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794571
+
+Error executing rule polca on cluster (jobid: 1335, external: Submitted batch job 14794571, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.1335.sh). For error details see the cluster log and the log files of the involved rule(s).
+Submitted job 642 with external jobid 'Submitted batch job 14794577'.
+Trying to restart job 1335.
+Select jobs to execute...
+
+[Wed Nov 16 00:27:31 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C286.fasta
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C286.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C286.fasta
+    jobid: 1335
+    wildcards: sample=C286
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14794568, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C286.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C286_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C286_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C286.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C286.fasta
+        
+Submitted job 1335 with external jobid 'Submitted batch job 14794578'.
+[Wed Nov 16 00:30:30 2022]
+Error in rule polca:
+    jobid: 642
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C143.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C143.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C143.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C143_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C143_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C143.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C143.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794577
+
+Error executing rule polca on cluster (jobid: 642, external: Submitted batch job 14794577, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.642.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Wed Nov 16 00:30:30 2022]
+Error in rule polca:
+    jobid: 1335
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C286.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C286.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C286.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C286_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C286_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C286.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C286.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794578
+
+Error executing rule polca on cluster (jobid: 1335, external: Submitted batch job 14794578, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.1335.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Wed Nov 16 00:30:30 2022]
+Error in rule polca:
+    jobid: 521
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C10.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C10.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C10.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C10_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C10_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C10.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C10.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794574
+
+Error executing rule polca on cluster (jobid: 521, external: Submitted batch job 14794574, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.521.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Wed Nov 16 00:30:30 2022]
+Error in rule polca:
+    jobid: 1489
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C316.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C316.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C316.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C316_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C316_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C316.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C316.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794575
+
+Error executing rule polca on cluster (jobid: 1489, external: Submitted batch job 14794575, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.1489.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Wed Nov 16 00:32:02 2022]
+Error in rule polca:
+    jobid: 862
+    output: /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C195.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C195.fasta
+    conda-env: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/conda/3870201ba4081f6b17acacbab3d036bf
+    shell:
+        
+        cd /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/POLYPOLISH_OUT_RD_2/C195.fasta  -r "/hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C195_1.fastq.gz /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/FASTP/C195_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/TMP/POLCA_TMP/C195.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Staph_Final_Assemblies_14_11_22/CHROMOSOME_POST_POLISHING/C195.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 14794576
+
+Error executing rule polca on cluster (jobid: 862, external: Submitted batch job 14794576, jobscript: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/tmp.hq8ouyht/snakejob.polca.862.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+Exiting because a job execution failed. Look above for error message
+Complete log: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/log/2022-11-16T002419.888195.snakemake.log

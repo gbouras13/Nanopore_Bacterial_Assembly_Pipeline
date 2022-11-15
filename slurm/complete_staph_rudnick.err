@@ -1,0 +1,2755 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job                               count    min threads    max threads
+------------------------------  -------  -------------  -------------
+aggr_assemble                         1              1              1
+aggr_assembly_info                    1              1              1
+aggr_chromosome_plasmid               1              1              1
+aggr_mlst                             1              1              1
+aggr_mlst_combine                     1              1              1
+aggr_plassembler                      1              1              1
+aggr_polish                           1              1              1
+aggr_srst2                            1              1              1
+aggr_statistics                       1              1              1
+all                                   1              1              1
+assemble                              7              1              1
+bwa_index                             7             16             16
+bwa_index_round_2                     7             16             16
+bwa_mem                               7             16             16
+bwa_mem_round_2                       7             16             16
+combine_mlst                          1              1              1
+combine_srst2                         1              1              1
+combine_summary_stats                 1              1              1
+dnaapler                              7             16             16
+extract_assembly_infor                7              1              1
+extract_chromosome_plasmids           7              1              1
+extract_summary_assembly_stats        7              1              1
+fastp                                 7             16             16
+filtlong                              7              1              1
+medaka                                7             16             16
+mlst                                  7              1              1
+plassembler                           7              1              1
+plassembler_move_fastas               7              1              1
+plassembler_move_summaries            7              1              1
+polca                                 7             16             16
+polypolish                            7              8              8
+polypolish_round_2                    7             16             16
+porechop                              7              1              1
+srst2                                 7              1              1
+total                               160              1             16
+
+Select jobs to execute...
+
+[Fri Nov 11 08:20:29 2022]
+rule fastp:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C247_S80_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C247_S80_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_2.fastq.gz
+    jobid: 42
+    wildcards: sample=C247
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        fastp --in1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C247_S80_R1_001.fastq.gz --in2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C247_S80_R2_001.fastq.gz --out1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_1.fastq.gz --out2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_2.fastq.gz 
+        
+Submitted job 42 with external jobid 'Submitted batch job 14741559'.
+
+[Fri Nov 11 08:20:29 2022]
+rule plassembler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L1_S84_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L1_S84_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L1, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L1/plassembler_plasmids.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L1/plassembler_copy_number_summary.tsv
+    jobid: 131
+    wildcards: sample=L1
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        plassembler.py -l /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L1.fastq.gz -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L1 -s1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L1_S84_R1_001.fastq.gz -s2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L1_S84_R1_001.fastq.gz -m 1000 -t 16 -c 2500000 -f
+        
+Submitted job 131 with external jobid 'Submitted batch job 14741560'.
+
+[Fri Nov 11 08:20:29 2022]
+rule plassembler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C247.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C247_S80_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C247_S80_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C247, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C247/plassembler_plasmids.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C247/plassembler_copy_number_summary.tsv
+    jobid: 123
+    wildcards: sample=C247
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        plassembler.py -l /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C247.fastq.gz -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C247 -s1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C247_S80_R1_001.fastq.gz -s2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C247_S80_R1_001.fastq.gz -m 1000 -t 16 -c 2500000 -f
+        
+Submitted job 123 with external jobid 'Submitted batch job 14741561'.
+
+[Fri Nov 11 08:20:29 2022]
+rule filtlong:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C344.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C344_filt.fastq.gz
+    jobid: 13
+    wildcards: sample=C344
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=1
+
+
+        filtlong --min_length 1500 --min_mean_q 9  /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C344.fastq.gz | gzip > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C344_filt.fastq.gz
+        
+Submitted job 13 with external jobid 'Submitted batch job 14741562'.
+
+[Fri Nov 11 08:20:29 2022]
+rule fastp:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L2_S85_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L2_S85_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_2.fastq.gz
+    jobid: 97
+    wildcards: sample=L2
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        fastp --in1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L2_S85_R1_001.fastq.gz --in2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L2_S85_R2_001.fastq.gz --out1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_1.fastq.gz --out2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_2.fastq.gz 
+        
+Submitted job 97 with external jobid 'Submitted batch job 14741563'.
+
+[Fri Nov 11 08:20:29 2022]
+rule filtlong:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C247.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C247_filt.fastq.gz
+    jobid: 7
+    wildcards: sample=C247
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=1
+
+
+        filtlong --min_length 1500 --min_mean_q 9  /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C247.fastq.gz | gzip > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C247_filt.fastq.gz
+        
+Submitted job 7 with external jobid 'Submitted batch job 14741564'.
+
+[Fri Nov 11 08:20:29 2022]
+rule fastp:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C347_S83_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C347_S83_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_2.fastq.gz
+    jobid: 75
+    wildcards: sample=C347
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        fastp --in1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C347_S83_R1_001.fastq.gz --in2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C347_S83_R2_001.fastq.gz --out1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_1.fastq.gz --out2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_2.fastq.gz 
+        
+Submitted job 75 with external jobid 'Submitted batch job 14741565'.
+
+[Fri Nov 11 08:20:29 2022]
+rule filtlong:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L2.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L2_filt.fastq.gz
+    jobid: 22
+    wildcards: sample=L2
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=1
+
+
+        filtlong --min_length 1500 --min_mean_q 9  /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L2.fastq.gz | gzip > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L2_filt.fastq.gz
+        
+Submitted job 22 with external jobid 'Submitted batch job 14741566'.
+
+[Fri Nov 11 08:20:30 2022]
+rule plassembler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C272.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C272_S81_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C272_S81_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C272, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C272/plassembler_plasmids.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C272/plassembler_copy_number_summary.tsv
+    jobid: 125
+    wildcards: sample=C272
+    resources: mem_mb=32000, disk_mb=1212, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        plassembler.py -l /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C272.fastq.gz -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C272 -s1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C272_S81_R1_001.fastq.gz -s2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C272_S81_R1_001.fastq.gz -m 1000 -t 16 -c 2500000 -f
+        
+Submitted job 125 with external jobid 'Submitted batch job 14741567'.
+
+[Fri Nov 11 08:20:30 2022]
+rule plassembler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L2_S85_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L2_S85_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L2, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L2/plassembler_plasmids.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L2/plassembler_copy_number_summary.tsv
+    jobid: 133
+    wildcards: sample=L2
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        plassembler.py -l /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L2.fastq.gz -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L2 -s1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L2_S85_R1_001.fastq.gz -s2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L2_S85_R1_001.fastq.gz -m 1000 -t 16 -c 2500000 -f
+        
+Submitted job 133 with external jobid 'Submitted batch job 14741568'.
+
+[Fri Nov 11 08:20:30 2022]
+rule filtlong:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C229.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C229_filt.fastq.gz
+    jobid: 4
+    wildcards: sample=C229
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=1
+
+
+        filtlong --min_length 1500 --min_mean_q 9  /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C229.fastq.gz | gzip > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C229_filt.fastq.gz
+        
+Submitted job 4 with external jobid 'Submitted batch job 14741569'.
+
+[Fri Nov 11 08:20:30 2022]
+rule filtlong:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C347.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C347_filt.fastq.gz
+    jobid: 16
+    wildcards: sample=C347
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=1
+
+
+        filtlong --min_length 1500 --min_mean_q 9  /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C347.fastq.gz | gzip > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C347_filt.fastq.gz
+        
+Submitted job 16 with external jobid 'Submitted batch job 14741570'.
+
+[Fri Nov 11 08:20:30 2022]
+rule fastp:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C272_S81_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C272_S81_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_2.fastq.gz
+    jobid: 53
+    wildcards: sample=C272
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        fastp --in1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C272_S81_R1_001.fastq.gz --in2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C272_S81_R2_001.fastq.gz --out1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_1.fastq.gz --out2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_2.fastq.gz 
+        
+Submitted job 53 with external jobid 'Submitted batch job 14741571'.
+
+[Fri Nov 11 08:20:30 2022]
+rule plassembler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C344.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C344_S82_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C344_S82_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C344, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C344/plassembler_plasmids.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C344/plassembler_copy_number_summary.tsv
+    jobid: 127
+    wildcards: sample=C344
+    resources: mem_mb=32000, disk_mb=1423, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        plassembler.py -l /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C344.fastq.gz -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C344 -s1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C344_S82_R1_001.fastq.gz -s2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C344_S82_R1_001.fastq.gz -m 1000 -t 16 -c 2500000 -f
+        
+Submitted job 127 with external jobid 'Submitted batch job 14741573'.
+
+[Fri Nov 11 08:20:31 2022]
+rule fastp:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L1_S84_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L1_S84_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_2.fastq.gz
+    jobid: 86
+    wildcards: sample=L1
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        fastp --in1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L1_S84_R1_001.fastq.gz --in2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/L1_S84_R2_001.fastq.gz --out1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_1.fastq.gz --out2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_2.fastq.gz 
+        
+Submitted job 86 with external jobid 'Submitted batch job 14741574'.
+
+[Fri Nov 11 08:20:31 2022]
+rule fastp:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C229_S79_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C229_S79_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_2.fastq.gz
+    jobid: 31
+    wildcards: sample=C229
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        fastp --in1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C229_S79_R1_001.fastq.gz --in2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C229_S79_R2_001.fastq.gz --out1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_1.fastq.gz --out2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_2.fastq.gz 
+        
+Submitted job 31 with external jobid 'Submitted batch job 14741577'.
+
+[Fri Nov 11 08:20:31 2022]
+rule filtlong:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C272.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C272_filt.fastq.gz
+    jobid: 10
+    wildcards: sample=C272
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=1
+
+
+        filtlong --min_length 1500 --min_mean_q 9  /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C272.fastq.gz | gzip > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C272_filt.fastq.gz
+        
+Submitted job 10 with external jobid 'Submitted batch job 14741578'.
+
+[Fri Nov 11 08:20:31 2022]
+rule plassembler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C347.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C347_S83_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C347_S83_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C347, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C347/plassembler_plasmids.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C347/plassembler_copy_number_summary.tsv
+    jobid: 129
+    wildcards: sample=C347
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        plassembler.py -l /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C347.fastq.gz -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C347 -s1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C347_S83_R1_001.fastq.gz -s2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C347_S83_R1_001.fastq.gz -m 1000 -t 16 -c 2500000 -f
+        
+Submitted job 129 with external jobid 'Submitted batch job 14741579'.
+
+[Fri Nov 11 08:20:31 2022]
+rule fastp:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C344_S82_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C344_S82_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_2.fastq.gz
+    jobid: 64
+    wildcards: sample=C344
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        fastp --in1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C344_S82_R1_001.fastq.gz --in2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C344_S82_R2_001.fastq.gz --out1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_1.fastq.gz --out2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_2.fastq.gz 
+        
+Submitted job 64 with external jobid 'Submitted batch job 14741582'.
+
+[Fri Nov 11 08:20:32 2022]
+rule filtlong:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L1.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L1_filt.fastq.gz
+    jobid: 19
+    wildcards: sample=L1
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=1
+
+
+        filtlong --min_length 1500 --min_mean_q 9  /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L1.fastq.gz | gzip > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L1_filt.fastq.gz
+        
+Submitted job 19 with external jobid 'Submitted batch job 14741584'.
+
+[Fri Nov 11 08:20:32 2022]
+rule plassembler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C229.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C229_S79_R1_001.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C229_S79_R2_001.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C229, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C229/plassembler_plasmids.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C229/plassembler_copy_number_summary.tsv
+    jobid: 121
+    wildcards: sample=C229
+    resources: mem_mb=32000, disk_mb=1149, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        plassembler.py -l /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C229.fastq.gz -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C229 -s1 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C229_S79_R1_001.fastq.gz -s2 /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Short_Reads/C229_S79_R1_001.fastq.gz -m 1000 -t 16 -c 2500000 -f
+        
+Submitted job 121 with external jobid 'Submitted batch job 14741586'.
+[Fri Nov 11 08:23:38 2022]
+Finished job 53.
+1 of 160 steps (1%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:23:38 2022]
+rule srst2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_1.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C272__mlst__Staphylococcus_aureus__results.txt
+    jobid: 154
+    wildcards: sample=C272
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        srst2 --input_se /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_1.fastq.gz --output /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C272 --log --mlst_db mlst/Staphylococcus_aureus.fasta --mlst_definitions mlst/profiles_csv --threads 16 --mlst_delimiter _  
+        
+Submitted job 154 with external jobid 'Submitted batch job 14741598'.
+[Fri Nov 11 08:23:39 2022]
+Finished job 86.
+2 of 160 steps (1%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:23:39 2022]
+rule srst2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_1.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/L1__mlst__Staphylococcus_aureus__results.txt
+    jobid: 157
+    wildcards: sample=L1
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        srst2 --input_se /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_1.fastq.gz --output /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/L1 --log --mlst_db mlst/Staphylococcus_aureus.fasta --mlst_definitions mlst/profiles_csv --threads 16 --mlst_delimiter _  
+        
+Submitted job 157 with external jobid 'Submitted batch job 14741599'.
+[Fri Nov 11 08:23:40 2022]
+Finished job 64.
+3 of 160 steps (2%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:23:40 2022]
+rule srst2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_1.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C344__mlst__Staphylococcus_aureus__results.txt
+    jobid: 155
+    wildcards: sample=C344
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        srst2 --input_se /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_1.fastq.gz --output /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C344 --log --mlst_db mlst/Staphylococcus_aureus.fasta --mlst_definitions mlst/profiles_csv --threads 16 --mlst_delimiter _  
+        
+Submitted job 155 with external jobid 'Submitted batch job 14741600'.
+[Fri Nov 11 08:23:51 2022]
+Finished job 42.
+4 of 160 steps (2%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:23:51 2022]
+rule srst2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_1.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C247__mlst__Staphylococcus_aureus__results.txt
+    jobid: 153
+    wildcards: sample=C247
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        srst2 --input_se /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_1.fastq.gz --output /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C247 --log --mlst_db mlst/Staphylococcus_aureus.fasta --mlst_definitions mlst/profiles_csv --threads 16 --mlst_delimiter _  
+        
+Submitted job 153 with external jobid 'Submitted batch job 14741601'.
+[Fri Nov 11 08:23:52 2022]
+Finished job 75.
+5 of 160 steps (3%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:23:52 2022]
+rule srst2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_1.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C347__mlst__Staphylococcus_aureus__results.txt
+    jobid: 156
+    wildcards: sample=C347
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        srst2 --input_se /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_1.fastq.gz --output /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C347 --log --mlst_db mlst/Staphylococcus_aureus.fasta --mlst_definitions mlst/profiles_csv --threads 16 --mlst_delimiter _  
+        
+Submitted job 156 with external jobid 'Submitted batch job 14741602'.
+[Fri Nov 11 08:23:54 2022]
+Finished job 31.
+6 of 160 steps (4%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:23:54 2022]
+rule srst2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_1.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C229__mlst__Staphylococcus_aureus__results.txt
+    jobid: 152
+    wildcards: sample=C229
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        srst2 --input_se /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_1.fastq.gz --output /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C229 --log --mlst_db mlst/Staphylococcus_aureus.fasta --mlst_definitions mlst/profiles_csv --threads 16 --mlst_delimiter _  
+        
+Submitted job 152 with external jobid 'Submitted batch job 14741603'.
+[Fri Nov 11 08:24:37 2022]
+Finished job 97.
+7 of 160 steps (4%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:24:37 2022]
+rule srst2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_1.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/L2__mlst__Staphylococcus_aureus__results.txt
+    jobid: 158
+    wildcards: sample=L2
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        srst2 --input_se /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_1.fastq.gz --output /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/L2 --log --mlst_db mlst/Staphylococcus_aureus.fasta --mlst_definitions mlst/profiles_csv --threads 16 --mlst_delimiter _  
+        
+Submitted job 158 with external jobid 'Submitted batch job 14741609'.
+[Fri Nov 11 08:28:49 2022]
+Finished job 133.
+8 of 160 steps (5%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:28:49 2022]
+rule plassembler_move_fastas:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L2/plassembler_plasmids.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/L2.fasta
+    jobid: 132
+    wildcards: sample=L2
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L2/plassembler_plasmids.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/L2.fasta
+        
+Submitted job 132 with external jobid 'Submitted batch job 14741624'.
+
+[Fri Nov 11 08:28:49 2022]
+rule plassembler_move_summaries:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L2/plassembler_copy_number_summary.tsv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/L2.tsv
+    jobid: 140
+    wildcards: sample=L2
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=16
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L2/plassembler_copy_number_summary.tsv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/L2.tsv
+        
+Submitted job 140 with external jobid 'Submitted batch job 14741625'.
+[Fri Nov 11 08:29:31 2022]
+Finished job 140.
+9 of 160 steps (6%) done
+[Fri Nov 11 08:30:01 2022]
+Finished job 154.
+10 of 160 steps (6%) done
+[Fri Nov 11 08:30:01 2022]
+Finished job 157.
+11 of 160 steps (7%) done
+[Fri Nov 11 08:30:29 2022]
+Finished job 153.
+12 of 160 steps (8%) done
+[Fri Nov 11 08:30:43 2022]
+Finished job 158.
+13 of 160 steps (8%) done
+[Fri Nov 11 08:31:11 2022]
+Finished job 156.
+14 of 160 steps (9%) done
+[Fri Nov 11 08:31:11 2022]
+Finished job 152.
+15 of 160 steps (9%) done
+[Fri Nov 11 08:31:12 2022]
+Finished job 123.
+16 of 160 steps (10%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:31:12 2022]
+rule plassembler_move_summaries:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C247/plassembler_copy_number_summary.tsv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C247.tsv
+    jobid: 135
+    wildcards: sample=C247
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=16
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C247/plassembler_copy_number_summary.tsv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C247.tsv
+        
+Submitted job 135 with external jobid 'Submitted batch job 14741643'.
+
+[Fri Nov 11 08:31:12 2022]
+rule plassembler_move_fastas:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C247/plassembler_plasmids.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C247.fasta
+    jobid: 122
+    wildcards: sample=C247
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C247/plassembler_plasmids.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C247.fasta
+        
+Submitted job 122 with external jobid 'Submitted batch job 14741644'.
+[Fri Nov 11 08:31:41 2022]
+Finished job 129.
+17 of 160 steps (11%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:31:41 2022]
+rule plassembler_move_fastas:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C347/plassembler_plasmids.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C347.fasta
+    jobid: 128
+    wildcards: sample=C347
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C347/plassembler_plasmids.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C347.fasta
+        
+Submitted job 128 with external jobid 'Submitted batch job 14741645'.
+
+[Fri Nov 11 08:31:41 2022]
+rule plassembler_move_summaries:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C347/plassembler_copy_number_summary.tsv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C347.tsv
+    jobid: 138
+    wildcards: sample=C347
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=16
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C347/plassembler_copy_number_summary.tsv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C347.tsv
+        
+Submitted job 138 with external jobid 'Submitted batch job 14741646'.
+[Fri Nov 11 08:32:33 2022]
+Finished job 138.
+18 of 160 steps (11%) done
+[Fri Nov 11 08:32:33 2022]
+Finished job 135.
+19 of 160 steps (12%) done
+[Fri Nov 11 08:33:14 2022]
+Finished job 131.
+20 of 160 steps (12%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:33:14 2022]
+rule plassembler_move_fastas:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L1/plassembler_plasmids.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/L1.fasta
+    jobid: 130
+    wildcards: sample=L1
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L1/plassembler_plasmids.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/L1.fasta
+        
+Submitted job 130 with external jobid 'Submitted batch job 14741654'.
+
+[Fri Nov 11 08:33:14 2022]
+rule plassembler_move_summaries:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L1/plassembler_copy_number_summary.tsv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/L1.tsv
+    jobid: 139
+    wildcards: sample=L1
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=16
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/L1/plassembler_copy_number_summary.tsv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/L1.tsv
+        
+Submitted job 139 with external jobid 'Submitted batch job 14741655'.
+[Fri Nov 11 08:35:43 2022]
+Finished job 139.
+21 of 160 steps (13%) done
+[Fri Nov 11 08:37:05 2022]
+Finished job 155.
+22 of 160 steps (14%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:37:05 2022]
+rule combine_srst2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C229__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C247__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C272__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C344__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C347__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/L1__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/L2__mlst__Staphylococcus_aureus__results.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/total_srst2.csv
+    jobid: 159
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=10, partition=batch, th=1
+
+Submitted job 159 with external jobid 'Submitted batch job 14741686'.
+[Fri Nov 11 08:38:55 2022]
+Finished job 121.
+23 of 160 steps (14%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:38:55 2022]
+rule plassembler_move_summaries:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C229/plassembler_copy_number_summary.tsv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C229.tsv
+    jobid: 134
+    wildcards: sample=C229
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=16
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C229/plassembler_copy_number_summary.tsv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C229.tsv
+        
+Submitted job 134 with external jobid 'Submitted batch job 14741703'.
+
+[Fri Nov 11 08:38:55 2022]
+rule plassembler_move_fastas:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C229/plassembler_plasmids.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C229.fasta
+    jobid: 120
+    wildcards: sample=C229
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C229/plassembler_plasmids.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C229.fasta
+        
+Submitted job 120 with external jobid 'Submitted batch job 14741704'.
+[Fri Nov 11 08:40:01 2022]
+Finished job 125.
+24 of 160 steps (15%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:40:01 2022]
+rule plassembler_move_summaries:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C272/plassembler_copy_number_summary.tsv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C272.tsv
+    jobid: 136
+    wildcards: sample=C272
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=16
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C272/plassembler_copy_number_summary.tsv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C272.tsv
+        
+Submitted job 136 with external jobid 'Submitted batch job 14741706'.
+
+[Fri Nov 11 08:40:01 2022]
+rule plassembler_move_fastas:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C272/plassembler_plasmids.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C272.fasta
+    jobid: 124
+    wildcards: sample=C272
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C272/plassembler_plasmids.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C272.fasta
+        
+Submitted job 124 with external jobid 'Submitted batch job 14741707'.
+[Fri Nov 11 08:41:36 2022]
+Finished job 136.
+25 of 160 steps (16%) done
+[Fri Nov 11 08:41:38 2022]
+Finished job 127.
+26 of 160 steps (16%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:41:38 2022]
+rule plassembler_move_fastas:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C344/plassembler_plasmids.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C344.fasta
+    jobid: 126
+    wildcards: sample=C344
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C344/plassembler_plasmids.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C344.fasta
+        
+Submitted job 126 with external jobid 'Submitted batch job 14741746'.
+
+[Fri Nov 11 08:41:38 2022]
+rule plassembler_move_summaries:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C344/plassembler_copy_number_summary.tsv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C344.tsv
+    jobid: 137
+    wildcards: sample=C344
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=16
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER/C344/plassembler_copy_number_summary.tsv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C344.tsv
+        
+Submitted job 137 with external jobid 'Submitted batch job 14741747'.
+[Fri Nov 11 08:41:53 2022]
+Finished job 134.
+27 of 160 steps (17%) done
+[Fri Nov 11 08:44:47 2022]
+Finished job 137.
+28 of 160 steps (18%) done
+[Fri Nov 11 08:51:06 2022]
+Finished job 7.
+29 of 160 steps (18%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:51:06 2022]
+rule porechop:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C247_filt.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C247_filt_trim.fastq.gz
+    jobid: 6
+    wildcards: sample=C247
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        porechop -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C247_filt.fastq.gz  -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C247_filt_trim.fastq.gz -t 16
+        
+Submitted job 6 with external jobid 'Submitted batch job 14741870'.
+[Fri Nov 11 08:51:19 2022]
+Finished job 22.
+30 of 160 steps (19%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:51:19 2022]
+rule porechop:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L2_filt.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L2_filt_trim.fastq.gz
+    jobid: 21
+    wildcards: sample=L2
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        porechop -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L2_filt.fastq.gz  -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L2_filt_trim.fastq.gz -t 16
+        
+Submitted job 21 with external jobid 'Submitted batch job 14741873'.
+[Fri Nov 11 08:51:47 2022]
+Finished job 16.
+31 of 160 steps (19%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:51:47 2022]
+rule porechop:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C347_filt.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C347_filt_trim.fastq.gz
+    jobid: 15
+    wildcards: sample=C347
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        porechop -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C347_filt.fastq.gz  -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C347_filt_trim.fastq.gz -t 16
+        
+Submitted job 15 with external jobid 'Submitted batch job 14741879'.
+[Fri Nov 11 08:52:14 2022]
+Finished job 4.
+32 of 160 steps (20%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:52:14 2022]
+rule porechop:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C229_filt.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C229_filt_trim.fastq.gz
+    jobid: 3
+    wildcards: sample=C229
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        porechop -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C229_filt.fastq.gz  -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C229_filt_trim.fastq.gz -t 16
+        
+Submitted job 3 with external jobid 'Submitted batch job 14741880'.
+[Fri Nov 11 08:52:28 2022]
+Finished job 10.
+33 of 160 steps (21%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:52:28 2022]
+rule porechop:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C272_filt.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C272_filt_trim.fastq.gz
+    jobid: 9
+    wildcards: sample=C272
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        porechop -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C272_filt.fastq.gz  -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C272_filt_trim.fastq.gz -t 16
+        
+Submitted job 9 with external jobid 'Submitted batch job 14741881'.
+[Fri Nov 11 08:52:54 2022]
+Finished job 13.
+34 of 160 steps (21%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:52:54 2022]
+rule porechop:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C344_filt.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C344_filt_trim.fastq.gz
+    jobid: 12
+    wildcards: sample=C344
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        porechop -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C344_filt.fastq.gz  -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C344_filt_trim.fastq.gz -t 16
+        
+Submitted job 12 with external jobid 'Submitted batch job 14741882'.
+[Fri Nov 11 08:54:42 2022]
+Finished job 19.
+35 of 160 steps (22%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:54:42 2022]
+rule porechop:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L1_filt.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L1_filt_trim.fastq.gz
+    jobid: 18
+    wildcards: sample=L1
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        porechop -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L1_filt.fastq.gz  -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L1_filt_trim.fastq.gz -t 16
+        
+Submitted job 18 with external jobid 'Submitted batch job 14741906'.
+[Fri Nov 11 08:56:02 2022]
+Finished job 21.
+36 of 160 steps (22%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:56:02 2022]
+rule assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L2_filt_trim.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2/assembly_info.txt
+    jobid: 20
+    wildcards: sample=L2
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        flye --nano-hq /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L2_filt_trim.fastq.gz -t 16  --out-dir /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2
+        
+Submitted job 20 with external jobid 'Submitted batch job 14741908'.
+[Fri Nov 11 08:56:56 2022]
+Finished job 6.
+37 of 160 steps (23%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:56:56 2022]
+rule assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C247_filt_trim.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247/assembly_info.txt
+    jobid: 5
+    wildcards: sample=C247
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        flye --nano-hq /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C247_filt_trim.fastq.gz -t 16  --out-dir /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247
+        
+Submitted job 5 with external jobid 'Submitted batch job 14741922'.
+[Fri Nov 11 08:57:09 2022]
+Finished job 15.
+38 of 160 steps (24%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:57:09 2022]
+rule assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C347_filt_trim.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347/assembly_info.txt
+    jobid: 14
+    wildcards: sample=C347
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        flye --nano-hq /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C347_filt_trim.fastq.gz -t 16  --out-dir /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347
+        
+Submitted job 14 with external jobid 'Submitted batch job 14741923'.
+[Fri Nov 11 08:58:29 2022]
+Finished job 12.
+39 of 160 steps (24%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:58:29 2022]
+rule assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C344_filt_trim.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344/assembly_info.txt
+    jobid: 11
+    wildcards: sample=C344
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        flye --nano-hq /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C344_filt_trim.fastq.gz -t 16  --out-dir /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344
+        
+Submitted job 11 with external jobid 'Submitted batch job 14741926'.
+[Fri Nov 11 08:58:57 2022]
+Finished job 9.
+40 of 160 steps (25%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:58:57 2022]
+rule assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C272_filt_trim.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272/assembly_info.txt
+    jobid: 8
+    wildcards: sample=C272
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        flye --nano-hq /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C272_filt_trim.fastq.gz -t 16  --out-dir /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272
+        
+Submitted job 8 with external jobid 'Submitted batch job 14741927'.
+[Fri Nov 11 08:59:51 2022]
+Finished job 3.
+41 of 160 steps (26%) done
+Select jobs to execute...
+
+[Fri Nov 11 08:59:51 2022]
+rule assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C229_filt_trim.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229/assembly_info.txt
+    jobid: 2
+    wildcards: sample=C229
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        flye --nano-hq /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/C229_filt_trim.fastq.gz -t 16  --out-dir /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229
+        
+Submitted job 2 with external jobid 'Submitted batch job 14741931'.
+[Fri Nov 11 08:59:52 2022]
+Finished job 132.
+42 of 160 steps (26%) done
+[Fri Nov 11 09:00:04 2022]
+Finished job 20.
+43 of 160 steps (27%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:00:04 2022]
+rule extract_assembly_infor:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/L2_assembly_info.txt
+    jobid: 118
+    wildcards: sample=L2
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2/assembly_info.txt /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/L2_assembly_info.txt
+        
+Submitted job 118 with external jobid 'Submitted batch job 14741941'.
+
+[Fri Nov 11 09:00:04 2022]
+rule extract_chromosome_plasmids:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2/assembly.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/L2.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/L2.fasta
+    jobid: 95
+    wildcards: sample=L2
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 95 with external jobid 'Submitted batch job 14741942'.
+
+[Fri Nov 11 09:00:04 2022]
+rule extract_summary_assembly_stats:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L2_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L2_summary.csv
+    jobid: 108
+    wildcards: sample=L2
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 108 with external jobid 'Submitted batch job 14741943'.
+[Fri Nov 11 09:00:31 2022]
+Finished job 18.
+44 of 160 steps (28%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:00:31 2022]
+rule assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L1_filt_trim.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1/assembly_info.txt
+    jobid: 17
+    wildcards: sample=L1
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        flye --nano-hq /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/L1_filt_trim.fastq.gz -t 16  --out-dir /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1
+        
+Submitted job 17 with external jobid 'Submitted batch job 14741944'.
+[Fri Nov 11 09:02:07 2022]
+Finished job 5.
+45 of 160 steps (28%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:02:07 2022]
+rule extract_summary_assembly_stats:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C247_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C247_summary.csv
+    jobid: 103
+    wildcards: sample=C247
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 103 with external jobid 'Submitted batch job 14741945'.
+
+[Fri Nov 11 09:02:07 2022]
+rule extract_assembly_infor:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C247_assembly_info.txt
+    jobid: 113
+    wildcards: sample=C247
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247/assembly_info.txt /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C247_assembly_info.txt
+        
+Submitted job 113 with external jobid 'Submitted batch job 14741946'.
+
+[Fri Nov 11 09:02:07 2022]
+rule extract_chromosome_plasmids:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247/assembly.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C247.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C247.fasta
+    jobid: 40
+    wildcards: sample=C247
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 40 with external jobid 'Submitted batch job 14741947'.
+[Fri Nov 11 09:02:21 2022]
+Finished job 14.
+46 of 160 steps (29%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:02:21 2022]
+rule extract_assembly_infor:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C347_assembly_info.txt
+    jobid: 116
+    wildcards: sample=C347
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347/assembly_info.txt /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C347_assembly_info.txt
+        
+Submitted job 116 with external jobid 'Submitted batch job 14741948'.
+
+[Fri Nov 11 09:02:21 2022]
+rule extract_summary_assembly_stats:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C347_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C347_summary.csv
+    jobid: 106
+    wildcards: sample=C347
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 106 with external jobid 'Submitted batch job 14741949'.
+
+[Fri Nov 11 09:02:21 2022]
+rule extract_chromosome_plasmids:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347/assembly.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C347.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C347.fasta
+    jobid: 73
+    wildcards: sample=C347
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 73 with external jobid 'Submitted batch job 14741950'.
+[Fri Nov 11 09:05:46 2022]
+Finished job 128.
+47 of 160 steps (29%) done
+[Fri Nov 11 09:05:47 2022]
+Finished job 122.
+48 of 160 steps (30%) done
+[Fri Nov 11 09:07:37 2022]
+Finished job 8.
+49 of 160 steps (31%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:07:37 2022]
+rule extract_chromosome_plasmids:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272/assembly.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C272.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C272.fasta
+    jobid: 51
+    wildcards: sample=C272
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 51 with external jobid 'Submitted batch job 14741980'.
+
+[Fri Nov 11 09:07:37 2022]
+rule extract_summary_assembly_stats:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C272_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C272_summary.csv
+    jobid: 104
+    wildcards: sample=C272
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 104 with external jobid 'Submitted batch job 14741981'.
+
+[Fri Nov 11 09:07:37 2022]
+rule extract_assembly_infor:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C272_assembly_info.txt
+    jobid: 114
+    wildcards: sample=C272
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272/assembly_info.txt /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C272_assembly_info.txt
+        
+Submitted job 114 with external jobid 'Submitted batch job 14741982'.
+[Fri Nov 11 09:08:20 2022]
+Finished job 17.
+50 of 160 steps (31%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:08:20 2022]
+rule extract_chromosome_plasmids:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1/assembly.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/L1.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/L1.fasta
+    jobid: 84
+    wildcards: sample=L1
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 84 with external jobid 'Submitted batch job 14741984'.
+
+[Fri Nov 11 09:08:20 2022]
+rule extract_assembly_infor:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/L1_assembly_info.txt
+    jobid: 117
+    wildcards: sample=L1
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1/assembly_info.txt /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/L1_assembly_info.txt
+        
+Submitted job 117 with external jobid 'Submitted batch job 14741985'.
+
+[Fri Nov 11 09:08:20 2022]
+rule extract_summary_assembly_stats:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L1_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L1_summary.csv
+    jobid: 107
+    wildcards: sample=L1
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 107 with external jobid 'Submitted batch job 14741986'.
+[Fri Nov 11 09:09:36 2022]
+Finished job 2.
+51 of 160 steps (32%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:09:36 2022]
+rule extract_summary_assembly_stats:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C229_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C229_summary.csv
+    jobid: 102
+    wildcards: sample=C229
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 102 with external jobid 'Submitted batch job 14741992'.
+
+[Fri Nov 11 09:09:36 2022]
+rule extract_chromosome_plasmids:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229/assembly.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C229.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C229.fasta
+    jobid: 29
+    wildcards: sample=C229
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 29 with external jobid 'Submitted batch job 14741993'.
+
+[Fri Nov 11 09:09:36 2022]
+rule extract_assembly_infor:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C229_assembly_info.txt
+    jobid: 112
+    wildcards: sample=C229
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229/assembly_info.txt /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C229_assembly_info.txt
+        
+Submitted job 112 with external jobid 'Submitted batch job 14741994'.
+[Fri Nov 11 09:11:22 2022]
+Finished job 11.
+52 of 160 steps (32%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:11:22 2022]
+rule extract_assembly_infor:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C344_assembly_info.txt
+    jobid: 115
+    wildcards: sample=C344
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344/assembly_info.txt /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C344_assembly_info.txt
+        
+Submitted job 115 with external jobid 'Submitted batch job 14741995'.
+
+[Fri Nov 11 09:11:23 2022]
+rule aggr_assemble:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2/assembly.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C229/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C247/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C272/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C347/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L1/assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/L2/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_assemble.txt
+    jobid: 1
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_assemble.txt
+        
+Submitted job 1 with external jobid 'Submitted batch job 14741996'.
+
+[Fri Nov 11 09:11:23 2022]
+rule extract_summary_assembly_stats:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344/assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C344_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C344_summary.csv
+    jobid: 105
+    wildcards: sample=C344
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 105 with external jobid 'Submitted batch job 14741997'.
+
+[Fri Nov 11 09:11:23 2022]
+rule extract_chromosome_plasmids:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/ASSEMBLIES/C344/assembly.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C344.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C344.fasta
+    jobid: 62
+    wildcards: sample=C344
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 62 with external jobid 'Submitted batch job 14741998'.
+[Fri Nov 11 09:11:56 2022]
+Finished job 130.
+53 of 160 steps (33%) done
+[Fri Nov 11 09:33:42 2022]
+Finished job 159.
+54 of 160 steps (34%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:33:42 2022]
+rule aggr_srst2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C229__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C247__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C272__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C344__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/C347__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/L1__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/L2__mlst__Staphylococcus_aureus__results.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SRST2/total_srst2.csv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_srst2.txt
+    jobid: 151
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_srst2.txt
+        
+Submitted job 151 with external jobid 'Submitted batch job 14742043'.
+[Fri Nov 11 09:39:01 2022]
+Finished job 120.
+55 of 160 steps (34%) done
+[Fri Nov 11 09:39:16 2022]
+Finished job 126.
+56 of 160 steps (35%) done
+[Fri Nov 11 09:39:16 2022]
+Finished job 124.
+57 of 160 steps (36%) done
+Select jobs to execute...
+
+[Fri Nov 11 09:39:16 2022]
+rule aggr_plassembler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C229.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C247.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C272.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C344.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/C347.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/L1.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_FASTAS/L2.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C229.tsv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C247.tsv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C272.tsv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C344.tsv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/C347.tsv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/L1.tsv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/PLASSEMBLER_SUMMARIES/L2.tsv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_plasembler.txt
+    jobid: 119
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=16
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_plasembler.txt
+        
+Submitted job 119 with external jobid 'Submitted batch job 14742059'.
+[Fri Nov 11 09:42:04 2022]
+Finished job 119.
+58 of 160 steps (36%) done
+[Sat Nov 12 03:36:02 2022]
+Finished job 116.
+59 of 160 steps (37%) done
+[Sat Nov 12 03:36:02 2022]
+Finished job 113.
+60 of 160 steps (38%) done
+[Sat Nov 12 03:36:03 2022]
+Finished job 118.
+61 of 160 steps (38%) done
+[Sat Nov 12 03:36:17 2022]
+Finished job 73.
+62 of 160 steps (39%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:36:17 2022]
+rule medaka:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C347.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C347.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta
+    jobid: 72
+    wildcards: sample=C347
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        export HOME=/hpcfs/users/a1667917
+        medaka_consensus -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C347.fastq.gz -d /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C347.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347 -m r941_min_sup_g507  -t 16
+        
+Submitted job 72 with external jobid 'Submitted batch job 14747185'.
+[Sat Nov 12 03:36:17 2022]
+Finished job 40.
+63 of 160 steps (39%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:36:17 2022]
+rule medaka:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C247.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C247.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta
+    jobid: 39
+    wildcards: sample=C247
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        export HOME=/hpcfs/users/a1667917
+        medaka_consensus -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C247.fastq.gz -d /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C247.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247 -m r941_min_sup_g507  -t 16
+        
+Submitted job 39 with external jobid 'Submitted batch job 14747186'.
+[Sat Nov 12 03:36:18 2022]
+Finished job 95.
+64 of 160 steps (40%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:36:18 2022]
+rule medaka:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/L2.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L2.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta
+    jobid: 94
+    wildcards: sample=L2
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        export HOME=/hpcfs/users/a1667917
+        medaka_consensus -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L2.fastq.gz -d /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/L2.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2 -m r941_min_sup_g507  -t 16
+        
+Submitted job 94 with external jobid 'Submitted batch job 14747187'.
+[Sat Nov 12 03:36:32 2022]
+Finished job 106.
+65 of 160 steps (41%) done
+[Sat Nov 12 03:36:32 2022]
+Finished job 103.
+66 of 160 steps (41%) done
+[Sat Nov 12 03:36:32 2022]
+Finished job 108.
+67 of 160 steps (42%) done
+[Sat Nov 12 03:39:03 2022]
+Finished job 117.
+68 of 160 steps (42%) done
+[Sat Nov 12 03:39:04 2022]
+Finished job 114.
+69 of 160 steps (43%) done
+[Sat Nov 12 03:39:17 2022]
+Finished job 84.
+70 of 160 steps (44%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:39:17 2022]
+rule medaka:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/L1.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L1.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta
+    jobid: 83
+    wildcards: sample=L1
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        export HOME=/hpcfs/users/a1667917
+        medaka_consensus -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/L1.fastq.gz -d /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/L1.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1 -m r941_min_sup_g507  -t 16
+        
+Submitted job 83 with external jobid 'Submitted batch job 14747204'.
+[Sat Nov 12 03:39:17 2022]
+Finished job 107.
+71 of 160 steps (44%) done
+[Sat Nov 12 03:39:17 2022]
+Finished job 51.
+72 of 160 steps (45%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:39:17 2022]
+rule medaka:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C272.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C272.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta
+    jobid: 50
+    wildcards: sample=C272
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        export HOME=/hpcfs/users/a1667917
+        medaka_consensus -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C272.fastq.gz -d /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C272.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272 -m r941_min_sup_g507  -t 16
+        
+Submitted job 50 with external jobid 'Submitted batch job 14747205'.
+[Sat Nov 12 03:39:17 2022]
+Finished job 104.
+73 of 160 steps (46%) done
+[Sat Nov 12 03:41:49 2022]
+Finished job 39.
+74 of 160 steps (46%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:41:49 2022]
+rule bwa_index:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta.bwt
+    jobid: 43
+    wildcards: sample=C247
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta
+        
+Submitted job 43 with external jobid 'Submitted batch job 14747212'.
+[Sat Nov 12 03:41:49 2022]
+Finished job 94.
+75 of 160 steps (47%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:41:49 2022]
+rule bwa_index:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta.bwt
+    jobid: 98
+    wildcards: sample=L2
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta
+        
+Submitted job 98 with external jobid 'Submitted batch job 14747213'.
+[Sat Nov 12 03:42:14 2022]
+Finished job 43.
+76 of 160 steps (48%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:42:14 2022]
+rule bwa_mem:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C247_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C247_2.sam
+    jobid: 41
+    wildcards: sample=C247
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C247_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C247_2.sam
+        
+Submitted job 41 with external jobid 'Submitted batch job 14747214'.
+[Sat Nov 12 03:42:14 2022]
+Finished job 98.
+77 of 160 steps (48%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:42:14 2022]
+rule bwa_mem:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L2_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L2_2.sam
+    jobid: 96
+    wildcards: sample=L2
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L2_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L2_2.sam
+        
+Submitted job 96 with external jobid 'Submitted batch job 14747215'.
+[Sat Nov 12 03:42:14 2022]
+Finished job 72.
+78 of 160 steps (49%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:42:14 2022]
+rule bwa_index:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta.bwt
+    jobid: 76
+    wildcards: sample=C347
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta
+        
+Submitted job 76 with external jobid 'Submitted batch job 14747216'.
+[Sat Nov 12 03:42:15 2022]
+Finished job 115.
+79 of 160 steps (49%) done
+[Sat Nov 12 03:42:15 2022]
+Finished job 1.
+80 of 160 steps (50%) done
+[Sat Nov 12 03:42:15 2022]
+Finished job 62.
+81 of 160 steps (51%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:42:15 2022]
+rule medaka:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C344.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C344.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta
+    jobid: 61
+    wildcards: sample=C344
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        export HOME=/hpcfs/users/a1667917
+        medaka_consensus -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C344.fastq.gz -d /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C344.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344 -m r941_min_sup_g507  -t 16
+        
+Submitted job 61 with external jobid 'Submitted batch job 14747217'.
+[Sat Nov 12 03:42:16 2022]
+Finished job 102.
+82 of 160 steps (51%) done
+[Sat Nov 12 03:42:16 2022]
+Finished job 29.
+83 of 160 steps (52%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:42:16 2022]
+rule medaka:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C229.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C229.fastq.gz
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta
+    jobid: 28
+    wildcards: sample=C229
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        export HOME=/hpcfs/users/a1667917
+        medaka_consensus -i /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Long_Reads/aggregated_reads/C229.fastq.gz -d /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C229.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229 -m r941_min_sup_g507  -t 16
+        
+Submitted job 28 with external jobid 'Submitted batch job 14747218'.
+
+[Sat Nov 12 03:42:16 2022]
+rule aggr_chromosome_plasmid:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C229.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C247.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C272.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C344.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/C347.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/L1.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/PLASMIDS/L2.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C229.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C247.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C272.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C344.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/C347.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/L1.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/CHROMOSOME_PRE_POLISH/L2.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_chr_plas.txt
+    jobid: 110
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_chr_plas.txt
+        
+Submitted job 110 with external jobid 'Submitted batch job 14747219'.
+[Sat Nov 12 03:42:16 2022]
+Finished job 112.
+84 of 160 steps (52%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:42:16 2022]
+rule aggr_assembly_info:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C229_assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C247_assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C272_assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C344_assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/C347_assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/L1_assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/ASSEMBLY_INFO/L2_assembly_info.txt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_assembly_info.txt
+    jobid: 111
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_assembly_info.txt
+        
+Submitted job 111 with external jobid 'Submitted batch job 14747220'.
+[Sat Nov 12 03:42:41 2022]
+Finished job 105.
+85 of 160 steps (53%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:42:41 2022]
+rule combine_summary_stats:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C229_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C247_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C272_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C344_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C347_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L1_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L2_summary.csv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SUMMARY/total_assembly_summary.csv
+    jobid: 109
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 109 with external jobid 'Submitted batch job 14747227'.
+[Sat Nov 12 03:43:55 2022]
+Finished job 83.
+86 of 160 steps (54%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:43:55 2022]
+rule bwa_index:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta.bwt
+    jobid: 87
+    wildcards: sample=L1
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta
+        
+Submitted job 87 with external jobid 'Submitted batch job 14747231'.
+[Sat Nov 12 03:43:56 2022]
+Finished job 50.
+87 of 160 steps (54%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:43:56 2022]
+rule bwa_index:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta.bwt
+    jobid: 54
+    wildcards: sample=C272
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta
+        
+Submitted job 54 with external jobid 'Submitted batch job 14747232'.
+[Sat Nov 12 03:45:09 2022]
+Finished job 87.
+88 of 160 steps (55%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:45:09 2022]
+rule bwa_mem:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L1_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L1_2.sam
+    jobid: 85
+    wildcards: sample=L1
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L1_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L1_2.sam
+        
+Submitted job 85 with external jobid 'Submitted batch job 14747233'.
+[Sat Nov 12 03:45:09 2022]
+Finished job 54.
+89 of 160 steps (56%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:45:09 2022]
+rule bwa_mem:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C272_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C272_2.sam
+    jobid: 52
+    wildcards: sample=C272
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C272_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C272_2.sam
+        
+Submitted job 52 with external jobid 'Submitted batch job 14747234'.
+[Sat Nov 12 03:45:10 2022]
+Finished job 76.
+90 of 160 steps (56%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:45:10 2022]
+rule bwa_mem:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C347_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C347_2.sam
+    jobid: 74
+    wildcards: sample=C347
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C347_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C347_2.sam
+        
+Submitted job 74 with external jobid 'Submitted batch job 14747235'.
+[Sat Nov 12 03:45:47 2022]
+Finished job 96.
+91 of 160 steps (57%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:45:47 2022]
+rule polypolish:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L2_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L2_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/L2.fasta
+    jobid: 93
+    wildcards: sample=L2
+    threads: 8
+    resources: mem_mb=4000, disk_mb=2497, tmpdir=/tmp/lls_14741408, time=60, partition=batch, th=8
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L2/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L2_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L2_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/L2.fasta
+        
+Submitted job 93 with external jobid 'Submitted batch job 14747244'.
+[Sat Nov 12 03:46:00 2022]
+Finished job 41.
+92 of 160 steps (57%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:46:00 2022]
+rule polypolish:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C247_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C247_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C247.fasta
+    jobid: 38
+    wildcards: sample=C247
+    threads: 8
+    resources: mem_mb=4000, disk_mb=2638, tmpdir=/tmp/lls_14741408, time=60, partition=batch, th=8
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C247/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C247_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C247_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C247.fasta
+        
+Submitted job 38 with external jobid 'Submitted batch job 14747245'.
+[Sat Nov 12 03:47:02 2022]
+Finished job 61.
+93 of 160 steps (58%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:47:02 2022]
+rule bwa_index:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta.bwt
+    jobid: 65
+    wildcards: sample=C344
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta
+        
+Submitted job 65 with external jobid 'Submitted batch job 14747252'.
+[Sat Nov 12 03:47:15 2022]
+Finished job 28.
+94 of 160 steps (59%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:47:15 2022]
+rule bwa_index:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta.bwt
+    jobid: 32
+    wildcards: sample=C229
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta
+        
+Submitted job 32 with external jobid 'Submitted batch job 14747253'.
+[Sat Nov 12 03:48:16 2022]
+Finished job 32.
+95 of 160 steps (59%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:48:16 2022]
+rule bwa_mem:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C229_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C229_2.sam
+    jobid: 30
+    wildcards: sample=C229
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C229_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C229_2.sam
+        
+Submitted job 30 with external jobid 'Submitted batch job 14747261'.
+[Sat Nov 12 03:48:16 2022]
+Finished job 65.
+96 of 160 steps (60%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:48:16 2022]
+rule bwa_mem:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C344_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C344_2.sam
+    jobid: 63
+    wildcards: sample=C344
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C344_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C344_2.sam
+        
+Submitted job 63 with external jobid 'Submitted batch job 14747262'.
+[Sat Nov 12 03:48:29 2022]
+Finished job 38.
+97 of 160 steps (61%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:48:29 2022]
+rule dnaapler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C247.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta
+    jobid: 37
+    wildcards: sample=C247
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=8
+
+
+        dnaapler.py -c /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C247.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247 -p C247 -t 8 -f
+        
+Submitted job 37 with external jobid 'Submitted batch job 14747263'.
+[Sat Nov 12 03:48:41 2022]
+Finished job 93.
+98 of 160 steps (61%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:48:41 2022]
+rule dnaapler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/L2.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta
+    jobid: 92
+    wildcards: sample=L2
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=8
+
+
+        dnaapler.py -c /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/L2.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2 -p L2 -t 8 -f
+        
+Submitted job 92 with external jobid 'Submitted batch job 14747264'.
+[Sat Nov 12 03:48:41 2022]
+Finished job 85.
+99 of 160 steps (62%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:48:41 2022]
+rule polypolish:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L1_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L1_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/L1.fasta
+    jobid: 82
+    wildcards: sample=L1
+    threads: 8
+    resources: mem_mb=4000, disk_mb=2521, tmpdir=/tmp/lls_14741408, time=60, partition=batch, th=8
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/L1/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L1_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/L1_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/L1.fasta
+        
+Submitted job 82 with external jobid 'Submitted batch job 14747265'.
+[Sat Nov 12 03:48:42 2022]
+Finished job 52.
+100 of 160 steps (62%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:48:42 2022]
+rule polypolish:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C272_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C272_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C272.fasta
+    jobid: 49
+    wildcards: sample=C272
+    threads: 8
+    resources: mem_mb=4000, disk_mb=2880, tmpdir=/tmp/lls_14741408, time=60, partition=batch, th=8
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C272/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C272_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C272_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C272.fasta
+        
+Submitted job 49 with external jobid 'Submitted batch job 14747266'.
+[Sat Nov 12 03:48:55 2022]
+Finished job 74.
+101 of 160 steps (63%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:48:55 2022]
+rule polypolish:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C347_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C347_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C347.fasta
+    jobid: 71
+    wildcards: sample=C347
+    threads: 8
+    resources: mem_mb=4000, disk_mb=3068, tmpdir=/tmp/lls_14741408, time=60, partition=batch, th=8
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C347/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C347_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C347_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C347.fasta
+        
+Submitted job 71 with external jobid 'Submitted batch job 14747272'.
+[Sat Nov 12 03:51:12 2022]
+Finished job 151.
+102 of 160 steps (64%) done
+[Sat Nov 12 03:51:35 2022]
+Finished job 71.
+103 of 160 steps (64%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:51:35 2022]
+rule dnaapler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C347.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta
+    jobid: 70
+    wildcards: sample=C347
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=8
+
+
+        dnaapler.py -c /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C347.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347 -p C347 -t 8 -f
+        
+Submitted job 70 with external jobid 'Submitted batch job 14747279'.
+[Sat Nov 12 03:51:36 2022]
+Finished job 82.
+104 of 160 steps (65%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:51:36 2022]
+rule dnaapler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/L1.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta
+    jobid: 81
+    wildcards: sample=L1
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=8
+
+
+        dnaapler.py -c /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/L1.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1 -p L1 -t 8 -f
+        
+Submitted job 81 with external jobid 'Submitted batch job 14747280'.
+[Sat Nov 12 03:51:36 2022]
+Finished job 49.
+105 of 160 steps (66%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:51:36 2022]
+rule dnaapler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C272.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta
+    jobid: 48
+    wildcards: sample=C272
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=8
+
+
+        dnaapler.py -c /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C272.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272 -p C272 -t 8 -f
+        
+Submitted job 48 with external jobid 'Submitted batch job 14747281'.
+[Sat Nov 12 03:51:49 2022]
+Finished job 63.
+106 of 160 steps (66%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:51:49 2022]
+rule polypolish:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C344_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C344_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C344.fasta
+    jobid: 60
+    wildcards: sample=C344
+    threads: 8
+    resources: mem_mb=4000, disk_mb=3140, tmpdir=/tmp/lls_14741408, time=60, partition=batch, th=8
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C344/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C344_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C344_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C344.fasta
+        
+Submitted job 60 with external jobid 'Submitted batch job 14747290'.
+[Sat Nov 12 03:52:00 2022]
+Finished job 92.
+107 of 160 steps (67%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:52:00 2022]
+rule bwa_index_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta.bwt
+    jobid: 100
+    wildcards: sample=L2
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta
+        
+Submitted job 100 with external jobid 'Submitted batch job 14747291'.
+[Sat Nov 12 03:52:01 2022]
+Finished job 37.
+108 of 160 steps (68%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:52:01 2022]
+rule bwa_index_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta.bwt
+    jobid: 45
+    wildcards: sample=C247
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta
+        
+Submitted job 45 with external jobid 'Submitted batch job 14747292'.
+[Sat Nov 12 03:52:01 2022]
+Finished job 30.
+109 of 160 steps (68%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:52:01 2022]
+rule polypolish:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C229_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C229_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C229.fasta
+    jobid: 27
+    wildcards: sample=C229
+    threads: 8
+    resources: mem_mb=4000, disk_mb=3116, tmpdir=/tmp/lls_14741408, time=60, partition=batch, th=8
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/MEDAKA/C229/consensus.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C229_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA/C229_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C229.fasta
+        
+Submitted job 27 with external jobid 'Submitted batch job 14747293'.
+[Sat Nov 12 03:54:15 2022]
+Finished job 100.
+110 of 160 steps (69%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:54:15 2022]
+rule bwa_mem_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L2_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L2_2.sam
+    jobid: 99
+    wildcards: sample=L2
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L2_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L2_2.sam
+        
+Submitted job 99 with external jobid 'Submitted batch job 14747295'.
+[Sat Nov 12 03:54:15 2022]
+Finished job 45.
+111 of 160 steps (69%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:54:15 2022]
+rule bwa_mem_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C247_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C247_2.sam
+    jobid: 44
+    wildcards: sample=C247
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C247_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C247_2.sam
+        
+Submitted job 44 with external jobid 'Submitted batch job 14747296'.
+[Sat Nov 12 03:54:40 2022]
+Finished job 60.
+112 of 160 steps (70%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:54:40 2022]
+rule dnaapler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C344.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta
+    jobid: 59
+    wildcards: sample=C344
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=8
+
+
+        dnaapler.py -c /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C344.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344 -p C344 -t 8 -f
+        
+Submitted job 59 with external jobid 'Submitted batch job 14747302'.
+[Sat Nov 12 03:54:41 2022]
+Finished job 70.
+113 of 160 steps (71%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:54:41 2022]
+rule bwa_index_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta.bwt
+    jobid: 78
+    wildcards: sample=C347
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta
+        
+Submitted job 78 with external jobid 'Submitted batch job 14747303'.
+[Sat Nov 12 03:54:41 2022]
+Finished job 81.
+114 of 160 steps (71%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:54:41 2022]
+rule bwa_index_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta.bwt
+    jobid: 89
+    wildcards: sample=L1
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta
+        
+Submitted job 89 with external jobid 'Submitted batch job 14747304'.
+[Sat Nov 12 03:54:41 2022]
+Finished job 48.
+115 of 160 steps (72%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:54:41 2022]
+rule bwa_index_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta.bwt
+    jobid: 56
+    wildcards: sample=C272
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta
+        
+Submitted job 56 with external jobid 'Submitted batch job 14747305'.
+[Sat Nov 12 03:54:53 2022]
+Finished job 27.
+116 of 160 steps (72%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:54:53 2022]
+rule dnaapler:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C229.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta
+    jobid: 26
+    wildcards: sample=C229
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=8
+
+
+        dnaapler.py -c /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_1/C229.fasta -o /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229 -p C229 -t 8 -f
+        
+Submitted job 26 with external jobid 'Submitted batch job 14747310'.
+[Sat Nov 12 03:57:20 2022]
+Finished job 78.
+117 of 160 steps (73%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:57:20 2022]
+rule bwa_mem_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C347_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C347_2.sam
+    jobid: 77
+    wildcards: sample=C347
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C347_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C347_2.sam
+        
+Submitted job 77 with external jobid 'Submitted batch job 14747317'.
+[Sat Nov 12 03:57:20 2022]
+Finished job 89.
+118 of 160 steps (74%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:57:20 2022]
+rule bwa_mem_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L1_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L1_2.sam
+    jobid: 88
+    wildcards: sample=L1
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L1_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L1_2.sam
+        
+Submitted job 88 with external jobid 'Submitted batch job 14747318'.
+[Sat Nov 12 03:57:21 2022]
+Finished job 56.
+119 of 160 steps (74%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:57:21 2022]
+rule bwa_mem_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C272_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C272_2.sam
+    jobid: 55
+    wildcards: sample=C272
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C272_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C272_2.sam
+        
+Submitted job 55 with external jobid 'Submitted batch job 14747319'.
+[Sat Nov 12 03:57:45 2022]
+Finished job 26.
+120 of 160 steps (75%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:57:45 2022]
+rule bwa_index_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta.bwt
+    jobid: 34
+    wildcards: sample=C229
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta
+        
+Submitted job 34 with external jobid 'Submitted batch job 14747327'.
+[Sat Nov 12 03:57:45 2022]
+Finished job 59.
+121 of 160 steps (76%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:57:45 2022]
+rule bwa_index_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta.bwt
+    jobid: 67
+    wildcards: sample=C344
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+
+        bwa index /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta
+        
+Submitted job 67 with external jobid 'Submitted batch job 14747328'.
+[Sat Nov 12 03:57:46 2022]
+Finished job 99.
+122 of 160 steps (76%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:57:46 2022]
+rule polypolish_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L2_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L2_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/L2.fasta
+    jobid: 91
+    wildcards: sample=L2
+    threads: 16
+    resources: mem_mb=32000, disk_mb=2571, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L2/L2_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L2_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L2_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/L2.fasta
+        
+Submitted job 91 with external jobid 'Submitted batch job 14747329'.
+[Sat Nov 12 03:57:46 2022]
+Finished job 44.
+123 of 160 steps (77%) done
+Select jobs to execute...
+
+[Sat Nov 12 03:57:46 2022]
+rule polypolish_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C247_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C247_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C247.fasta
+    jobid: 36
+    wildcards: sample=C247
+    threads: 16
+    resources: mem_mb=32000, disk_mb=2716, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C247/C247_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C247_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C247_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C247.fasta
+        
+Submitted job 36 with external jobid 'Submitted batch job 14747330'.
+[Sat Nov 12 04:00:25 2022]
+Finished job 34.
+124 of 160 steps (78%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:00:25 2022]
+rule bwa_mem_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C229_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C229_2.sam
+    jobid: 33
+    wildcards: sample=C229
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C229_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C229_2.sam
+        
+Submitted job 33 with external jobid 'Submitted batch job 14747336'.
+[Sat Nov 12 04:00:25 2022]
+Finished job 67.
+125 of 160 steps (78%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:00:25 2022]
+rule bwa_mem_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_1.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_2.fastq.gz, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta.bwt
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C344_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C344_2.sam
+    jobid: 66
+    wildcards: sample=C344
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=300, partition=batch, th=16
+
+
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_1.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C344_1.sam
+        bwa mem -t 16 -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_2.fastq.gz > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C344_2.sam
+        
+Submitted job 66 with external jobid 'Submitted batch job 14747337'.
+[Sat Nov 12 04:00:37 2022]
+Finished job 91.
+126 of 160 steps (79%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:00:37 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/L2.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/L2.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L2.fasta
+    jobid: 90
+    wildcards: sample=L2
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/L2.fasta  -r "/hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_1.fastq.gz /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L2_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/L2.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L2.fasta
+        
+Submitted job 90 with external jobid 'Submitted batch job 14747338'.
+[Sat Nov 12 04:00:37 2022]
+Finished job 36.
+127 of 160 steps (79%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:00:37 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C247.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C247.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C247.fasta
+    jobid: 35
+    wildcards: sample=C247
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C247.fasta  -r "/hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_1.fastq.gz /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C247_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C247.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C247.fasta
+        
+Submitted job 35 with external jobid 'Submitted batch job 14747339'.
+[Sat Nov 12 04:00:50 2022]
+Finished job 77.
+128 of 160 steps (80%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:00:50 2022]
+rule polypolish_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C347_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C347_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C347.fasta
+    jobid: 69
+    wildcards: sample=C347
+    threads: 16
+    resources: mem_mb=32000, disk_mb=3159, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C347/C347_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C347_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C347_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C347.fasta
+        
+Submitted job 69 with external jobid 'Submitted batch job 14747347'.
+[Sat Nov 12 04:00:51 2022]
+Finished job 55.
+129 of 160 steps (81%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:00:51 2022]
+rule polypolish_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C272_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C272_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C272.fasta
+    jobid: 47
+    wildcards: sample=C272
+    threads: 16
+    resources: mem_mb=32000, disk_mb=2967, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C272/C272_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C272_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C272_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C272.fasta
+        
+Submitted job 47 with external jobid 'Submitted batch job 14747348'.
+[Sat Nov 12 04:01:03 2022]
+Finished job 88.
+130 of 160 steps (81%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:01:03 2022]
+rule polypolish_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L1_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L1_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/L1.fasta
+    jobid: 80
+    wildcards: sample=L1
+    threads: 16
+    resources: mem_mb=32000, disk_mb=2597, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/L1/L1_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L1_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/L1_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/L1.fasta
+        
+Submitted job 80 with external jobid 'Submitted batch job 14747351'.
+[Sat Nov 12 04:03:42 2022]
+Finished job 80.
+131 of 160 steps (82%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:03:42 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/L1.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/L1.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L1.fasta
+    jobid: 79
+    wildcards: sample=L1
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/L1.fasta  -r "/hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_1.fastq.gz /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/L1_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/L1.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L1.fasta
+        
+Submitted job 79 with external jobid 'Submitted batch job 14747357'.
+[Sat Nov 12 04:03:42 2022]
+Finished job 69.
+132 of 160 steps (82%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:03:42 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C347.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C347.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C347.fasta
+    jobid: 68
+    wildcards: sample=C347
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C347.fasta  -r "/hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_1.fastq.gz /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C347_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C347.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C347.fasta
+        
+Submitted job 68 with external jobid 'Submitted batch job 14747358'.
+[Sat Nov 12 04:03:42 2022]
+Finished job 47.
+133 of 160 steps (83%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:03:42 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C272.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C272.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C272.fasta
+    jobid: 46
+    wildcards: sample=C272
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C272.fasta  -r "/hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_1.fastq.gz /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C272_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C272.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C272.fasta
+        
+Submitted job 46 with external jobid 'Submitted batch job 14747359'.
+[Sat Nov 12 04:03:55 2022]
+Finished job 66.
+134 of 160 steps (84%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:03:55 2022]
+rule polypolish_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C344_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C344_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C344.fasta
+    jobid: 58
+    wildcards: sample=C344
+    threads: 16
+    resources: mem_mb=32000, disk_mb=3234, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C344/C344_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C344_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C344_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C344.fasta
+        
+Submitted job 58 with external jobid 'Submitted batch job 14747372'.
+[Sat Nov 12 04:04:08 2022]
+Finished job 33.
+135 of 160 steps (84%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:04:08 2022]
+rule polypolish_round_2:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C229_1.sam, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C229_2.sam
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C229.fasta
+    jobid: 25
+    wildcards: sample=C229
+    threads: 16
+    resources: mem_mb=32000, disk_mb=3211, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        polypolish /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/DNAAPLER/C229/C229_reoriented.fasta /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C229_1.sam /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/BWA_ROUND2/C229_2.sam > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C229.fasta
+        
+Submitted job 25 with external jobid 'Submitted batch job 14747373'.
+[Sat Nov 12 04:05:34 2022]
+Finished job 90.
+136 of 160 steps (85%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:05:34 2022]
+rule mlst:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L2.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/L2.csv
+    jobid: 148
+    wildcards: sample=L2
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=10, partition=batch, th=1
+
+
+        mlst --scheme saureus --nopath  --csv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L2.fasta > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/L2.csv
+        
+Submitted job 148 with external jobid 'Submitted batch job 14747375'.
+[Sat Nov 12 04:05:46 2022]
+Finished job 35.
+137 of 160 steps (86%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:05:46 2022]
+rule mlst:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C247.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C247.csv
+    jobid: 143
+    wildcards: sample=C247
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=10, partition=batch, th=1
+
+
+        mlst --scheme saureus --nopath  --csv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C247.fasta > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C247.csv
+        
+Submitted job 143 with external jobid 'Submitted batch job 14747376'.
+[Sat Nov 12 04:06:47 2022]
+Finished job 25.
+138 of 160 steps (86%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:06:47 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C229.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C229.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C229.fasta
+    jobid: 24
+    wildcards: sample=C229
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C229.fasta  -r "/hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_1.fastq.gz /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C229_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C229.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C229.fasta
+        
+Submitted job 24 with external jobid 'Submitted batch job 14747385'.
+[Sat Nov 12 04:06:47 2022]
+Finished job 58.
+139 of 160 steps (87%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:06:47 2022]
+rule polca:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C344.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C344.fasta.PolcaCorrected.fa, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C344.fasta
+    jobid: 57
+    wildcards: sample=C344
+    threads: 16
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=120, partition=batch, th=16
+
+
+        cd /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP
+        polca.sh -a /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/POLYPOLISH_OUT_RD_2/C344.fasta  -r "/hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_1.fastq.gz /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/FASTP/C344_2.fastq.gz" -t 16
+        cp /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/POLCA_TMP/C344.fasta.PolcaCorrected.fa /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C344.fasta
+        
+Submitted job 57 with external jobid 'Submitted batch job 14747386'.
+[Sat Nov 12 04:08:13 2022]
+Finished job 79.
+140 of 160 steps (88%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:08:13 2022]
+rule mlst:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L1.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/L1.csv
+    jobid: 147
+    wildcards: sample=L1
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=10, partition=batch, th=1
+
+
+        mlst --scheme saureus --nopath  --csv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L1.fasta > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/L1.csv
+        
+Submitted job 147 with external jobid 'Submitted batch job 14747394'.
+[Sat Nov 12 04:08:51 2022]
+Finished job 68.
+141 of 160 steps (88%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:08:51 2022]
+rule mlst:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C347.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C347.csv
+    jobid: 146
+    wildcards: sample=C347
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=10, partition=batch, th=1
+
+
+        mlst --scheme saureus --nopath  --csv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C347.fasta > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C347.csv
+        
+Submitted job 146 with external jobid 'Submitted batch job 14747396'.
+[Sat Nov 12 04:09:03 2022]
+Finished job 46.
+142 of 160 steps (89%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:09:03 2022]
+rule mlst:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C272.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C272.csv
+    jobid: 144
+    wildcards: sample=C272
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=10, partition=batch, th=1
+
+
+        mlst --scheme saureus --nopath  --csv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C272.fasta > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C272.csv
+        
+Submitted job 144 with external jobid 'Submitted batch job 14747397'.
+[Sat Nov 12 04:11:43 2022]
+Finished job 24.
+143 of 160 steps (89%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:11:43 2022]
+rule mlst:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C229.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C229.csv
+    jobid: 142
+    wildcards: sample=C229
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=10, partition=batch, th=1
+
+
+        mlst --scheme saureus --nopath  --csv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C229.fasta > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C229.csv
+        
+Submitted job 142 with external jobid 'Submitted batch job 14747417'.
+[Sat Nov 12 04:11:55 2022]
+Finished job 57.
+144 of 160 steps (90%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:11:55 2022]
+rule aggr_polish:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C229.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C247.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C272.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C344.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C347.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L1.fasta, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/L2.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_polish.txt
+    jobid: 23
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_polish.txt
+        
+Submitted job 23 with external jobid 'Submitted batch job 14747418'.
+
+[Sat Nov 12 04:11:55 2022]
+rule mlst:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C344.fasta
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C344.csv
+    jobid: 145
+    wildcards: sample=C344
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=10, partition=batch, th=1
+
+
+        mlst --scheme saureus --nopath  --csv /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/CHROMOSOME_POST_POLISHING/C344.fasta > /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C344.csv
+        
+Submitted job 145 with external jobid 'Submitted batch job 14747419'.
+[Sat Nov 12 04:18:35 2022]
+Finished job 109.
+145 of 160 steps (91%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:18:35 2022]
+rule aggr_statistics:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C229_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C247_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C272_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C344_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C347_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L1_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L2_clean_assembly_info.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C229_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C247_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C272_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C344_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/C347_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L1_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/TMP/SUMMARIES/L2_summary.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/SUMMARY/total_assembly_summary.csv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_stats.txt
+    jobid: 101
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_stats.txt
+        
+Submitted job 101 with external jobid 'Submitted batch job 14747461'.
+[Sat Nov 12 04:18:35 2022]
+Finished job 110.
+146 of 160 steps (91%) done
+[Sat Nov 12 04:18:36 2022]
+Finished job 111.
+147 of 160 steps (92%) done
+[Sat Nov 12 04:30:44 2022]
+Finished job 143.
+148 of 160 steps (92%) done
+[Sat Nov 12 04:30:44 2022]
+Finished job 148.
+149 of 160 steps (93%) done
+[Sat Nov 12 04:33:36 2022]
+Finished job 144.
+150 of 160 steps (94%) done
+[Sat Nov 12 04:33:36 2022]
+Finished job 146.
+151 of 160 steps (94%) done
+[Sat Nov 12 04:33:36 2022]
+Finished job 147.
+152 of 160 steps (95%) done
+[Sat Nov 12 04:36:36 2022]
+Finished job 23.
+153 of 160 steps (96%) done
+[Sat Nov 12 04:36:36 2022]
+Finished job 145.
+154 of 160 steps (96%) done
+[Sat Nov 12 04:36:36 2022]
+Finished job 142.
+155 of 160 steps (97%) done
+Select jobs to execute...
+
+[Sat Nov 12 04:36:36 2022]
+rule combine_mlst:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C229.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C247.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C272.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C344.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C347.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/L1.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/L2.csv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/total_mlst.csv
+    jobid: 150
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=5, partition=batch, th=1
+
+Submitted job 150 with external jobid 'Submitted batch job 14747587'.
+
+[Sat Nov 12 04:36:37 2022]
+rule aggr_mlst:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C229.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C247.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C272.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C344.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/C347.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/L1.csv, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/L2.csv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_mlst.txt
+    jobid: 141
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_mlst.txt
+        
+Submitted job 141 with external jobid 'Submitted batch job 14747588'.
+[Sat Nov 12 04:45:40 2022]
+Finished job 101.
+156 of 160 steps (98%) done
+[Sat Nov 12 05:03:44 2022]
+Finished job 141.
+157 of 160 steps (98%) done
+[Sat Nov 12 05:04:04 2022]
+Finished job 150.
+158 of 160 steps (99%) done
+Select jobs to execute...
+
+[Sat Nov 12 05:04:04 2022]
+rule aggr_mlst_combine:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/MLST/total_mlst.csv
+    output: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_mlst_combine.txt
+    jobid: 149
+    resources: mem_mb=4000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=2, partition=batch, th=1
+
+
+        touch /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_mlst_combine.txt
+        
+Submitted job 149 with external jobid 'Submitted batch job 14747760'.
+[Sat Nov 12 05:27:58 2022]
+Finished job 149.
+159 of 160 steps (99%) done
+Select jobs to execute...
+
+[Sat Nov 12 05:27:58 2022]
+localrule all:
+    input: /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_assemble.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_polish.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_stats.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_chr_plas.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_assembly_info.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_plasembler.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_mlst.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_mlst_combine.txt, /hpcfs/users/a1667917/Rudnick_Timepoint_Analysis/Output/LOGS/aggr_srst2.txt
+    jobid: 0
+    resources: mem_mb=32000, disk_mb=1000, tmpdir=/tmp/lls_14741408, time=1440, partition=batch, th=16
+
+[Sat Nov 12 05:27:58 2022]
+Finished job 0.
+160 of 160 steps (100%) done
+Complete log: /hpcfs/users/a1667917/Bacteria_Multiplex/Nanopore_Bacterial_Assembly_Pipeline/.snakemake/log/2022-11-11T082026.851775.snakemake.log
