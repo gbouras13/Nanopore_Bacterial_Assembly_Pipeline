@@ -94,7 +94,7 @@ C32,/hpcfs/users/a1667917/Staph_Aureus_Long_Aggregated_Fastq/C32.fastq.gz,/hpcfs
 C320,/hpcfs/users/a1667917/Staph_Aureus_Long_Aggregated_Fastq/C320.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C320_S32_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C320_S32_R2_001.fastq.gz
 C321,/hpcfs/users/a1667917/Staph_Aureus_Long_Aggregated_Fastq/C321.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C321_S31_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C321_S31_R2_001.fastq.gz
 C322,/hpcfs/users/a1667917/Staph_Aureus_Long_Aggregated_Fastq/C322.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C322_S42_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C322_S42_R2_001.fastq.gz
-C324,/hpcfs/users/a1667917/Staph_Aureus_Long_Aggregated_Fastq/C324.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/Redone_Short_Reads/C88_S78_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/Redone_Short_Reads/C88_S78_R2_001.fastq.gz
+C324,/hpcfs/users/a1667917/Staph_Aureus_Long_Aggregated_Fastq/C324.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/Redone_Short_Reads/C324_S78_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/Redone_Short_Reads/C324_S78_R2_001.fastq.gz
 C325,/hpcfs/users/a1667917/Staph_Aureus_Long_Aggregated_Fastq/C325.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C325_S34_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C325_S34_R2_001.fastq.gz
 C326,/hpcfs/users/a1667917/Staph_Aureus_Long_Aggregated_Fastq/C326.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/CRA_33_1.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/CRA_33_2.fastq.gz
 C329,/hpcfs/users/a1667917/Staph_Aureus_Long_Aggregated_Fastq/C329.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C329_S32_R1_001.fastq.gz,/hpcfs/users/a1667917/Staph_Fastq/C329_S32_R2_001.fastq.gz
