@@ -19,7 +19,11 @@ rule plassembler:
         os.path.join('..', 'envs','plassembler.yaml')
     resources:
         mem_mb=BigJobMem,
+<<<<<<< HEAD
         time=300,
+=======
+        time=550,
+>>>>>>> d57392bca3c824eb8e8f966b6ec4d48ca5d9131d
         th=BigJobCpu
     shell:
         """
