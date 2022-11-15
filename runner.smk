@@ -18,7 +18,7 @@ include: "rules/directories.smk"
 # get if needed
 CSV = config['csv']
 OUTPUT = config['Output']
-MEDAKA_FLAG = config['Medaka']
+POLCA_FLAG = config['Polca']
 MIN_CHROM_LENGTH = config['min_chrom_length']
 MIN_LENGTH = config['min_length']
 MIN_QUALITY = config['min_quality']
@@ -43,10 +43,10 @@ include: "rules/assemble.smk"
 include: "rules/assembly_statistics.smk"
 include: "rules/extract_fastas.smk"
 # extract fastas then polish the assemblies
-if MEDAKA_FLAG == True:
+if POLCA_FLAG == True:
     include: "rules/polish.smk"
-elif MEDAKA_FLAG == False:
-    include: "rules/polish_no_medaka.smk"
+else:
+    include: "rules/polish_no_polca.smk"
 include: "rules/extract_assembly_info.smk"
 include: "rules/plassembler.smk"
 # run if STAPH is true
