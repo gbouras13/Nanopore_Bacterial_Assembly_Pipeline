@@ -16,7 +16,7 @@ TargetFiles = [
     os.path.join(LOGS, "aggr_stats.txt"),
     os.path.join(LOGS, "aggr_chr_plas.txt"),
     os.path.join(LOGS, "aggr_assembly_info.txt"),
-    os.path.join(LOGS, "aggr_plasembler.txt"),,
-    os.path.join(LOGS, "aggr_srst2_combine.txt")
+    os.path.join(LOGS, "aggr_plasembler.txt"),
+    os.path.join(LOGS, "aggr_srst2_combine.txt"),
     mlst_files
 ]
