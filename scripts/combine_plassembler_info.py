@@ -3,7 +3,7 @@
 import pandas as pd
 import os 
 
-def summarise_contigs(summary_list, output, sample):
+def summarise_plassembler(summary_list, output, sample):
     # read into list       
     summaries = []
     l =summary_list
@@ -28,7 +28,7 @@ def summarise_contigs(summary_list, output, sample):
     total_summary_df.to_csv(output, sep=",", index=False)
         
 
-summarise_contigs(snakemake.input.summaries, snakemake.output.out, snakemake.wildcards.sample)
+summarise_plassembler(snakemake.input.summaries, snakemake.output.out, snakemake.wildcards.sample)
 
 
 
