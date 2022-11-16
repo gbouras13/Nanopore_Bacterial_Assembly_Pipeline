@@ -6,7 +6,7 @@ import os
 def add_sample_plassembler(input, output, sample):
 
     if os.path.getsize(input) > 0:
-        tmp_summary = pd.read_csv(a, delimiter= '\t', index_col=False, header=0)
+        tmp_summary = pd.read_csv(input, delimiter= '\t', index_col=False, header=0)
         tmp_summary['Sample'] = sample
 
         # shift column 'Sample' to first position
