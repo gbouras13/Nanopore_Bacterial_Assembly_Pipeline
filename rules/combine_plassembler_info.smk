@@ -12,7 +12,7 @@ rule combine_plassembler_info:
         th=1
     shell:
         """
-        '../scripts/combine_plassembler_info.py'
+        './scripts/combine_plassembler_info.py'
         """
 
 
