@@ -11,9 +11,7 @@ rule combine_plassembler_info:
         time=5,
         th=1
     script:
-        """
         '../scripts/combine_plassembler_info.py'
-        """
 
 
 rule aggr_combine_plassembler_info:
