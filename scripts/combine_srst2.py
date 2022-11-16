@@ -46,7 +46,7 @@ def summarise_contigs(summary_list, output, saureus):
     total_summary_df.to_csv(output, sep=",", index=False)
 
      
-summarise_contigs(snakemake.input.srst2s, snakemake.output.out, snakemake.params.saureus)
+summarise_contigs(snakemake.input.srsts, snakemake.output.out, snakemake.params.saureus)
 
 
 
