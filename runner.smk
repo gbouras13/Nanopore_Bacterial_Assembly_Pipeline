@@ -49,7 +49,7 @@ else:
     include: "rules/polish_no_polca.smk"
 include: "rules/extract_assembly_info.smk"
 include: "rules/plassembler.smk"
-include: "combine_plassembler_info.smk"
+include: "rules/combine_plassembler_info.smk"
 # run if STAPH is true
 if STAPH == True:
     include: "rules/mlst.smk"
