@@ -11,7 +11,7 @@ rule add_sample_plassembler:
         time=5,
         th=1
     script:
-        '../scripts/add_sample_plassembler.py.py'
+        '../scripts/add_sample_plassembler.py'
 
 
 rule combine_plassembler_info:
