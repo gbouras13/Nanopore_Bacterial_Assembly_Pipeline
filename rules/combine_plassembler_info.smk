@@ -10,9 +10,9 @@ rule combine_plassembler_info:
         mem_mb=SmallJobMem,
         time=5,
         th=1
-    shell:
+    script:
         """
-        './scripts/combine_plassembler_info.py'
+        '../scripts/combine_plassembler_info.py'
         """
 
 
