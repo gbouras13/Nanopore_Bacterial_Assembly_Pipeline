@@ -54,6 +54,7 @@ if STAPH == True:
     include: "rules/mlst.smk"
     include: "rules/combine_mlst.smk"
     include: "rules/srst2.smk"
+    include: "rules/combine_srst2.smk"
 
 rule all:
     input:
