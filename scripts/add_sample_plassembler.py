@@ -19,7 +19,7 @@ def add_sample_plassembler(input, output, sample):
 
     # touch a file if nothing
     else:
-        with open(input, 'a'):
+        with open(output, 'a'):
             os.utime(output, None)
 
         
