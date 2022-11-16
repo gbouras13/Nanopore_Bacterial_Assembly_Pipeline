@@ -3,7 +3,7 @@ rule combine_plassembler_info:
     input:
         summaries = expand(os.path.join(PLASSEMBLER_SUMMARIES, "{sample}.tsv"), sample = SAMPLES)
     output:
-        os.path.join(SUMMARY_OUT,"plassembler_assembly_info.txt")
+        out = os.path.join(SUMMARY_OUT,"plassembler_assembly_info.txt")
     conda:
         os.path.join('..', 'envs','scripts.yaml')
     resources:
