@@ -15,12 +15,12 @@ def add_sample_plassembler(input, output, sample):
         # insert column using insert(position,column_name,
         # first_column) function
         tmp_summary.insert(0, 'Sample', first_column)
-        tmp_summary.to_csv(output, sep=",", index=False)
+        tmp_summary.to_csv(output, sep="\t", index=False)
 
     # touch a file if nothing
     else:
         with open(input, 'a'):
-            os.utime(input, None)
+            os.utime(output, None)
 
         
 
