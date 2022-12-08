@@ -1,7 +1,7 @@
 # Nanopore_Bacterial_Assembly_Pipeline
 Pipeline to assemble many bacterial assemblies from Nanopore data
 
-If you want to use this, I'd recommend checking out (hybracter)[https://github.com/gbouras13/hybracter], which is a cleaner and easier to use version of this pipeline.
+If you want to use this, I'd recommend checking out [hybracter](https://github.com/gbouras13/hybracter), which is a cleaner and easier to use version of this pipeline.
 
 
 
